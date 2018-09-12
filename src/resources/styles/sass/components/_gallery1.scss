@@ -1,5 +1,10 @@
 [data-gallery-1] {
 	overflow: hidden;
+	padding: 0 10px;
+
+	@include breakpoint(medium) {
+		padding: 0;
+	}
 
 	.slick-slider {
 

@@ -1,15 +1,19 @@
 [data-content-image-4] {
 
-	.grid-x:first-child {
-		margin-bottom: 20px;
+	.content-wrap {
 
-		@include breakpoint(medium) {
-			margin-bottom: 54px;
+		.grid-x:first-of-type {
+			margin-bottom: 20px;
+
+			@include breakpoint(medium) {
+				margin-bottom: 54px;
+			}
+
+			@include breakpoint(large) {
+				margin-bottom: 92px;
+			}
 		}
 
-		@include breakpoint(large) {
-			margin-bottom: 92px;
-		}
 	}
 
 	.heading {

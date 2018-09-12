@@ -6,7 +6,7 @@
 		position: absolute;
 		width: 100%;
 		top: 0;
-		z-index: 1;
+		z-index: 99;
 	}
 
 	header {
@@ -157,6 +157,7 @@
 
 		.slider-dots-nav-cell {
 			position: relative;
+			z-index: 99;
 		}
 
 		.slider-dots-nav {

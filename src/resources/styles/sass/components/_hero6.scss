@@ -159,7 +159,7 @@
 			line-height: 1em;
 			text-align: center;
 			padding-top: 12px;
-			
+			z-index: 99;
 
 			@include breakpoint(medium) {
 				padding-top: 32px;

@@ -79,6 +79,19 @@ a {
 	}
 }
 
+.heading-4 {
+	@include font("Circular", 18px, 500, 26px);
+	@include breakpoint(medium) {
+		@include font("Circular", 20px, 500, 28px);
+	}
+	@include breakpoint(large) {
+		@include font("Circular", 22px, 500, 30px);
+	}
+	@include breakpoint(xlarge) {
+		@include font("Circular", 24px, 500, 34px);
+	}
+}
+
 .hero-heading-1 {
 	@include font("Circular", 30px, 400, 34px);
 	letter-spacing: 1px;

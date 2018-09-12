@@ -118,6 +118,22 @@
 					padding: 36px 0;
 				}
 
+				&:after {
+					content: '';
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					background-color: $white;
+					display: none;
+					z-index: -1;
+
+					@include breakpoint(large) {
+						display: block;
+					}
+				}
+
 				.heading {
 					@extend .hero-heading-1-black;
 					margin-bottom: 18px;
