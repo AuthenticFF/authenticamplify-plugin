@@ -1,0 +1,371 @@
+{% for block in entry.pageContent.level(1) %}
+
+	{% switch block.type.handle %}
+
+    {% case 'content1' %}
+
+      {{
+        components.content1({
+
+        })
+      }}
+
+    {% case 'content2' %}
+
+      {{
+        components.content2({
+
+        })
+      }}
+
+    {% case 'content3' %}
+
+      {{
+        components.content3({
+
+        })
+      }}
+
+    {% case 'contentImage1' %}
+
+      {{
+        components.contentImage1({
+
+        })
+      }}
+
+    {% case 'contentImage2' %}
+
+      {{
+        components.contentImage2({
+
+        })
+      }}
+
+    {% case 'contentImage3' %}
+
+      {{
+        components.contentImage3({
+
+        })
+      }}
+
+    {% case 'contentImage4' %}
+
+      {{
+        components.contentImage4({
+
+        })
+      }}
+
+    {% case 'contentImage5' %}
+
+      {{
+        components.contentImage5({
+
+        })
+      }}
+
+    {% case 'contentWithLinks1' %}
+
+      {{
+        components.contentWithLinks1({
+
+        })
+      }}
+
+    {% case 'contentWithLinks2' %}
+
+      {{
+        components.contentWithLinks2({
+
+        })
+      }}
+
+    {% case 'contentWithLinks3' %}
+
+      {{
+        components.contentWithLinks3({
+
+        })
+      }}
+
+    {% case 'cta1' %}
+
+      {{
+        components.cta1({
+
+        })
+      }}
+
+    {% case 'cta2' %}
+
+      {{
+        components.cta2({
+
+        })
+      }}
+
+    {% case 'ctaEmail1' %}
+
+      {{
+        components.ctaEmail1({
+
+        })
+      }}
+
+    {% case 'ctaEmail2' %}
+
+      {{
+        components.ctaEmail2({
+
+        })
+      }}
+
+    {% case 'footerColumns' %}
+
+      {{
+        components.footerColumns({
+
+        })
+      }}
+
+    {% case 'footerContacts' %}
+
+      {{
+        components.footerContacts({
+
+        })
+      }}
+
+    {% case 'footerLogos' %}
+
+      {{
+        components.footerLogos({
+
+        })
+      }}
+
+    {% case 'gallery1' %}
+
+      {{
+        components.gallery1({
+
+        })
+      }}
+
+    {% case 'gallery2' %}
+
+      {{
+        components.gallery2({
+
+        })
+      }}
+
+    {% case 'gallery3' %}
+
+      {{
+        components.gallery3({
+
+        })
+      }}
+
+    {% case 'hero1' %}
+
+      {{
+        components.hero1({
+
+        })
+      }}
+
+    {% case 'hero2' %}
+
+      {{
+        components.hero2({
+
+        })
+      }}
+
+    {% case 'hero3' %}
+
+      {{
+        components.hero3({
+
+        })
+      }}
+
+    {% case 'hero4' %}
+
+      {{
+        components.hero4({
+
+        })
+      }}
+
+    {% case 'hero5' %}
+
+      {{
+        components.hero5({
+
+        })
+      }}
+
+    {% case 'hero6' %}
+
+      {{
+        components.hero6({
+
+        })
+      }}
+
+    {% case 'icons1' %}
+
+      {{
+        components.icons1({
+
+        })
+      }}
+
+    {% case 'icons2' %}
+
+      {{
+        components.icons2({
+
+        })
+      }}
+
+    {% case 'icons3' %}
+
+      {{
+        components.icons3({
+
+        })
+      }}
+
+    {% case 'icons4' %}
+
+      {{
+        components.icons4({
+
+        })
+      }}
+
+    {% case 'imageCards1' %}
+
+      {{
+        components.imageCards1({
+
+        })
+      }}
+
+    {% case 'imageCards2' %}
+
+      {{
+        components.imageCards2({
+
+        })
+      }}
+
+    {% case 'imageCards3' %}
+
+      {{
+        components.imageCards3({
+
+        })
+      }}
+
+    {% case 'keyIntro1' %}
+
+      {{
+        components.keyIntro1({
+
+        })
+      }}
+
+    {% case 'keyIntro2' %}
+
+      {{
+        components.keyIntro2({
+
+        })
+      }}
+
+    {% case 'keyIntro3' %}
+
+      {{
+        components.keyIntro3({
+
+        })
+      }}
+
+    {% case 'map1' %}
+
+      {{
+        components.map1({
+
+        })
+      }}
+
+    {% case 'map2' %}
+
+      {{
+        components.map2({
+
+        })
+      }}
+
+    {% case 'stats1' %}
+
+      {{
+        components.stats1({
+
+        })
+      }}
+
+    {% case 'stats2' %}
+
+      {{
+        components.stats2({
+
+        })
+      }}
+
+    {% case 'stats3' %}
+
+      {{
+        components.stats3({
+
+        })
+      }}
+
+    {% case 'timeline1' %}
+
+      {{
+        components.timeline1({
+
+        })
+      }}
+
+    {% case 'timeline2' %}
+
+      {{
+        components.timeline2({
+
+        })
+      }}
+
+    {% default %}
+
+      <p>
+        MISSING COMPONENT: {{ block.type.handle }}
+      </p>
+
+    {# end cases #}
+
+	{% endswitch %}
+
+  {% if not loop.first and loop.last %}
+    </div><!-- white-bg-->
+  {% endif %}
+
+{% endfor %}

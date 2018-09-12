@@ -1,0 +1,29 @@
+{% import '_macros/_components' as renderComponent %}
+
+{% extends "_layout" %}
+
+{% block content %}
+
+	{{
+		renderComponent.footerColumns({
+
+		})
+	}}
+
+	{{
+		renderComponent.footerContacts({
+
+		})
+	}}
+
+	{{
+		renderComponent.footerLogos({
+
+		})
+	}}
+
+	<script>
+	  var template = 'page';
+	</script>
+
+{% endblock %}

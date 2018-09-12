@@ -1,0 +1,23 @@
+{% import '_macros/_components' as renderComponent %}
+
+{% extends "_layout" %}
+
+{% block content %}
+
+	{{
+		renderComponent.timeline1({
+
+		})
+	}}
+
+	{{
+		renderComponent.timeline2({
+
+		})
+	}}
+
+	<script>
+	  var template = 'page';
+	</script>
+
+{% endblock %}

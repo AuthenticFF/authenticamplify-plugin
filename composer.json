@@ -1,0 +1,40 @@
+{
+    "name": "authenticff/authentic-amplify",
+    "description": "Amplify plugin by Authentic F&F",
+    "type": "craft-plugin",
+    "version": "0.1",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "authentic amplify"
+    ],
+    "support": {
+        "docs": "???",
+        "issues": "???"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Authentic F&F",
+            "homepage": "https://authenticff.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "authenticff\\authenticamplify\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Authentic Amplify",
+        "handle": "authentic-amplify",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "???",
+        "class": "authenticff\\authenticamplify\\AuthenticAmplify"
+    }
+}

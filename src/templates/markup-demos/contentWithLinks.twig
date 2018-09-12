@@ -1,0 +1,29 @@
+{% import '_macros/_components' as renderComponent %}
+
+{% extends "_layout" %}
+
+{% block content %}
+
+	{{
+		renderComponent.contentWithLinks1({
+
+		})
+	}}
+
+	{{
+		renderComponent.contentWithLinks2({
+
+		})
+	}}
+
+	{{
+		renderComponent.contentWithLinks3({
+
+		})
+	}}
+
+	<script>
+	  var template = 'page';
+	</script>
+
+{% endblock %}

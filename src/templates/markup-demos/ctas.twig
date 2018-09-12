@@ -1,0 +1,35 @@
+{% import '_macros/_components' as renderComponent %}
+
+{% extends "_layout" %}
+
+{% block content %}
+
+	{{
+		renderComponent.cta1({
+
+		})
+	}}
+
+	{{
+		renderComponent.cta2({
+
+		})
+	}}
+
+	{{
+		renderComponent.ctaEmail1({
+
+		})
+	}}
+
+	{{
+		renderComponent.ctaEmail2({
+
+		})
+	}}
+
+	<script>
+	  var template = 'page';
+	</script>
+
+{% endblock %}
