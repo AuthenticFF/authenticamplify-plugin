@@ -1,0 +1,57 @@
+[data-content-image-4] {
+
+	.grid-x:first-child {
+		margin-bottom: 20px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 54px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 92px;
+		}
+	}
+
+	.heading {
+		@extend .heading-1;
+	}
+
+	p {
+		@extend .body-text;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.image-cell {
+		@include breakpoint(small down) {
+			text-align: center;
+		}
+	}
+
+	.image-right {
+		.content {
+			@include breakpoint(small down) {
+				margin-bottom: 12px;
+			}
+			@include breakpoint(large) {
+				padding-right: 18px;
+			}
+		}
+	}
+
+	.image-left {
+		.content {
+			@include breakpoint(large) {
+				padding-left: 18px;
+			}
+		}
+		img {
+			@include breakpoint(small down) {
+				margin-bottom: 24px;
+			}
+		}
+	}
+
+}

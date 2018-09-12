@@ -1,0 +1,136 @@
+[data-key-intro-1] {
+
+	.left {
+		order: 2;
+		margin-top: 48px;
+
+		@include breakpoint(large) {
+			order: 1;
+			margin-top: 0;
+			padding-right: 32px;
+		}
+	}
+
+	.right {
+		padding-left: 18px;
+		order: 1;
+
+		@include breakpoint(large) {
+			order: 2;
+		}
+	}
+
+	.key-info {
+		background-color: #F3F2F1;
+		padding: 24px 24px;
+
+		@include breakpoint(medium) {
+			padding: 48px 48px;
+		}
+
+		@include breakpoint(large) {
+			padding: 48px 42px;
+		}
+
+		@include breakpoint(xxlarge) {
+			padding: 48px 48px;
+		}
+
+		@include breakpoint(xxlarge) {
+			padding: 56px 72px;
+		}
+
+		.key-heading {
+			@include font("Circular", 24px, 500, 40px);
+			margin-bottom: 20px;
+		}
+
+		.info-table {
+			@include font("Karla", 16px, 400, 22px);
+
+			tr>td {
+				padding-bottom: 16px;
+			}
+
+			tr:last-child>td {
+				padding-bottom: 0;
+			}
+
+			td:nth-child(2n + 1) {
+				width: 48%;
+				padding-right: 8px;
+			}
+
+			td:nth-child(2n + 2) {
+				width: 52%;
+			}
+
+			a {
+				display: inline-block;
+				margin-right: 6px;
+				border-bottom: 1px solid $grey;
+			}
+
+		}
+
+		hr {
+			margin: 36px 0;
+		}
+
+	}
+
+	.heading {
+		@extend .heading-2;
+		margin-bottom: 32px;
+	}
+
+	p {
+		@extend .body-text;
+
+		@include breakpoint(large) {
+			padding-right: 16%;
+		}
+
+		@include breakpoint(xxlarge) {
+			padding-right: 31%;
+		}
+	}
+
+	.cta-row {
+		margin-top: 40px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@include breakpoint(medium) {
+			flex-direction: row;
+		}
+
+		.current-support {
+			@include font("Karla", 18px, 700, 28px);
+			position: relative;
+			padding-left: 50px;
+			margin-top: 24px;
+
+			@include breakpoint(medium) {
+				margin-left: 24px;
+				margin-top: 0;
+			}
+
+			&:before {
+				content: '';
+				width: 30px;
+				height: 28px;
+				background-image: url( /assets/images/icon-thumb-up.svg );
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				position: absolute;
+				left: 0;
+				top: calc(50% - 18px);
+			}
+		}
+
+	}
+
+}

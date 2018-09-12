@@ -1,0 +1,98 @@
+[data-key-intro-2] {
+
+	.table-cell {
+		@include breakpoint(small down) {
+			margin-bottom: 32px;
+		}
+	}
+
+
+	.key-heading {
+		@include font("Circular", 24px, 500, 40px);
+		margin-bottom: 20px;
+	}
+
+	.info-table {
+		@include font("Karla", 16px, 400, 22px);
+
+		tr>td {
+			padding-bottom: 16px;
+		}
+
+		tr:last-child>td {
+			padding-bottom: 0;
+		}
+
+		td:nth-child(2n + 1) {
+			width: 48%;
+			padding-right: 8px;
+		}
+
+		td:nth-child(2n + 2) {
+			width: 52%;
+		}
+
+		a {
+			display: inline-block;
+			margin-right: 6px;
+			border-bottom: 1px solid $grey;
+		}
+
+	}
+
+	hr {
+		margin: 32px 0;
+
+		@include breakpoint(medium) {
+			margin: 54px 0;
+		}
+	}
+
+
+	.heading {
+		@extend .heading-2;
+		margin-bottom: 12px;
+	}
+
+	p {
+		@extend .body-text;
+	}
+
+	.cta-row {
+		margin-top: 20px;
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		justify-content: flex-start;
+
+		@include breakpoint(medium only) {
+			padding-left: 32px;
+		}
+
+		.current-support {
+			@include font("Karla", 18px, 700, 28px);
+			position: relative;
+			padding-left: 50px;
+			margin-top: 24px;
+
+			@include breakpoint(medium) {
+				margin-top: 42px;
+			}
+
+			&:before {
+				content: '';
+				width: 30px;
+				height: 28px;
+				background-image: url( /assets/images/icon-thumb-up.svg );
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				position: absolute;
+				left: 0;
+				top: calc(50% - 18px);
+			}
+		}
+
+	}
+
+}

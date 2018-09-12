@@ -1,0 +1,36 @@
+[data-component] {
+	margin-top: 42px;
+	margin-bottom: 42px;
+
+	@include breakpoint(medium) {
+		margin-top: 60px;
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint(large) {
+		margin-top: 72px;
+		margin-bottom: 72px;
+	}
+
+	@include breakpoint(xlarge) {
+		margin-top: 108px;
+		margin-bottom: 108px;
+	}
+}
+
+[data-component="hero"] {
+	margin-top: 0;
+	margin-bottom: 42px;
+
+	@include breakpoint(medium) {
+		margin-bottom: 60px;
+	}
+
+	@include breakpoint(large) {
+		margin-bottom: 72px;
+	}
+
+	@include breakpoint(xlarge) {
+		margin-bottom: 108px;
+	}
+}

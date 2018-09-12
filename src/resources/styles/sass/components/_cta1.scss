@@ -1,0 +1,45 @@
+[data-cta-1] {
+
+	.content-wrap {
+		padding: 24px 24px;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+
+		@include breakpoint(medium) {
+			padding: 60px 64px;
+		}
+
+		@include breakpoint(large) {
+			padding: 108px 100px;
+		}
+	}
+
+	.heading {
+		@extend .heading-1;
+		@include breakpoint(large) {
+			margin-bottom: 12px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+
+		@include breakpoint(large) {
+			margin-bottom: 32px;
+			&:last-child {
+				margin-bottom: 20px;
+			}
+		}
+	}
+
+	.cta {
+		margin-top: 24px;
+		text-align: center;
+		@include breakpoint(medium) {
+			margin-top: 40px;
+			text-align: left;
+		}
+	}
+
+}

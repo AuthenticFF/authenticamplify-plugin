@@ -1,0 +1,32 @@
+.image-card {
+
+	img {
+		display: block;
+		width: 100%;
+		margin-bottom: 12px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 16px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 20px;
+		}
+	}
+
+	.intro-title {
+		@extend .body-text;
+		font-style: italic;
+		margin-bottom: 4px;
+
+		@include breakpoint(large) {
+			margin-bottom: 8px;
+		}
+	}
+
+	.title {
+		@extend .body-text;
+		font-weight: 700;
+	}
+
+}

@@ -1,0 +1,24 @@
+[data-footer-columns] {
+
+	@include font("Karla", 18px, 400, 26px);
+	text-align: center;
+
+	@include breakpoint(large) {
+		text-align: left;
+	}
+
+	a {
+		font-weight: 700;
+	}
+
+	.social-links {
+		@include font("SS Social Circle", 38px, 400, 38px);
+		position: relative;
+		top: 24px;
+
+		a {
+			margin: 0 10px;
+		}
+	}
+
+}

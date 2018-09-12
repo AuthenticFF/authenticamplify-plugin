@@ -1,0 +1,214 @@
+[data-hero-1] {
+	position: relative;
+	color: $white;
+
+	.header-wrapper {
+		position: absolute;
+		width: 100%;
+		top: 0;
+	}
+
+	header {
+		display: flex;
+		justify-content: space-between;
+
+		.logo-bar {
+			color: $black;
+			padding: 16px 0;
+			position: relative;
+			display: flex;
+			align-items: center;
+
+			@include breakpoint(large) {
+				padding: 32px 0;
+			}
+
+			&:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: -1000px;
+				background-color: $white;
+				z-index: 1;
+			}
+
+			.logo {
+				margin-right: 20px;
+				position: relative;
+				z-index: 2;
+				min-width: 64px;
+
+				@include breakpoint(xlarge) {
+					margin-right: 32px;
+				}
+			}
+
+			.company-title {
+				@include font("Circular", 24px, 500, 32px);
+				letter-spacing: 2px;
+				vertical-align: middle;
+				z-index: 2;
+				position: relative;
+				padding-right: 12px;
+
+				@include breakpoint(xlarge) {
+					@include font("Circular", 28px, 500, 36px);
+				}
+			}
+
+		}
+
+		nav {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			z-index: 1;
+
+			ul {
+				list-style-type: none;
+				padding: 0;
+				flex: 1;
+				text-align: center;
+				
+				li {
+					display: inline-block;
+					margin-right: 18px;
+
+					@include breakpoint(xlarge) {
+						margin-right: 26px;
+					}
+
+					&:last-of-type {
+						margin-right: 0;
+					}
+
+					a {
+						@extend .nav-links;
+						position: relative;
+
+						&:before {
+							content: "";
+							position: absolute;
+							right: 0;
+							width: 0;
+							bottom: -10px;
+							background: $white;
+							height: 3px;
+							transition-property: width;
+							transition-duration: 0.15s;
+							transition-timing-function: ease-out;
+						}
+
+						&:hover {
+							//border-bottom: 3px solid $yellow;
+
+							&:before {
+								left: 0;
+								right: auto;
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+
+			.social-links {
+				display: inline-block;
+
+				a {
+					transition: opacity 0.2s;
+					&:hover {
+						opacity: 0.6;
+					}
+				}
+			}
+
+		}
+
+		nav.mobile-nav {
+			padding-right: 16px;
+
+			.mobile-nav-trigger {
+				cursor: pointer;
+			}
+
+			span {
+				display: block;
+				height: 4px;
+				width: 36px;
+				margin-bottom: 6px;
+				background-color: $white;
+				border-radius: 2px;
+
+				@include breakpoint(medium) {
+					height: 5px;
+				}
+
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+
+		}
+
+	}
+
+	.slider {
+
+		.hero-slide {
+			height: 500px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+
+			@include breakpoint(medium) {
+				height: 640px;
+			}
+
+			@include breakpoint(large) {
+				height: 720px;
+			}
+
+			@include breakpoint(xlarge) {
+				height: 900px;
+			}
+		}
+
+		.next-slide-btn, .previous-slide-btn {
+			width: 60px;
+			height: 11px;
+			background-repeat: no-repeat;
+			position: absolute;
+			z-index: 1;
+			bottom: 24px;
+			cursor: pointer;
+			transition: opacity 0.2s;
+
+			&:hover {
+				opacity: 0.6;
+			}
+
+			@include breakpoint(medium) {
+				bottom: 42px;
+			}
+
+			@include breakpoint(large) {
+				bottom: 68px;
+			}
+		}
+
+		.previous-slide-btn {
+			background-image: url( /assets/images/slider-arrow-left.svg );
+			left: calc(50% - 75px);
+		}
+
+		.next-slide-btn {
+			background-image: url( /assets/images/slider-arrow-right.svg );
+			right: calc(50% - 75px);
+		}
+
+	}
+
+}

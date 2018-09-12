@@ -1,0 +1,51 @@
+[data-cta-2] {
+
+	.image-cell {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		@include breakpoint(small down) {
+			height: 400px;
+		}
+
+		@include breakpoint(medium only) {
+			height: 480px;
+		}
+	}
+
+	.content-cell {
+		display: flex;
+		align-items: center;
+		padding: 32px 28px;
+
+		@include breakpoint(medium) {
+			padding: 54px 60px;
+		}
+
+		@include breakpoint(large) {
+			padding: 124px 92px;
+		}
+
+		.heading {
+			@extend .heading-1;
+
+			@include breakpoint(large) {
+				margin-bottom: 36px;
+			}
+		}
+
+		p {
+			@extend .body-text;
+		}
+		
+		.cta {
+			margin-top: 32px;
+			@include breakpoint(large) {
+				margin-top: 64px;
+			}
+		}
+
+	}
+
+}

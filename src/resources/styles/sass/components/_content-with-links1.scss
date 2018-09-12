@@ -1,0 +1,47 @@
+[data-content-with-links-1] {
+
+	.component-title {
+		@extend .heading-1;
+		margin-bottom: 16px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 24px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+	}
+
+	.two-col {
+		columns: 1;
+
+		@include breakpoint(medium) {
+			columns: 2;
+			column-gap: 40px;
+		}
+
+		p {
+			display: inline-block;
+		}
+	}
+
+	.sidebar-links {
+		@include breakpoint(large) {
+			padding-left: 40px;
+		}
+	}
+
+	.cta {
+		margin-top: 16px;
+
+		@include breakpoint(medium) {
+			margin-top: 32px;
+		}
+
+		@include breakpoint(large) {
+			margin-top: 44px;
+		}
+	}
+
+}

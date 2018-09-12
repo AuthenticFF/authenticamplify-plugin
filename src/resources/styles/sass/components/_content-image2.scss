@@ -1,0 +1,50 @@
+[data-content-image-2] {
+
+	.content-cell {
+		margin-bottom: 32px;
+
+		@include breakpoint(large) {
+			margin-bottom: 0;
+		}
+
+		.heading {
+			@extend .heading-1;
+			margin-bottom: 4px;
+
+			@include breakpoint(large) {
+				margin-bottom: 36px;
+			}
+		}
+
+		p {
+			@extend .body-text;
+		}
+
+		.cta {
+			margin-top: 32px;
+			@include breakpoint(large) {
+				margin-top: 50px;
+			}
+		}
+
+	}
+
+	.image-cell {
+		text-align: center;
+		margin-bottom: 18px;
+
+		@include breakpoint(medium) {
+			&:nth-last-child(-n + 2) {
+				margin-bottom: 0;
+			}
+		}
+		@include breakpoint(large) {
+			position: relative;
+			top: -20px;
+			margin-bottom: 24px;
+
+			
+		}
+	}
+
+}

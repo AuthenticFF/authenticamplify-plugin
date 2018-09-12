@@ -1,0 +1,81 @@
+[data-stats-2] {
+
+	.top-row {
+		margin-bottom: 32px;
+
+		@include breakpoint(large) {
+			margin-bottom: 50px;
+		}
+	}
+
+	.component-title {
+		@extend .heading-1;
+		margin-bottom: 32px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 32px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 56px;
+			padding-right: 42px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+	}
+
+	.text-content {
+		&>*:first-child {
+			margin-top: 0;
+		}
+
+		@include breakpoint(large) {
+			padding-left: 24px;
+		}
+	}
+
+	.stat-item {
+		
+		@include breakpoint(small down) {
+			margin-bottom: 32px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		@include breakpoint(medium only) {
+			margin-bottom: 32px;
+
+			&:nth-last-child(-n + 2) {
+				margin-bottom: 0;
+			}
+
+			&:nth-child(2n + 1) {
+				padding-right: 12px;
+			}
+
+			&:nth-child(2n + 2) {
+				padding-left: 12px;
+			}
+		}
+
+		@include breakpoint(large) {
+
+			&:nth-child(4n + 2) {
+				padding: 0 40px 0 0;
+			}
+
+			&:nth-child(4n + 1) {
+				padding: 0 40px 0 0;
+			}
+
+			&:nth-child(4n + 4) {
+				padding: 0 0 0 40px;
+			}
+		}
+	}
+
+}

@@ -1,0 +1,116 @@
+[data-gallery-1] {
+	overflow: hidden;
+
+	.slick-slider {
+
+		.slick-list {
+			margin: 0 -16px;
+
+			@include breakpoint(medium) {
+				margin: 0 -24px;
+			}
+
+			@include breakpoint(large) {
+				margin: 0 -12px;
+			}
+
+			@include breakpoint(xlarge) {
+				margin: 0 -18px;
+			}
+
+			@include breakpoint(xxlarge) {
+				margin: 0 -26px;
+			}
+		}
+
+		.slick-slide {
+			margin: 0 16px;
+
+			@include breakpoint(medium) {
+				margin: 0 24px;
+			}
+
+			@include breakpoint(large) {
+				margin: 0 12px;
+			}
+
+			@include breakpoint(xlarge) {
+				margin: 0 18px;
+			}
+
+			@include breakpoint(xxlarge) {
+				margin: 0 26px;
+			}
+		}
+
+		.gallery-item {
+			opacity: 0.5;
+			transition: opacity 0.25s;
+
+			.image {
+				img {
+					width: 100%;
+				}
+			}
+
+			.content {
+				background-color: $grey3;
+				padding: 34px 34px;
+
+				h3 {
+					@extend .hero-subheading;
+				}
+
+				p {
+					@extend .body-text;
+
+					&:first-of-type {
+						margin-top: 8px;
+					}
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+
+			}
+
+		}
+
+		.slick-current {
+			.gallery-item {
+				opacity: 1;
+			}
+		}
+
+		.slick-dots {
+			position: relative;
+			margin-top: 48px;
+
+			li {
+
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background-color: $black;
+				opacity: 0.5;
+				display: inline-block;
+				cursor: pointer;
+				margin-right: 20px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&.slick-active {
+					opacity: 1;
+				}
+
+
+			}
+
+		}
+
+	}
+
+}

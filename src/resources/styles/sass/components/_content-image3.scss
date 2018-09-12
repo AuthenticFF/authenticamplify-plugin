@@ -1,0 +1,56 @@
+[data-content-image-3] {
+
+	.heading {
+		@extend .heading-1;
+		@include breakpoint(large) {
+			margin-bottom: 28px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+		@include breakpoint(large) {
+			margin-bottom: 28px;
+		}
+	}
+
+	.cta {
+		margin-top: 12px;
+
+		@include breakpoint(medium) {
+			margin-top: 18px;
+		}
+
+		@include breakpoint(large) {
+			margin-top: 0;
+		}
+	}
+
+	.images-grid {
+		margin-top: 32px;
+		@include breakpoint(medium) {
+			margin-top: 42px;
+		}
+		@include breakpoint(large) {
+			margin-top: 32px;
+		}
+	}
+
+	.image-cell {
+		text-align: center;
+		margin-bottom: 18px;
+
+		@include breakpoint(medium) {
+			&:nth-last-child(-n + 2) {
+				margin-bottom: 0;
+			}
+		}
+		@include breakpoint(large) {
+			position: relative;
+			margin-bottom: 24px;
+
+			
+		}
+	}
+
+}

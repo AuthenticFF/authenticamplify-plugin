@@ -1,0 +1,211 @@
+[data-hero-3] {
+	position: relative;
+	color: $white;
+
+	.header-wrapper {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		z-index: 1;
+	}
+
+	header {
+		padding: 24px 0 0;
+
+		@include breakpoint(medium) {
+			padding: 42px 0 0;
+		}
+
+		@include breakpoint(large) {
+			padding: 72px 0 0;
+		}
+
+		@include breakpoint(xlarge) {
+			padding: 116px 0 0;
+		}
+
+		nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			ul {
+				list-style-type: none;
+				padding: 0;
+
+
+				li {
+					display: inline-block;
+					margin: 0 14px;
+
+					a {
+						@extend .nav-links;
+						position: relative;
+
+						&:before {
+							content: "";
+							position: absolute;
+							right: 0;
+							width: 0;
+							bottom: -10px;
+							background: $white;
+							height: 3px;
+							transition-property: width;
+							transition-duration: 0.15s;
+							transition-timing-function: ease-out;
+						}
+
+						&:hover {
+							//border-bottom: 3px solid $yellow;
+
+							&:before {
+								left: 0;
+								right: auto;
+								width: 100%;
+							}
+						}
+					}
+
+				}
+
+			}
+
+		}
+
+		nav.mobile-nav {
+			justify-content: flex-end;
+
+			.mobile-nav-trigger {
+				cursor: pointer;
+			}
+
+			span {
+				display: block;
+				height: 4px;
+				width: 36px;
+				margin-bottom: 6px;
+				background-color: $white;
+				border-radius: 2px;
+
+				@include breakpoint(medium) {
+					height: 5px;
+				}
+
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+
+		}
+
+	}
+
+	.slider {
+		position: relative;
+
+		.hero-slide {
+			min-height: 400px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			padding-top: 142px;
+			padding-bottom: 72px;
+
+			@include breakpoint(medium) {
+				padding-bottom: 124px;
+				padding-top: 184px;
+				text-align: left;
+			}
+
+
+			@include breakpoint(large) {
+				min-height: 600px;
+				padding-bottom: 154px;
+				padding-top: 224px;
+			}
+
+			@include breakpoint(xlarge) {
+				min-height: 700px;
+				padding-top: 300px;
+				padding-bottom: 200px;
+			}
+
+			@include breakpoint(xxlarge) {
+				min-height: 800px;
+				padding-top: 350px;
+				padding-bottom: 260px;
+			}
+
+			.heading {
+				@extend .hero-heading-1-black;
+				margin-bottom: 18px;
+
+				@include breakpoint(medium) {
+					margin-bottom: 32px;
+				}	
+			}
+
+			.subheading {
+				@extend .hero-subheading;
+			}
+		}
+
+		.slider-dots-nav-cell {
+			position: relative;
+		}
+
+		.slider-dots-nav {
+			line-height: 1em;
+			text-align: center;
+			position: absolute;
+			bottom: 24px;
+			left: 0;
+			right: 0;
+
+			@include breakpoint(medium) {
+				bottom: 54px;
+				text-align: left;
+			}
+
+			@include breakpoint(large) {
+				bottom: 72px;
+			}
+
+			@include breakpoint(xlarge) {
+				bottom: 92px;
+			}
+
+			@include breakpoint(xxlarge) {
+				bottom: 118px;
+			}
+
+			span {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background-color: $white;
+				opacity: 0.5;
+				display: inline-block;
+				cursor: pointer;
+				margin-right: 20px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&.active {
+					opacity: 1;
+				}
+
+			}
+
+		}
+
+	}
+
+}
