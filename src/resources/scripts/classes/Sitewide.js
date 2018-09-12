@@ -15,7 +15,22 @@ var components = [
   {handle: "[data-timeline-1]", require: require("../components/timeline1")},
   {handle: "[data-gallery-1]", require: require("../components/gallery1")},
   {handle: "[data-gallery-2]", require: require("../components/gallery2")},
-  {handle: "[data-gallery-3]", require: require("../components/gallery3")}
+  {handle: "[data-gallery-3]", require: require("../components/gallery3")},
+  {handle: "[data-key-intro-1]", require: require("../components/keyIntro1")},
+  {handle: "[data-key-intro-2]", require: require("../components/keyIntro2")},
+  {handle: "[data-key-intro-3]", require: require("../components/keyIntro3")},
+  {handle: "[data-content-1]", require: require("../components/content1")},
+  {handle: "[data-content-2]", require: require("../components/content2")},
+  {handle: "[data-content-3]", require: require("../components/content3")},
+  {handle: "[data-content-with-links-1]", require: require("../components/contentWithLinks1")},
+  {handle: "[data-content-with-links-2]", require: require("../components/contentWithLinks2")},
+  {handle: "[data-content-with-links-3]", require: require("../components/contentWithLinks3")},
+  {handle: "[data-content-image-1]", require: require("../components/contentImage1")},
+  {handle: "[data-content-image-2]", require: require("../components/contentImage2")},
+  {handle: "[data-content-image-3]", require: require("../components/contentImage3")},
+  {handle: "[data-cta-1]", require: require("../components/cta1")},
+  {handle: "[data-cta-2]", require: require("../components/cta2")}
+
 ];
 
 var componentsLoader = new ComponentsLoader({components: components});

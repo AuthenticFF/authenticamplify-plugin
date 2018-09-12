@@ -20,9 +20,33 @@ Gallery1.prototype.init = function(){
     slidesToScroll: 1,
     infinite: true,
     centerMode: true,
-    centerPadding: '0px',
+    centerPadding: '220px',
 
     responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 3,
+          centerMode: true,
+          centerPadding: '160px'
+        }
+      },
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 3,
+          centerMode: true,
+          centerPadding: '100px'
+        }
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          centerMode: true,
+          centerPadding: '40px'
+        }
+      },
       {// medium
         breakpoint: 1024,
         settings: {
