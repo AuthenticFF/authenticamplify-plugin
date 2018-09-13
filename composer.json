@@ -23,7 +23,6 @@
     ],
     "require": {
         "craftcms/cms": "^3.0.0-RC1",
-        "authenticff/authentic-amplify": "^0.1"
     },
     "autoload": {
         "psr-4": {
@@ -37,11 +36,5 @@
         "hasCpSection": false,
         "changelogUrl": "???",
         "class": "authenticff\\authenticamplify\\AuthenticAmplify"
-    },
-    "repositories": [
-      {
-        "type": "path",
-        "url": "../authenticamplify"
-      }
-    ]
+    }
 }
