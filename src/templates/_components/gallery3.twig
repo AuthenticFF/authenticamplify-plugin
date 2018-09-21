@@ -1,34 +1,49 @@
+{#
+
+	Gallery 3
+
+	@param {matrix} gallery3WideImageSlides
+		[
+			wideImageSlide:
+			[
+				wideImage {asset - image - max 1}
+				headingText {plain text}
+				textContent {redactor}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set gallery3WideImageSlides = params.gallery3WideImageSlides ?? null %}
+
+{# Variables #}
+{%
+	set imgResize = {
+		mode: 'crop',
+		width: 942,
+		height: 600
+	}
+%}
+
+{# Output #}
 <section data-component data-gallery-3>
 
 	<div class="slider Wallop Wallop--slide gallery-left">
 						
 		<div class="Wallop-list">
 
+			{% for imageSlide in gallery3WideImageSlides %}
 
+				{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
 
-			<div class="Wallop-item gallery-slide">
+				<div class="Wallop-item gallery-slide{% if loop.last %} Wallop-item--current{% endif %}">
 
-				<img src="https://via.placeholder.com/1036x660">
+					<img src="{{ imageUrl }}">
 
-			</div>
+				</div>
 
-
-
-			<div class="Wallop-item gallery-slide Wallop-item--current">
-
-				<img src="https://via.placeholder.com/1036x660">
-
-			</div>
-
-
-
-			<div class="Wallop-item gallery-slide">
-
-				<img src="https://via.placeholder.com/1036x660">
-
-			</div>
-
-
+			{% endfor %}
 
 		</div>
 
@@ -40,35 +55,21 @@
 
 			<div class="cell small-12 large-6 large-offset-1">
 
-				<div class="slider Wallop Wallop--slide gallery-main">
+				<div class="slider Wallop Wallop--slide gallery-main" data-slide-count="{{ gallery3WideImageSlides|length }}">
 						
 					<div class="Wallop-list">
 
+						{% for imageSlide in gallery3WideImageSlides %}
 
+							{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
 
-						<div class="Wallop-item gallery-slide" data-equalizer-watch>
+							<div class="Wallop-item gallery-slide{% if loop.first %} Wallop-item--current{% endif %}" data-equalizer-watch>
 
-							<img src="https://via.placeholder.com/1036x660">
+								<img src="{{ imageUrl }}">
 
-						</div>
+							</div>
 
-
-
-						<div class="Wallop-item gallery-slide Wallop-item--current" data-equalizer-watch>
-
-							<img src="https://via.placeholder.com/1036x660">
-
-						</div>
-
-
-
-						<div class="Wallop-item gallery-slide" data-equalizer-watch>
-
-							<img src="https://via.placeholder.com/1036x660">
-
-						</div>
-
-
+						{% endfor %}
 
 					</div>
 
@@ -76,69 +77,25 @@
 
 			</div>
 
-
-
 			<div class="cell small-12 large-4 gallery-content-cell">
 
 				<div class="slider Wallop Wallop--fade gallery-content">
 
 					<div class="Wallop-list">
 
+						{% for imageSlide in gallery3WideImageSlides %}
 
+							<div class="Wallop-item content{% if loop.first %} Wallop-item--current{% endif %}" data-equalizer-watch>
 
-						<div class="Wallop-item content" data-equalizer-watch>
+								<h2 class="heading">{{ imageSlide.headingText }}</h2>
 
-							<h2 class="heading">Mixed-use development project in Boston along the classic waterfront</h2>
+								<div class="text">
+									{{ imageSlide.textContent }}
+								</div>
 
-							<div class="text">
-								<p>
-									Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-								</p>
-
-								<p>
-									The project would have four buildings total and will feature 478 residences along the water.
-								</p>
 							</div>
 
-						</div>
-
-
-
-						<div class="Wallop-item content Wallop-item--current" data-equalizer-watch>
-
-							<h2 class="heading">Mixed-use development project in Boston along the classic waterfront</h2>
-
-							<div class="text">
-								<p>
-									This is the second slide. Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-								</p>
-
-								<p>
-									This is the second slide. The project would have four buildings total and will feature 478 residences along the water.
-								</p>
-							</div>
-
-						</div>
-
-
-
-						<div class="Wallop-item content" data-equalizer-watch>
-
-							<h2 class="heading">Mixed-use development project in Boston along the classic waterfront</h2>
-
-							<div class="text">
-								<p>
-									Slide Three. Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-								</p>
-
-								<p>
-									This is slide number three. The project would have four buildings total and will feature 478 residences along the water.
-								</p>
-							</div>
-
-						</div>
-
-
+						{% endfor %}
 
 					</div>
 
@@ -154,10 +111,9 @@
 
 				<div class="slider-dots-nav">
 
-					{# as many spans as there are slides #}
-					<span data-slide-index="0"></span>
-					<span data-slide-index="1"></span>
-					<span data-slide-index="2"></span>
+					{% for i in range(0, gallery3WideImageSlides|length - 1) %}
+						<span data-slide-index="{{ i }}"></span>
+					{% endfor %}
 
 				</div>
 
@@ -171,31 +127,17 @@
 						
 		<div class="Wallop-list">
 
+			{% for imageSlide in gallery3WideImageSlides %}
 
+				{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
 
-			<div class="Wallop-item gallery-slide">
+				<div class="Wallop-item gallery-slide{% if loop.index == 2 %} Wallop-item--current{% endif %}">
 
-				<img src="https://via.placeholder.com/1036x660">
+					<img src="{{ imageUrl }}">
 
-			</div>
+				</div>
 
-
-
-			<div class="Wallop-item gallery-slide Wallop-item--current">
-
-				<img src="https://via.placeholder.com/1036x660">
-
-			</div>
-
-
-
-			<div class="Wallop-item gallery-slide">
-
-				<img src="https://via.placeholder.com/1036x660">
-
-			</div>
-
-
+			{% endfor %}
 
 		</div>
 

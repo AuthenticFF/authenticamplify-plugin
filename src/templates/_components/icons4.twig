@@ -1,104 +1,54 @@
+{#
+
+	Icons 4
+
+	@param {matrix} icons4IconItems
+		[
+			iconItem:
+			[
+				icon {assets - image - max 1}
+				text {plain text}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set icons4IconItems = params.icons4IconItems ?? null %}
+
+{# Variables #}
+{%
+	set iconImgResize = {
+		mode: 'fit',
+		width: 50,
+		height: 50
+	}
+%}
+
+{# Output #}
 <section data-component data-icons-4>
 
 	<div class="grid-container">
 
 		<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-4">
 
-			<div class="cell icon-item">
+			{% for iconItem in icons4IconItems %}
 
-				<div class="icon">
-					<img src="/assets/images/placeholder-icon-1.svg">
+				{% set iconImageUrl = craft.imager.transformImage(iconItem.icon.one, iconImgResize).url %}
+
+				<div class="cell icon-item">
+
+					<div class="icon">
+						<img src="{{ iconImageUrl }}">
+					</div>
+
+					<p class="item-text">
+						{{ iconItem.text }}
+					</p>
+
 				</div>
 
-				<p class="item-text">
-					The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-				</p>
-
-			</div>
-
-			<div class="cell icon-item">
-
-				<div class="icon">
-					<img src="/assets/images/placeholder-icon-1.svg">
-				</div>
-
-				<p class="item-text">
-					The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-				</p>
-
-			</div>
-
-			<div class="cell icon-item">
-
-				<div class="icon">
-					<img src="/assets/images/placeholder-icon-1.svg">
-				</div>
-
-				<p class="item-text">
-					The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-				</p>
-
-			</div>
-
-			<div class="cell icon-item">
-
-				<div class="icon">
-					<img src="/assets/images/placeholder-icon-1.svg">
-				</div>
-
-				<p class="item-text">
-					The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-				</p>
-
-			</div>
-
-			<div class="cell icon-item">
-
-				<div class="icon">
-					<img src="/assets/images/placeholder-icon-1.svg">
-				</div>
-
-				<p class="item-text">
-					The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-				</p>
-
-			</div>
-
-			<div class="cell icon-item">
-
-				<div class="icon">
-					<img src="/assets/images/placeholder-icon-1.svg">
-				</div>
-
-				<p class="item-text">
-					The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-				</p>
-
-			</div>
-
-			<div class="cell icon-item">
-
-				<div class="icon">
-					<img src="/assets/images/placeholder-icon-1.svg">
-				</div>
-
-				<p class="item-text">
-					The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-				</p>
-
-			</div>
-
-			<div class="cell icon-item">
-
-				<div class="icon">
-					<img src="/assets/images/placeholder-icon-1.svg">
-				</div>
-
-				<p class="item-text">
-					The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-				</p>
-
-			</div>
+			{% endfor %}
 
 		</div>
 

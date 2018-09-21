@@ -1,50 +1,100 @@
+{#
+
+	Content With Links 2
+
+	@param {plain text} contentLinks2SectionTitle
+	@param {plain text} contentLinks2HeadingText
+	@param {redactor} contentLinks2TextContent
+	@param {matrix} contentLinks2Links
+		[
+			link:
+			[
+				linkText {plain text}
+				linkEntry {entries - max 1}
+				linkUrl {plain text}
+			]
+		]
+	@param {plain text} contentLinks2CtaText
+	@param {entries - max 1} contentLinks2CtaLink
+	@param {plain text} contentLinks2CtaUrl
+
+#}
+
+{# Parameters #}
+{% set contentLinks2SectionTitle = params.contentLinks2SectionTitle ?? '' %}
+{% set contentLinks2HeadingText = params.contentLinks2HeadingText ?? '' %}
+{% set contentLinks2TextContent = params.contentLinks2TextContent ?? '' %}
+{% set contentLinks2Links = params.contentLinks2Links ?? null %}
+{% set contentLinks2CtaText = params.contentLinks2CtaText ?? '' %}
+{% set contentLinks2CtaLink = params.contentLinks2CtaLink ?? null %}
+{% set contentLinks2CtaUrl = params.contentLinks2CtaUrl ?? '' %}
+
+{# Variables #}
+{% if contentLinks2CtaLink|length %}
+	{% set ctaHref = contentLinks2CtaLink.one.url %}
+{% else %}
+	{% set ctaHref = contentLinks2CtaUrl %}
+{% endif %}
+
+{# Output #}
 <section data-component data-content-with-links-2>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if contentLinks2SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
+
+					<h2 class="section-title">{{ contentLinks2SectionTitle }}</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="grid-x">
 
 			<div class="cell small-12 medium-12 large-3">
 
-				<h3 class="component-title">East Boston Waterfront</h3>
+				<h3 class="component-title">{{ contentLinks2HeadingText }}</h3>
 
 			</div>
 
 			<div class="cell small-12 medium-8 large-6 text-content">
 
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
+				{{ contentLinks2TextContent }}
 
-				<p>
-					The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space.
-				</p>
+				{% if contentLinks2CtaText != '' %}
 
-				<div class="cta">
+					<div class="cta">
 
-					<a class="button button-square button-black">Optional Button</a>
+						<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentLinks2CtaText }}</a>
 
-				</div>
+					</div>
+
+				{% endif %}
 
 			</div>
 
 			<div class="cell small-12 medium-4 large-3 sidebar-links">
 
 				<ul>
-					<li><a href="#">Links</a></li>
-					<li><a href="#">Links in this space</a></li>
-					<li><a href="#">Sidebar link</a></li>
-					<li><a href="#">Another link</a></li>
+
+					{% for link in contentLinks2Links %}
+
+						{% if link.linkEntry|length %}
+							{% set linkHref = link.linkEntry.one.url %}
+						{% else %}
+							{% set linkHref = link.linkUrl %}
+						{% endif %}
+
+						<li><a href="{{ linkHref }}">{{ link.linkText }}</a></li>
+
+					{% endfor %}
+
 				</ul>
 
 			</div>

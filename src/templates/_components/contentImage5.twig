@@ -1,46 +1,71 @@
+{#
+
+	Content With Image 5
+
+	@param {plain text} contentImage5SectionTitle
+	@param {matrix} contentImage5SquareImageItems
+		[
+			squareImageContentItem:
+			[
+				squareImage {assets - image - max 1}
+				headingText {plain text}
+				textContent {plain text}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set contentImage5SectionTitle = params.contentImage5SectionTitle ?? '' %}
+{% set contentImage5SquareImageItems = params.contentImage5SquareImageItems ?? null %}
+
+{# Variables #}
+{%
+	set imgResize = {
+		mode: 'crop',
+		width: 690,
+		height: 605
+	}
+%}
+
+{# Output #}
 <section data-component data-content-image-5>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if contentImage5SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
+
+					<h2 class="section-title">{{ contentImage5SectionTitle }}</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="grid-x grid-margin-x small-up-1 large-up-2 content" data-equalizer data-equalize-on="large" data-equalize-by-row="true">
 
-			<div class="cell" data-equalizer-watch>
+			{% for contentImage in contentImage5SquareImageItems %}
 
-				<div class="image">
-					<img src="https://via.placeholder.com/690x605">
+				{% set imageUrl = craft.imager.transformImage(contentImage.squareImage.one, imgResize).url %}
+
+				<div class="cell" data-equalizer-watch>
+
+					<div class="image">
+						<img src="{{ imageUrl }}">
+					</div>
+
+					<h2 class="heading">{{ contentImage.headingText }}</h2>
+
+					{{ contentImage.textContent }}
+
 				</div>
 
-				<h2 class="heading">Enjoy the East Boston Waterfront site overlooking Boston Harbor.</h2>
-
-				<p>
-					The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space.
-				</p>
-
-			</div>
-
-			<div class="cell" data-equalizer-watch>
-
-				<div class="image">
-					<img src="https://via.placeholder.com/690x605">
-				</div>
-
-				<h2 class="heading">Enjoy the East Boston Waterfront site overlooking Boston Harbor.</h2>
-
-				<p>
-					The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space. The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space. The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space.
-				</p>
-
-			</div>
+			{% endfor %}
 
 		</div>
 

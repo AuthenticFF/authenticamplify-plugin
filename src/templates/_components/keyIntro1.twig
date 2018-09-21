@@ -1,3 +1,57 @@
+{#
+
+	Key + Intro 1
+
+	@param {plain text} ampKeyIntro1HeadingText
+	@param {redactor} ampKeyIntro1TextContent
+	@param {lightswitch} ampKeyIntro1ShowSupportBtn
+	@param {plain text} ampKeyIntro1ShowSupportButtonText
+	@param {neo blocks} ampKeyIntro1InfoSections
+		[
+			ampKeyIntroInfoSectionHeading {plain text}
+			ampKeyIntroInfoItems {matrix}
+			[
+				textItem:
+				[
+					titleText {plain text}
+					infoText {plain text}
+				]
+				linkItem:
+				[
+					titleText {plain text}
+					linkText {plain text}
+					linkUrl {plain text}
+				]
+				assetItem:
+				[
+					titleText {plain text}
+					assetLinkText {plain text}
+					assetFile {asset - max 1}
+				]
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set ampKeyIntro1HeadingText = params.ampKeyIntro1HeadingText ?? '' %}
+{% set ampKeyIntro1TextContent = params.ampKeyIntro1TextContent ?? '' %}
+{% set ampKeyIntro1ShowSupportBtn = params.ampKeyIntro1ShowSupportBtn ?? false %}
+{% set ampKeyIntro1ShowSupportButtonText = params.ampKeyIntro1ShowSupportButtonText ?? 'Show Your Support' %}
+{% set ampKeyIntro1InfoSections = params.ampKeyIntro1InfoSections ?? null %}
+
+{# Variables #}
+{% if ampKeyIntro1ShowSupportButtonText != '' %}
+	{% set supportBtnText = ampKeyIntro1ShowSupportButtonText %}
+{% else %}
+	{% set supportBtnText = 'Show Your Support' %}
+{% endif %}
+
+{% do craft.upvote.setIcons({
+    up   : '<button class="button button-square button-black show-support-btn" type="button">' ~ supportBtnText ~ '</button>',
+}) %}
+
+{# Output #}
 <section data-component data-key-intro-1>
 
 	<div class="grid-container">
@@ -8,78 +62,50 @@
 
 				<div class="key-info">
 
-					<h3 class="key-heading">Key Information</h3>
+					{% for infoSection in ampKeyIntro1InfoSections %}
 
-					<table class="info-table">
-						<tr>
-							<td>Dollar Volume</td>
-							<td>$225,000,000</td>
-						</tr>
-						<tr>
-							<td>Square Feet</td>
-							<td>555,000</td>
-						</tr>
-						<tr>
-							<td>Type</td>
-							<td>Housing, Retail, Open Space</td>
-						</tr>
-					</table>
+						<h3 class="key-heading">{{ infoSection.ampKeyIntroInfoSectionHeading }}</h3>
 
-					<hr>
+						<table class="info-table">
 
-					<h3 class="key-heading">Project Plan Downloads</h3>
+							{% for infoRow in infoSection.ampKeyIntroInfoItems %}
 
-					<table class="info-table">
-						<tr>
-							<td>Site Plan</td>
-							<td>
-								<a class="project-plan-link" href="#">PDF</a>
-								<a class="project-plan-link" href="#">Word</a>
-							</td>
-						</tr>
-						<tr>
-							<td>Rendering Packet</td>
-							<td>
-								<a class="project-plan-link" href="#">PDF</a>
-							</td>
-						</tr>
-						<tr>
-							<td>Brochure</td>
-							<td>
-								<a class="project-plan-link" href="#">PDF</a>
-								<a class="project-plan-link" href="#">EPS</a>
-							</td>
-						</tr>
-						<tr>
-							<td>Amenities Overview</td>
-							<td>
-								<a class="project-plan-link" href="#">PDF</a>
-							</td>
-						</tr>
-					</table>
+								{% if infoRow.type == 'textItem' %}
 
-					<hr>
+									<tr>
+										<td>{{ infoRow.titleText }}</td>
+										<td>{{ infoRow.infoText }}</td>
+									</tr>
 
-					<h3 class="key-heading">Some More Information</h3>
+								{% elseif infoRow.type == 'linkItem' %}
 
-					<table class="info-table">
-						<tr>
-							<td>Stories</td>
-							<td>6</td>
-						</tr>
-						<tr>
-							<td>Height (feet)</td>
-							<td>70</td>
-						</tr>
-						<tr>
-							<td>Proposed Start Date</td>
-							<td>May, 2018</td>
-						</tr>
-						<tr>
-							<td>Completion Date</td>
-							<td>Fall, 2020</td>
-						</tr>
-					</table>
+									<tr>
+										<td>{{ infoRow.titleText }}</td>
+										<td>
+											<a class="project-plan-link" href="{{ infoRow.linkUrl }}">{{ infoRow.linkText }}</a>
+										</td>
+									</tr>
+
+								{% elseif infoRow.type == 'assetItem' %}
+
+									<tr>
+										<td>{{ infoRow.titleText }}</td>
+										<td>
+											<a target="_blank" class="project-plan-link" href="{{ infoRow.assetFile.one.url }}">{{ infoRow.assetLinkText }}</a>
+										</td>
+									</tr>
+
+								{% endif %}
+
+							{% endfor %}
+
+						</table>
+
+						{% if not loop.last %}
+							<hr>
+						{% endif %}
+
+					{% endfor %}
 
 				</div>
 
@@ -87,22 +113,23 @@
 
 			<div class="cell small-12 large-7 right">
 
-				<h2 class="heading">West Bay 2727 is a mixed-use development project on a 12-acre East Boston Waterfront site overlooking Boston Harbor.</h2>
+				<h2 class="heading">{{ ampKeyIntro1HeadingText }}</h2>
 
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
+				{{ ampKeyIntro1TextContent }}
 
-				<p>
-					Residences will include 398 apartments and 80 condominiums, including studios, one-bedrooms and two-bedrooms. Phase 1 will construct two buildings containing 284 rental apartments and one building containing 80 condominiums.
-				</p>
+				{% if ampKeyIntro1ShowSupportBtn %}
 
-				<div class="cta-row">
-					<button class="button button-square button-black show-support-btn" type="button">Show Your Support</button>
-					<div class="current-support">
-						147 Current Supporters
+					<div class="cta-row">
+
+						{{ craft.upvote.upvote('1') }}
+
+						<div class="current-support">
+							{{ craft.upvote.tally('1') }} Current Supporters
+						</div>
+
 					</div>
-				</div>
+
+				{% endif %}
 
 			</div>
 

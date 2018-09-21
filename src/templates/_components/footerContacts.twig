@@ -1,58 +1,50 @@
+{#
+
+	Footer Contacts
+
+	@param {plain text} footerContactsHeadingText
+	@param {matrix} footerContacts
+		[
+			footerContact:
+			[
+				contact {redactor}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set footerContactsHeadingText = params.footerContactsHeadingText ?? '' %}
+{% set footerContacts = params.footerContacts ?? null %}
+
+{# Output #}
 <footer data-footer-contacts data-component>
 
-	<div class="grid-container">
+	{% if footerContactsHeadingText != '' %}
 
-		<div class="cell small-12">
+		<div class="grid-container">
 
-			<h3 class="component-title">Project Contacts</h3>
+			<div class="cell small-12">
+
+				<h3 class="component-title">{{ footerContactsHeadingText }}</h3>
+
+			</div>
 
 		</div>
 
-	</div>
+	{% endif %}
 
 	<div class="grid-container">
 
 		<div class="grid-x logos" data-equalizer data-equalize-on="medium">
 
-			<div class="cell medium-auto contact-item">
-				<p>
-					<strong>Mike Stanley</strong><br/>
-					Project Director</br>
-					mike@2727boston.com
-				</p>
-			</div>
+			{% for footerContact in footerContacts %}
 
-			<div class="cell medium-auto contact-item">
-				<p>
-					<strong>Rick Perless</strong><br/>
-					Zoning & Construction</br>
-					rick@2727boston.com
-				</p>
-			</div>
+				<div class="cell medium-auto contact-item">
+					{{ footerContact.contact }}
+				</div>
 
-			<div class="cell medium-auto contact-item">
-				<p>
-					<strong>Lisa Daniels</strong><br/>
-					Event Specialist</br>
-					events@2727boston.com
-				</p>
-			</div>
-
-			<div class="cell medium-auto contact-item">
-				<p>
-					<strong>Rick Perless</strong><br/>
-					Zoning & Construction</br>
-					rick@2727boston.com
-				</p>
-			</div>
-
-			<div class="cell medium-auto contact-item">
-				<p>
-					<strong>Lisa Daniels</strong><br/>
-					Event Specialist</br>
-					events@2727boston.com
-				</p>
-			</div>
+			{% endfor %}
 
 		</div>
 

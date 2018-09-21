@@ -1,3 +1,32 @@
+{#
+
+	Gallery 2
+
+	@param {matrix} gallery2WideImageSlides
+		[
+			wideImageSlide:
+			[
+				wideImage {asset - image - max 1}
+				headingText {plain text}
+				textContent {redactor}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set gallery2WideImageSlides = params.gallery2WideImageSlides ?? null %}
+
+{# Variables #}
+{%
+	set imgResize = {
+		mode: 'crop',
+		width: 942,
+		height: 600
+	}
+%}
+
+{# Output #}
 <section data-component data-gallery-2>
 
 	<div class="grid-container">
@@ -10,27 +39,17 @@
 
 					<div class="Wallop-list">
 
+						{% for imageSlide in gallery2WideImageSlides %}
 
+							{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
 
-						<div class="Wallop-item gallery-image">
+							<div class="Wallop-item gallery-image">
 
-							<img src="https://via.placeholder.com/1036x660">
+								<img src="{{ imageUrl }}">
 
-						</div>
+							</div>
 
-						<div class="Wallop-item gallery-image">
-
-							<img src="https://via.placeholder.com/1036x660">
-
-						</div>
-
-						<div class="Wallop-item gallery-image">
-
-							<img src="https://via.placeholder.com/1036x660">
-
-						</div>
-
-
+						{% endfor %}
 
 					</div>
 
@@ -40,74 +59,35 @@
 
 			<div class="cell small-12 large-4">
 
-				<div class="slider-dots-nav">
+				{% if gallery2WideImageSlides|length > 1 %}
 
-					{# as many spans as there are slides #}
-					<span data-slide-index="0"></span>
-					<span data-slide-index="1"></span>
-					<span data-slide-index="2"></span>
+					<div class="slider-dots-nav">
 
-				</div>
+						{% for i in range(0, gallery2WideImageSlides|length - 1) %}
+							<span data-slide-index="{{ i }}"></span>
+						{% endfor %}
+
+					</div>
+
+				{% endif %}
 
 				<div class="slider Wallop text-slider Wallop--fade">
 
 					<div class="Wallop-list">
 
+						{% for imageSlide in gallery2WideImageSlides %}
 
+							<div class="Wallop-item text-slide">
 
-						<div class="Wallop-item text-slide">
+								<h2 class="heading">{{ imageSlide.headingText }}</h2>
 
-							<h2 class="heading">Mixed-use development project in Boston along the classic waterfront</h2>
+								<div class="subheading">
+									{{ imageSlide.textContent }}
+								</div>
 
-							<div class="subheading">
-								<p>
-									Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-								</p>
-
-								<p>
-									The project would have four buildings total and will feature 478 residences along the water.
-								</p>
 							</div>
 
-						</div>
-
-
-
-						<div class="Wallop-item text-slide">
-
-							<h2 class="heading">Slide Two. Mixed-use development project in Boston along the classic waterfront</h2>
-
-							<div class="subheading">
-								<p>
-									Slide Two. This is the second slide. Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-								</p>
-
-								<p>
-									The project would have four buildings total and will feature 478 residences along the water.
-								</p>
-							</div>
-
-						</div>
-
-
-
-						<div class="Wallop-item text-slide">
-
-							<h2 class="heading">Slide Three. Mixed-use development project in Boston along the classic waterfront</h2>
-
-							<div class="subheading">
-								<p>
-									This is the third slide. Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-								</p>
-
-								<p>
-									The project would have four buildings total and will feature 478 residences along the water.
-								</p>
-							</div>
-
-						</div>
-
-
+						{% endfor %}
 
 					</div>
 

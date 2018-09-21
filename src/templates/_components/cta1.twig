@@ -1,30 +1,66 @@
+{#
+
+	CTA 1
+
+	@param {assets - images - max 1} cta1BackgroundImage
+	@param {plain text} cta1HeadingText
+	@param {redactor} cta1TextContent
+	@param {plain text} cta1CtaText
+	@param {entries - max 1} cta1CtaLink
+	@param {plain text} cta1CtaUrl
+
+#}
+
+{# Parameters #}
+{% set cta1BackgroundImage = params.cta1BackgroundImage ?? null %}
+{% set cta1HeadingText = params.cta1HeadingText ?? null %}
+{% set cta1TextContent = params.cta1TextContent ?? null %}
+{% set cta1CtaText = params.cta1CtaText ?? null %}
+{% set cta1CtaLink = params.cta1CtaLink ?? null %}
+{% set cta1CtaUrl = params.cta1CtaUrl ?? null %}
+
+{# Variables #}
+{%
+	set bgImgResize = {
+		mode: 'crop',
+		width: 1440,
+		height: 750
+	}
+%}
+{% set bgImageUrl = craft.imager.transformImage(cta1BackgroundImage.one, bgImgResize).url %}
+
+{% if cta1CtaLink|length %}
+	{% set ctaHref = cta1CtaLink.one.url %}
+{% else %}
+	{% set ctaHref = cta1CtaUrl %}
+{% endif %}
+
+{# Output #}
 <section data-component data-cta-1>
 
 	<div class="grid-container">
 
-		<div class="content-wrap" style="background-image: url( https://via.placeholder.com/1440x900 );">
+		<div class="content-wrap" style="background-image: url( {{ bgImageUrl }} );">
 
 			<div class="grid-x">
 
 				<div class="cell small-12 large-9">
 
-					<h2 class="heading">East Boston Waterfront site overlooking Boston Harbor</h2>
+					<h2 class="heading">{{ cta1HeadingText }}</h2>
 
 				</div>
 
 				<div class="cell small-12 large-7">
 
-					<p>
-						Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-					</p>
+					{{ cta1TextContent }}
 
-					<p>
-						The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space.
-					</p>
+					{% if cta1CtaText != '' %}
 
-					<div class="cta">
-						<a href="#" class="button button-square button-black">Optional Button</a>
-					</div>
+						<div class="cta">
+							<a href="{{ ctaHref }}" class="button button-square button-black">{{ cta1CtaText }}</a>
+						</div>
+
+					{% endif %}
 
 				</div>
 

@@ -1,3 +1,5 @@
+{% import 'authenticamplify/_macros/_components' as renderComponent %}
+
 {% for block in entry.pageContent.level(1) %}
 
 	{% switch block.type.handle %}
@@ -5,7 +7,7 @@
     {% case 'contact1' %}
 
       {{
-        components.contact1({
+        renderComponent.contact1({
 
         })
       }}
@@ -13,111 +15,177 @@
     {% case 'content1' %}
 
       {{
-        components.content1({
-
+        renderComponent.content1({
+          content1SectionTitle: block.ampContentSectionTitle,
+          content1HeadingText: block.ampContentHeadingText,
+          content1TextColumnsTwoThree: block.ampContentTextColumnsTwoThree,
+          content1TextContent: block.ampContentTextContent,
+          content1CtaText: block.ampContentCtaText,
+          content1CtaLink: block.ampContentCtaLink,
+          content1CtaUrl: block.ampContentCtaUrl
         })
       }}
 
     {% case 'content2' %}
 
       {{
-        components.content2({
-
+        renderComponent.content2({
+          content2SectionTitle: block.ampContentSectionTitle,
+          content2HeadingText: block.ampContentHeadingText,
+          content2TextContent: block.ampContentTextContent,
+          content2CtaText: block.ampContentCtaText,
+          content2CtaLink: block.ampContentCtaLink,
+          content2CtaUrl: block.ampContentCtaUrl
         })
       }}
 
     {% case 'content3' %}
 
       {{
-        components.content3({
-
+        renderComponent.content3({
+          content3SectionTitle: block.ampContentSectionTitle,
+          content3HeadingText: block.ampContentHeadingText,
+          content3TextColumnsOneTwo: block.ampContentTextColumnsOneTwo,
+          content3TextContent: block.ampContentTextContent,
+          content3CtaText: block.ampContentCtaText,
+          content3CtaLink: block.ampContentCtaLink,
+          content3CtaUrl: block.ampContentCtaUrl
         })
       }}
 
     {% case 'contentImage1' %}
 
       {{
-        components.contentImage1({
-
+        renderComponent.contentImage1({
+          contentImage1SquareImage: block.ampContentImageSquareImage,
+          contentImage1SectionTitle: block.ampContentImageSectionTitle,
+          contentImage1HeadingText: block.ampContentImageHeadingText,
+          contentImage1TextContent: block.ampContentImageTextContent,
+          contentImage1CtaText: block.ampContentImageCtaText,
+          contentImage1CtaLink: block.ampContentImageCtaLink,
+          contentImage1CtaUrl: block.ampContentImageCtaUrl
         })
       }}
 
     {% case 'contentImage2' %}
 
       {{
-        components.contentImage2({
-
+        renderComponent.contentImage2({
+          contentImage2SectionTitle: block.ampContentImageSectionTitle,
+          contentImage2HeadingText: block.ampContentImageHeadingText,
+          contentImage2TextContent: block.ampContentImageTextContent,
+          contentImage2CtaText: block.ampContentImageCtaText,
+          contentImage2CtaLink: block.ampContentImageCtaLink,
+          contentImage2CtaUrl: block.ampContentImageCtaUrl,
+          contentImage2TallImages: block.ampContentImageTallImages
         })
       }}
 
     {% case 'contentImage3' %}
 
       {{
-        components.contentImage3({
-
+        renderComponent.contentImage3({
+          contentImage3SectionTitle: block.ampContentImageSectionTitle,
+          contentImage3HeadingText: block.ampContentImageHeadingText,
+          contentImage3TextContent: block.ampContentImageTextContent,
+          contentImage3CtaText: block.ampContentImageCtaText,
+          contentImage3CtaLink: block.ampContentImageCtaLink,
+          contentImage3CtaUrl: block.ampContentImageCtaUrl,
+          contentImage3TallImages: block.ampContentImageTallImages
         })
       }}
 
     {% case 'contentImage4' %}
 
       {{
-        components.contentImage4({
-
+        renderComponent.contentImage4({
+          contentImage4SectionTitle: block.ampContentImageSectionTitle,
+          contentImage4FirstImageSide: block.ampContentImageFirstImageSide,
+          contentImage4TallImgItems: block.ampContentImageTallImgItems
         })
       }}
 
     {% case 'contentImage5' %}
 
       {{
-        components.contentImage5({
-
+        renderComponent.contentImage5({
+          contentImage5SectionTitle: block.ampContentImageSectionTitle,
+          contentImage5SquareImageItems: block.ampContentImageSquareImageItems
         })
       }}
 
     {% case 'contentWithLinks1' %}
 
       {{
-        components.contentWithLinks1({
-
+        renderComponent.contentWithLinks1({
+          contentLinks1SectionTitle: block.ampContentLinksSectionTitle,
+          contentLinks1HeadingText: block.ampContentLinksHeadingText,
+          contentLinks1TextContent: block.ampContentLinksTextContent,
+          contentLinks1Links: block.ampContentLinksLinks,
+          contentLinks1CtaText: block.ampContentLinksCtaText,
+          contentLinks1CtaLink: block.ampContentLinksCtaLink,
+          contentLinks1CtaUrl: block.ampContentLinksCtaUrl
         })
       }}
 
     {% case 'contentWithLinks2' %}
 
       {{
-        components.contentWithLinks2({
-
+        renderComponent.contentWithLinks2({
+          contentLinks2SectionTitle: block.ampContentLinksSectionTitle,
+          contentLinks2HeadingText: block.ampContentLinksHeadingText,
+          contentLinks2TextContent: block.ampContentLinksTextContent,
+          contentLinks2Links: block.ampContentLinksLinks,
+          contentLinks2CtaText: block.ampContentLinksCtaText,
+          contentLinks2CtaLink: block.ampContentLinksCtaLink,
+          contentLinks2CtaUrl: block.ampContentLinksCtaUrl
         })
       }}
 
     {% case 'contentWithLinks3' %}
 
       {{
-        components.contentWithLinks3({
-
+        renderComponent.contentWithLinks3({
+          contentLinks3SectionTitle: block.ampContentLinksSectionTitle,
+          contentLinks3HeadingText: block.ampContentLinksHeadingText,
+          contentLinks3TextContent: block.ampContentLinksTextContent,
+          contentLinks3Links: block.ampContentLinksLinks,
+          contentLinks3CtaText: block.ampContentLinksCtaText,
+          contentLinks3CtaLink: block.ampContentLinksCtaLink,
+          contentLinks3CtaUrl: block.ampContentLinksCtaUrl
         })
       }}
 
     {% case 'cta1' %}
 
       {{
-        components.cta1({
-
+        renderComponent.cta1({
+          cta1BackgroundImage: block.ampCtaBackgroundImage,
+          cta1HeadingText: block.ampCtaHeadingText,
+          cta1TextContent: block.ampCtaTextContent,
+          cta1CtaText: block.ampCtaCtaText,
+          cta1CtaLink: block.ampCtaCtaLink,
+          cta1CtaUrl: block.ampCtaCtaUrl
         })
       }}
 
     {% case 'cta2' %}
 
       {{
-        components.cta2({
-
+        renderComponent.cta2({
+          cta2Image: block.ampCtaImage,
+          cta2HeadingText: block.ampCtaHeadingText,
+          cta2TextContent: block.ampCtaTextContent,
+          cta2CtaText: block.ampCtaCtaText,
+          cta2CtaLink: block.ampCtaCtaLink,
+          cta2CtaUrl: block.ampCtaCtaUrl
         })
       }}
 
     {% case 'ctaEmail1' %}
 
       {{
-        components.ctaEmail1({
+        renderComponent.ctaEmail1({
 
         })
       }}
@@ -125,7 +193,7 @@
     {% case 'ctaEmail2' %}
 
       {{
-        components.ctaEmail2({
+        renderComponent.ctaEmail2({
 
         })
       }}
@@ -133,183 +201,217 @@
     {% case 'footerColumns' %}
 
       {{
-        components.footerColumns({
-
+        renderComponent.footerColumns({
+          footerColsColumnOneText: block.ampFooterColumnOneText,
+          footerColsColumnTwoText: block.ampFooterColumnTwoText,
+          footerColsColumnThreeText: block.ampFooterColumnThreeText,
+          footerColsSocialLinks: block.ampFooterSocialLinks
         })
       }}
 
     {% case 'footerContacts' %}
 
       {{
-        components.footerContacts({
-
+        renderComponent.footerContacts({
+          footerContactsHeadingText: block.ampFooterHeadingText,
+          footerContacts: block.ampFooterContacts
         })
       }}
 
     {% case 'footerLogos' %}
 
       {{
-        components.footerLogos({
-
+        renderComponent.footerLogos({
+          footerLogos: block.footerLogos
         })
       }}
 
     {% case 'gallery1' %}
 
       {{
-        components.gallery1({
-
+        renderComponent.gallery1({
+          gallery1ImageSlides: block.ampGalleryImageSlides
         })
       }}
 
     {% case 'gallery2' %}
 
       {{
-        components.gallery2({
-
+        renderComponent.gallery2({
+          gallery2WideImageSlides: block.ampGalleryWideImageSlides
         })
       }}
 
     {% case 'gallery3' %}
 
       {{
-        components.gallery3({
-
+        renderComponent.gallery3({
+          gallery3WideImageSlides: block.ampGalleryWideImageSlides
         })
       }}
 
     {% case 'hero1' %}
 
       {{
-        components.hero1({
-
+        renderComponent.hero1({
+          hero1ImageSlides: block.ampHeroImageSlides
         })
       }}
 
     {% case 'hero2' %}
 
       {{
-        components.hero2({
-
+        renderComponent.hero2({
+          hero2BgImageSlides: block.ampHeroBgImageSlides
         })
       }}
 
     {% case 'hero3' %}
 
       {{
-        components.hero3({
-
+        renderComponent.hero3({
+          hero3BgImageSlides: block.ampHeroBgImageSlides
         })
       }}
 
     {% case 'hero4' %}
 
       {{
-        components.hero4({
-
+        renderComponent.hero4({
+          hero4SquareImageSlides: block.ampHeroSquareImageSlides
         })
       }}
 
     {% case 'hero5' %}
 
       {{
-        components.hero5({
-
+        renderComponent.hero5({
+          hero5RectImageSlides: block.ampHeroRectImageSlides
         })
       }}
 
     {% case 'hero6' %}
 
       {{
-        components.hero6({
-
+        renderComponent.hero6({
+          hero6WideImageSlides: block.ampHeroWideImageSlides
         })
       }}
 
     {% case 'icons1' %}
 
       {{
-        components.icons1({
-
+        renderComponent.icons1({
+          icons1SectionTitle: block.ampIconsSectionTitle,
+          icons1HeadingText: block.ampIconsHeadingText,
+          icons1SubheadingText: block.ampIconsSubheadingText,
+          icons1IconItems: block.ampIconsIconItems
         })
       }}
 
     {% case 'icons2' %}
 
       {{
-        components.icons2({
-
+        renderComponent.icons2({
+          icons2SectionTitle: block.ampIconsSectionTitle,
+          icons2HeadingText: block.ampIconsHeadingText,
+          icons2SubheadingText: block.ampIconsSubheadingText,
+          icons2IconItems: block.ampIconsIconItems
         })
       }}
 
     {% case 'icons3' %}
 
       {{
-        components.icons3({
-
+        renderComponent.icons3({
+          icons3SectionTitle: block.ampIconsSectionTitle,
+          icons3HeadingText: block.ampIconsHeadingText,
+          icons3SubheadingText: block.ampIconsSubheadingText,
+          icons3IconItems: block.ampIconsIconItems
         })
       }}
 
     {% case 'icons4' %}
 
       {{
-        components.icons4({
-
+        renderComponent.icons4({
+          icons4IconItems: block.ampIconsIconItems
         })
       }}
 
     {% case 'imageCards1' %}
 
       {{
-        components.imageCards1({
-
+        renderComponent.imageCards1({
+          imageCards1Cards: block.ampImageCardsTallImageCards
         })
       }}
 
     {% case 'imageCards2' %}
 
       {{
-        components.imageCards2({
-
+        renderComponent.imageCards2({
+          imageCards2Cards: block.ampImageCardsWideImageCards
         })
       }}
 
     {% case 'imageCards3' %}
 
       {{
-        components.imageCards3({
+        renderComponent.imageCards3({
+          imageCards3LargeImageCards: block.ampImageCardsLargeImageCards,
+          imageCards3TallImageCards: block.ampImageCardsTallImageCards
+        })
+      }}
 
+    {% case 'imageCards4' %}
+
+      {{
+        renderComponent.imageCards4({
+          imageCards4Cards: block.ampImageCardsRectImageCards
         })
       }}
 
     {% case 'keyIntro1' %}
 
       {{
-        components.keyIntro1({
-
+        renderComponent.keyIntro1({
+          ampKeyIntro1HeadingText: block.ampKeyIntroHeadingText,
+          ampKeyIntro1TextContent: block.ampKeyIntroTextContent,
+          ampKeyIntro1ShowSupportBtn: block.ampKeyIntroShowSupportBtn,
+          ampKeyIntro1ShowSupportButtonText: block.ampKeyIntroShowSupportButtonText,
+          ampKeyIntro1InfoSections: block.children
         })
       }}
 
     {% case 'keyIntro2' %}
 
       {{
-        components.keyIntro2({
-
+        renderComponent.keyIntro2({
+          ampKeyIntro2HeadingText: block.ampKeyIntroHeadingText,
+          ampKeyIntro2TextContent: block.ampKeyIntroTextContent,
+          ampKeyIntro2ShowSupportBtn: block.ampKeyIntroShowSupportBtn,
+          ampKeyIntro2ShowSupportButtonText: block.ampKeyIntroShowSupportButtonText,
+          ampKeyIntro2InfoSections: block.children
         })
       }}
 
     {% case 'keyIntro3' %}
 
       {{
-        components.keyIntro3({
-
+        renderComponent.keyIntro3({
+          ampKeyIntro3HeadingText: block.ampKeyIntroHeadingText,
+          ampKeyIntro3TextContent: block.ampKeyIntroTextContent,
+          ampKeyIntro3ShowSupportBtn: block.ampKeyIntroShowSupportBtn,
+          ampKeyIntro3ShowSupportButtonText: block.ampKeyIntroShowSupportButtonText,
+          ampKeyIntro3InfoSections: block.children
         })
       }}
 
     {% case 'map1' %}
 
       {{
-        components.map1({
+        renderComponent.map1({
 
         })
       }}
@@ -317,7 +419,7 @@
     {% case 'map2' %}
 
       {{
-        components.map2({
+        renderComponent.map2({
 
         })
       }}
@@ -325,63 +427,110 @@
     {% case 'modalAr1' %}
 
       {{
-        components.modalAr1({
-
+        renderComponent.modalAr1({
+          modalAr1HeadingText: block.ampModalArHeadingText,
+          modalAr1Steps: block.ampModalArSteps,
+          modalAr1FinePrint: block.ampModalArFinePrint
         })
       }}
 
     {% case 'navigation1' %}
 
-      {{
-        components.navigation1({
+      {% if block.next|length %}
+        {% set nextBlockType = block.next.type %}
+      {% else %}
+        {% set nextBlockType = '' %}
+      {% endif %}
 
+      {{
+        renderComponent.navigation1({
+          nav1LogoImage: siteHeader.ampGlobLogoImage,
+          nav1SiteName: siteHeader.ampGlobSiteName,
+          nav1NextBlockType: nextBlockType
         })
       }}
 
     {% case 'navigation2' %}
 
-      {{
-        components.navigation2({
+      {% if block.next|length %}
+        {% set nextBlockType = block.next.type %}
+      {% else %}
+        {% set nextBlockType = '' %}
+      {% endif %}
 
+      {{
+        renderComponent.navigation2({
+          nav2LogoImage: siteHeader.ampGlobLogoImage,
+          nav2SiteName: siteHeader.ampGlobSiteName,
+          nav2NextBlockType: nextBlockType
         })
       }}
 
     {% case 'navigation3' %}
 
-      {{
-        components.navigation3({
+      {% if block.next|length %}
+        {% set nextBlockType = block.next.type %}
+      {% else %}
+        {% set nextBlockType = '' %}
+      {% endif %}
 
+      {{
+        renderComponent.navigation3({
+          nav3LogoImage: siteHeader.ampGlobLogoImage,
+          nav3NextBlockType: nextBlockType
         })
       }}
 
     {% case 'navigation4' %}
 
-      {{
-        components.navigation4({
+      {% if block.next|length %}
+        {% set nextBlockType = block.next.type %}
+      {% else %}
+        {% set nextBlockType = '' %}
+      {% endif %}
 
+      {{
+        renderComponent.navigation4({
+          nav4LogoImage: siteHeader.ampGlobLogoImage,
+          nav4NextBlockType: nextBlockType
         })
       }}
 
     {% case 'navigation5' %}
 
-      {{
-        components.navigation5({
+      {% if block.next|length %}
+        {% set nextBlockType = block.next.type %}
+      {% else %}
+        {% set nextBlockType = '' %}
+      {% endif %}
 
+      {{
+        renderComponent.navigation5({
+          nav5LogoImage: siteHeader.ampGlobLogoImage,
+          nav5SiteName: siteHeader.ampGlobSiteName,
+          nav5NextBlockType: nextBlockType
         })
       }}
 
     {% case 'navigation6' %}
 
-      {{
-        components.navigation6({
+      {% if block.next|length %}
+        {% set nextBlockType = block.next.type %}
+      {% else %}
+        {% set nextBlockType = '' %}
+      {% endif %}
 
+      {{
+        renderComponent.navigation6({
+          nav6LogoImage: siteHeader.ampGlobLogoImage,
+          nav6NextBlockType: nextBlockType
         })
       }}
 
     {% case 'stats1' %}
 
       {{
-        components.stats1({
+        renderComponent.stats1({
 
         })
       }}
@@ -389,7 +538,7 @@
     {% case 'stats2' %}
 
       {{
-        components.stats2({
+        renderComponent.stats2({
 
         })
       }}
@@ -397,7 +546,7 @@
     {% case 'stats3' %}
 
       {{
-        components.stats3({
+        renderComponent.stats3({
 
         })
       }}
@@ -405,23 +554,29 @@
     {% case 'timeline1' %}
 
       {{
-        components.timeline1({
-
+        renderComponent.timeline1({
+          timeline1SectionTitle: block.ampTimelineSectionTitle,
+          timeline1HeadingText: block.ampTimelineHeadingText,
+          timeline1SubheadingText: block.ampTimelineSubheadingText,
+          timeline1StaggeredTimelineItems: block.ampStaggeredTimelineItems
         })
       }}
 
     {% case 'timeline2' %}
 
       {{
-        components.timeline2({
-
+        renderComponent.timeline2({
+          timeline2SectionTitle: block.ampTimelineSectionTitle,
+          timeline2HeadingText: block.ampTimelineHeadingText,
+          timeline2SubheadingText: block.ampTimelineSubheadingText,
+          timeline2TimelineItems: block.ampTimelineItems
         })
       }}
 
     {% default %}
 
       <p>
-        MISSING COMPONENT: {{ block.type.handle }}
+        MISSING COMPONENT {{ block.type.handle }}
       </p>
 
     {# end cases #}

@@ -1,24 +1,66 @@
+{#
+
+	Icons 2
+
+	@param {plain text} icons2SectionTitle
+	@param {plain text} icons2HeadingText
+	@param {plain text} icons2SubheadingText
+	@param {matrix} icons2IconItems
+		[
+			iconItem:
+			[
+				icon {assets - image - max 1}
+				text {plain text}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set icons2SectionTitle = params.icons2SectionTitle ?? '' %}
+{% set icons2HeadingText = params.icons2HeadingText ?? '' %}
+{% set icons2SubheadingText = params.icons2SubheadingText ?? '' %}
+{% set icons2IconItems = params.icons2IconItems ?? null %}
+
+{# Variables #}
+{%
+	set iconImgResize = {
+		mode: 'fit',
+		width: 50,
+		height: 50
+	}
+%}
+
+{# Output #}
 <section data-component data-icons-2>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if icons2SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
+
+					<h2 class="section-title">{{ icons2SectionTitle }}</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="grid-x grid-margin-x">
 
 			<div class="cell small-12 large-6">
 
-				<h2 class="heading">West Bay 2727 is a mixed-use development project on a 12-acre East Boston Waterfront site overlooking Boston Harbor.</h2>
+				<h2 class="heading">{{ icons2HeadingText }}</h2>
 
-				<h3 class="subheading">Mixed-use development project on a 12-acre East Boston Waterfront site overlooking Boston Harbor.</h3>
+				{% if icons2SubheadingText != '' %}
+
+					<h3 class="subheading">{{ icons2SubheadingText }}</h3>
+
+				{% endif %}
 
 			</div>
 
@@ -26,53 +68,23 @@
 
 				<div class="grid-x grid-margin-x small-up-1 medium-up-2">
 
-					<div class="cell icon-item">
+					{% for iconItem in icons2IconItems %}
 
-						<div class="icon">
-							<img src="/assets/images/placeholder-icon-1.svg">
+						{% set iconImageUrl = craft.imager.transformImage(iconItem.icon.one, iconImgResize).url %}
+
+						<div class="cell icon-item">
+
+							<div class="icon">
+								<img src="{{ iconImageUrl }}">
+							</div>
+
+							<p class="item-text">
+								{{ iconItem.text }}
+							</p>
+
 						</div>
 
-						<p class="item-text">
-							The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-						</p>
-
-					</div>
-
-					<div class="cell icon-item">
-
-						<div class="icon">
-							<img src="/assets/images/placeholder-icon-1.svg">
-						</div>
-
-						<p class="item-text">
-							The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-						</p>
-
-					</div>
-
-					<div class="cell icon-item">
-
-						<div class="icon">
-							<img src="/assets/images/placeholder-icon-1.svg">
-						</div>
-
-						<p class="item-text">
-							The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-						</p>
-
-					</div>
-
-					<div class="cell icon-item">
-
-						<div class="icon">
-							<img src="/assets/images/placeholder-icon-1.svg">
-						</div>
-
-						<p class="item-text">
-							The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-						</p>
-
-					</div>
+					{% endfor %}
 
 				</div>
 

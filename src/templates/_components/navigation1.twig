@@ -1,5 +1,41 @@
-{# include the hero-overlay class when the next component is a hero #}
-<section data-navigation-1 class="navigation hero-overlay">
+{#
+
+	Navigation 1
+
+	@param {asset - image - max 1} nav1LogoImage
+	@param {plain text} nav1SiteName
+	@param {string} nav1NextBlockType
+
+#}
+
+{# Parameters #}
+{% set nav1LogoImage = params.nav1LogoImage ?? null %}
+{% set nav1SiteName = params.nav1SiteName ?? '' %}
+{% set nav1NextBlockType = params.nav1NextBlockType ?? '' %}
+
+{# Variables #}
+{% set logoImgAsset = nav1LogoImage.one %}
+{%
+	set logoResize = {
+		mode: 'fit',
+		width: 84,
+		height: 84
+	}
+%}
+{% set logoImageUrl = craft.imager.transformImage(logoImgAsset, logoResize).url %}
+
+{% 
+	if nav1NextBlockType|lower == 'hero1'
+	or nav1NextBlockType|lower == 'hero2'
+	or nav1NextBlockType|lower == 'hero3'
+%}
+	{% set heroOverlay = true %}
+{% else %}
+	{% set heroOverlay = false %}
+{% endif %}
+
+{# Output #}
+<section data-navigation-1 class="navigation{% if heroOverlay %} hero-overlay{% endif %}">
 
 	<div class="grid-container">
 
@@ -7,12 +43,9 @@
 
 			<div class="logo-bar cell small-6 large-4">
 
-				{# hero overlay #}
-				<a href="/" class="logo"><img src="/assets/images/west-bay-logo-white.svg" ></a>
-				{# no hero overlay #}
-				{#<a href="/" class="logo"><img src="/assets/images/west-bay-logo-black.svg" ></a>#}
+				<a href="/" class="logo"><img src="{{ logoImageUrl }}" alt="logo"></a>
 
-				<a href="/" class="company-title show-for-medium">West Bays 27272</a>
+				<a href="/" class="company-title show-for-medium">{{ nav1SiteName }}</a>
 
 			</div>
 
@@ -20,15 +53,18 @@
 
 				<ul>
 
-					{% include "_includes/site-nav" %}
+					{%
+						include "authenticamplify/_includes/site-nav"
+					%}
 
 				</ul>
 
 				<div class="social-links">
-					{# hero overlay #}
-					<a href="#"><img src="/assets/images/social-icon-instagram.svg"></a>
-					{# no hero overlay #}
-					{#<a href="#"><img src="/assets/images/social-icon-instagram-black.svg"></a>#}
+
+					{%
+						include 'authenticamplify/_includes/social-links'
+					%}
+
 				</div>
 
 			</nav>

@@ -1,62 +1,109 @@
+{#
+
+	Content With Image 4
+
+	@param {plain text} contentImage4SectionTitle
+	@param {dropdown} contentImage4FirstImageSide
+		[
+			left
+			right
+		]
+	@param {matrix} contentImage4TallImgItems
+		[
+			tallImageContentItem:
+			[
+				headingText {plain text}
+				textContent {plain text}
+				tallImage {assets - image - max 1}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set contentImage4SectionTitle = params.contentImage4SectionTitle ?? '' %}
+{% set contentImage4FirstImageSide = params.contentImage4FirstImageSide ?? 'left' %}
+{% set contentImage4TallImgItems = params.contentImage4TallImgItems ?? null %}
+
+{# Variables #}
+{%
+	set imgResize = {
+		mode: 'crop',
+		width: 445,
+		height: 500
+	}
+%}
+
+{% set imageSide = contentImage4FirstImageSide %}
+
+{# Output #}
 <section data-component data-content-image-4>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if contentImage4SectionTitle != '' %}
 
-			<div class="cell small-12 large-11 large-offset-1">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12 large-11 large-offset-1">
+
+					<h2 class="section-title">{{ contentImage4SectionTitle }}</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="content-wrap">
 
-			<div class="grid-x grid-margin-x align-middle image-right">
+			{% for contentImage in contentImage4TallImgItems %}
 
-				<div class="cell small-12 medium-7 large-5 large-offset-1 content">
+				{% set imageUrl = craft.imager.transformImage(contentImage.tallImage.one, imgResize).url %}
 
-					<h2 class="heading">West Bay 2727 is a mixed-use development project.</h2>
+				{% if imageSide == 'right' %}
 
-					<p>
-						Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe four buildings total and will feature 478 residences.
-					</p>
+					<div class="grid-x grid-margin-x align-middle image-right">
 
-					<p>
-						Retail and community space, including a cafe four buildings total. Retail and community space, including a cafe four buildings total and will feature 478 residences.
-					</p>
+						<div class="cell small-12 medium-7 large-5 large-offset-1 content">
 
-				</div>
+							<h2 class="heading">{{ contentImage.headingText }}</h2>
 
-				<div class="cell small-12 medium-5 large-4 image-cell">
-					<img src="https://via.placeholder.com/445x500">
-				</div>
+							{{ contentImage.textContent }}
 
-			</div>
+						</div>
 
-			<div class="grid-x grid-margin-x align-middle image-left">
+						<div class="cell small-12 medium-5 large-4 image-cell">
+							<img src="{{ imageUrl }}">
+						</div>
 
-				<div class="cell small-12 medium-5 large-4 large-offset-1 image-cell">
-					<img src="https://via.placeholder.com/445x500">
-				</div>
+					</div>
 
-				<div class="cell small-12 medium-7 large-5 content">
+					{% set imageSide = 'left' %}
 
-					<h2 class="heading">Opening Fall 2020 including retail and community space.</h2>
+				{% else %}
 
-					<p>
-						The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space.
-					</p>
+					<div class="grid-x grid-margin-x align-middle image-left">
 
-					<p>
-						Including a cafe four buildings total and will feature 478 residences. Retail and community space, including a cafe four buildings total.
-					</p>
+						<div class="cell small-12 medium-5 large-4 large-offset-1 image-cell">
+							<img src="{{ imageUrl }}">
+						</div>
 
-				</div>
+						<div class="cell small-12 medium-7 large-5 content">
 
-			</div>
+							<h2 class="heading">{{ contentImage.headingText }}</h2>
+
+							{{ contentImage.textContent }}
+
+						</div>
+
+					</div>
+
+					{% set imageSide = 'right' %}
+
+				{% endif %}
+
+			{% endfor %}
 
 		</div>
 

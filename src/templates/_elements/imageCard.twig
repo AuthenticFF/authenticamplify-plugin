@@ -1,9 +1,35 @@
+{#
+
+	Image Card
+
+	@param {plain text} imageCardImageUrl
+	@param {plain text} imageCardTitleText
+	@param {plain text} imageCardTextContent
+	@param {plain text} imageCardUrl
+
+#}
+
+{# Parameters #}
+{% set imageCardImageUrl = imageCardImageUrl ?? '' %}
+{% set imageCardTitleText = imageCardTitleText ?? '' %}
+{% set imageCardTextContent = imageCardTextContent ?? '' %}
+{% set imageCardUrl = imageCardUrl ?? '' %}
+
+{# Output #}
 <div class="image-card">
 
-	<a href="#"><img src="{{ imageUrl }}"></a>
+	{% if imageCardUrl != '' %}
+		<a href="{{ imageCardUrl }}"><img src="{{ imageUrl }}"></a>
+	{% else %}
+		<img src="{{ imageUrl }}">
+	{% endif %}
 
-	<div class="intro-title">September 15, 2019</div>
+	<div class="intro-title">{{ imageCardTitleText }}</div>
 
-	<a href="#" class="title">Local community gathering event lead by JOL Architects</a>
+	{% if imageCardUrl != '' %}
+		<a href="{{ imageCardUrl }}" class="title">{{ imageCardTextContent }}</a>
+	{% else %}
+		<div class="title">{{ imageCardTextContent }}</div>
+	{% endif %}
 
 </div>

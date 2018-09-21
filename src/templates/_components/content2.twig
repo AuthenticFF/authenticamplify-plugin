@@ -1,45 +1,71 @@
+{#
+
+	Content 2
+
+	@param {plain text} content2SectionTitle
+	@param {plain text} content2HeadingText
+	@param {redactor} content2TextContent
+	@param {plain text} content2CtaText
+	@param {entries - max 1} content2CtaLink
+	@param {plain text} content2CtaUrl
+
+#}
+
+{# Parameters #}
+{% set content2SectionTitle = params.content2SectionTitle ?? '' %}
+{% set content2HeadingText = params.content2HeadingText ?? '' %}
+{% set content2TextContent = params.content2TextContent ?? '' %}
+{% set content2CtaText = params.content2CtaText ?? '' %}
+{% set content2CtaLink = params.content2CtaLink ?? null %}
+{% set content2CtaUrl = params.content2CtaUrl ?? '' %}
+
+{# Variables #}
+{% if content2CtaLink|length %}
+	{% set ctaHref = content2CtaLink.one.url %}
+{% else %}
+	{% set ctaHref = content2CtaUrl %}
+{% endif %}
+
+{# Output #}
 <section data-content-2 data-component>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if content2SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
 
-			</div>
-
-		</div>
-
-		<div class="grid-x">
-
-			<div class="cell small-12 medium-6 large-5">
-
-				<h3 class="component-title">West Bay 2727 is a mixed-use development project on a 12-acre East Boston Waterfront site overlooking Boston Harbor.</h3>
-
-				{# optional cta #}
-				<div class="cta">
-
-					<a class="button button-square button-black">Optional Button</a>
+					<h2 class="section-title">{{ content2SectionTitle }}</h2>
 
 				</div>
 
 			</div>
 
+		{% endif %}
+
+		<div class="grid-x">
+
+			<div class="cell small-12 medium-6 large-5">
+
+				<h3 class="component-title">{{ content2HeadingText }}</h3>
+
+				{% if content2CtaText != '' %}
+
+					<div class="cta">
+
+						<a href="{{ ctaHref }}" class="button button-square button-black">{{ content2CtaText }}</a>
+
+					</div>
+
+				{% endif %}
+
+			</div>
+
 			<div class="cell small-12 medium-6 large-4 large-offset-1 text-content">
 
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
-
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
-
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
+				{{ content2TextContent }}
 
 			</div>
 

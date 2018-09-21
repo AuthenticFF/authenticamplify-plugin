@@ -1,88 +1,126 @@
+{#
+
+	Image Cards 3
+
+	@param {matrix} imageCards3LargeImageCards
+		[
+			largeImageCard:
+			[
+				largeImage {asset - image - max 1}
+				titleText {plain text}
+				textContent {plain text}
+				cardLinkEntry {entries - max 1}
+				cardLinkUrl {plain text}
+			]
+		]
+	@param {matrix} imageCards3TallImageCards
+		[
+			tallImageCard:
+			[
+				tallImage {asset - image - max 1}
+				titleText {plain text}
+				textContent {plain text}
+				cardLinkEntry {entries - max 1}
+				cardLinkUrl {plain text}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set imageCards3LargeImageCards = params.imageCards3LargeImageCards ?? null %}
+{% set imageCards3TallImageCards = params.imageCards3TallImageCards ?? null %}
+
+{# Variables #}
+{%
+	set largeImgResize = {
+		mode: 'crop',
+		width: 690,
+		height: 895
+	}
+%}
+
+{%
+	set tallImgResize = {
+		mode: 'crop',
+		width: 360,
+		height: 320
+	}
+%}
+
+{# Output #}
 <section data-component data-image-cards-3>
 
 	<div class="grid-container">
 
 		<div class="grid-x grid-margin-x">
 
+			<div class="cell small-12 medium-6 large-images">
 
+				{% for imageCard in imageCards3LargeImageCards %}
 
+					{% if imageCard.cardLinkEntry|length %}
+						{% set cardLink = imageCard.cardLinkEntry.one.url %}
+					{% else %}
+						{% set cardLink = imageCard.cardLinkUrl %}
+					{% endif %}
 
+					{% set imageUrl = craft.imager.transformImage(imageCard.largeImage.one, largeImgResize).url %}
 
+					<div class="large-image">
 
-			<div class="cell small-12 medium-6 large-image">
+						{%
 
-				{%
+							include 'authenticamplify/_elements/imageCard' with {
+								imageCardImageUrl: imageUrl,
+								imageCardTitleText: imageCard.titleText,
+								imageCardTextContent: imageCard.textContent,
+								imageCardUrl: cardLink
+							}
 
-					include '_elements/imageCard' with {
-						imageUrl: 'http://via.placeholder.com/690x900'
-					}
+						%}
 
-				%}
+					</div>
+
+				{% endfor %}
 
 			</div>
-
 
 			<div class="cell small-12 medium-6">
 
 				<div class="grid-x grid-margin-x small-up-1 medium-up-2 four-image-grid">
 
-					<div class="cell">
+					{% for imageCard in imageCards3TallImageCards %}
 
-						{%
+						{% if imageCard.cardLinkEntry|length %}
+							{% set cardLink = imageCard.cardLinkEntry.one.url %}
+						{% else %}
+							{% set cardLink = imageCard.cardLinkUrl %}
+						{% endif %}
 
-							include '_elements/imageCard' with {
-								imageUrl: 'http://via.placeholder.com/480x532'
-							}
+						{% set imageUrl = craft.imager.transformImage(imageCard.tallImage.one, tallImgResize).url %}
 
-						%}
+						<div class="cell">
 
-					</div>
+							{%
 
-					<div class="cell">
+								include 'authenticamplify/_elements/imageCard' with {
+									imageCardImageUrl: imageUrl,
+									imageCardTitleText: imageCard.titleText,
+									imageCardTextContent: imageCard.textContent,
+									imageCardUrl: cardLink
+								}
 
-						{%
+							%}
 
-							include '_elements/imageCard' with {
-								imageUrl: 'http://via.placeholder.com/480x532'
-							}
+						</div>
 
-						%}
-
-					</div>
-
-					<div class="cell">
-
-						{%
-
-							include '_elements/imageCard' with {
-								imageUrl: 'http://via.placeholder.com/480x532'
-							}
-
-						%}
-
-					</div>
-
-					<div class="cell">
-
-						{%
-
-							include '_elements/imageCard' with {
-								imageUrl: 'http://via.placeholder.com/480x532'
-							}
-
-						%}
-
-					</div>
+					{% endfor %}
 
 				</div>
 
 			</div>
 			
-
-
-
-
-
 		</div>
 
 	</div>

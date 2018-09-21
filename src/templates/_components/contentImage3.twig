@@ -1,52 +1,91 @@
+{#
+
+	Content With Image 3
+
+	@param {plain text} contentImage3SectionTitle
+	@param {plain text} contentImage3HeadingText
+	@param {redactor} contentImage3TextContent
+	@param {plain text} contentImage3CtaText
+	@param {entries - max 1} contentImage3CtaLink
+	@param {plain text} contentImage3CtaUrl
+	@param {assets} contentImage3TallImages
+
+#}
+
+{# Parameters #}
+{% set contentImage3SectionTitle = params.contentImage3SectionTitle ?? '' %}
+{% set contentImage3HeadingText = params.contentImage3HeadingText ?? '' %}
+{% set contentImage3TextContent = params.contentImage3TextContent ?? '' %}
+{% set contentImage3CtaText = params.contentImage3CtaText ?? '' %}
+{% set contentImage3CtaLink = params.contentImage3CtaLink ?? null %}
+{% set contentImage3CtaUrl = params.contentImage3CtaUrl ?? '' %}
+{% set contentImage3TallImages = params.contentImage3TallImages ?? null %}
+
+{# Variables #}
+{%
+	set imgResize = {
+		mode: 'crop',
+		width: 445,
+		height: 500
+	}
+%}
+
+{% if contentImage3CtaLink|length %}
+	{% set ctaHref = contentImage3CtaLink.one.url %}
+{% else %}
+	{% set ctaHref = contentImage3CtaUrl %}
+{% endif %}
+
+{# Output #}
 <section data-component data-content-image-3>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if contentImage3SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
+
+					<h2 class="section-title">{{ contentImage3SectionTitle }}</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="grid-x align-middle grid-margin-x">
 
 			<div class="cell small-12 large-8">
-				<h2 class="heading">West Bay 2727 is a mixed-use development project.</h2>
-				<p>
-					The project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe.
-				</p>
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe four buildings total and will feature 478 residences.
-				</p>
+
+				<h2 class="heading">{{ contentImage3HeadingText }}</h2>
+
+				{{ contentImage3TextContent }}
+
 			</div>
 
-			<div class="cell small-12 large-4 cta">
-				<a href="#" class="button button-square button-black">Optional Button</a>
-			</div>
+			{% if contentImage3CtaText != '' %}
+
+				<div class="cell small-12 large-4 cta">
+					<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentImage3CtaText }}</a>
+				</div>
+
+			{% endif %}
 
 		</div>
 
 		<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-4 images-grid">
 
-			<div class="cell image-cell">
-				<img src="https://via.placeholder.com/324x360">
-			</div>
+			{% for tallImage in contentImage3TallImages %}
 
-			<div class="cell image-cell">
-				<img src="https://via.placeholder.com/324x360">
-			</div>
+				{% set imageUrl = craft.imager.transformImage(tallImage, imgResize).url %}
 
-			<div class="cell image-cell">
-				<img src="https://via.placeholder.com/324x360">
-			</div>
+				<div class="cell image-cell">
+					<img src="{{ imageUrl }}">
+				</div>
 
-			<div class="cell image-cell">
-				<img src="https://via.placeholder.com/324x360">
-			</div>
+			{% endfor %}
 
 		</div>
 

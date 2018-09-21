@@ -1,47 +1,58 @@
+{#
+
+	Hero 3
+
+	@param {matrix} hero3BgImageSlides
+		[
+			backgroundImageSlide:
+			[
+				backgroundImage {asset - image - max 1}
+				headingText {plain text}
+				subheadingText {plain text}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set hero3BgImageSlides = params.hero3BgImageSlides ?? null %}
+
+{# Variables #}
+{%
+	set heroImgResize = {
+		mode: 'crop',
+		width: 1680,
+		height: 750
+	}
+%}
+
+{# Output #}
 <section data-hero-3 data-component="hero">
 
 	<div class="slider Wallop Wallop--fade">
 
 		<div class="Wallop-list">
 
-			<div class="Wallop-item hero-slide" style="background-image: url( /assets/images/placeholder-1680x750.jpg );">
+			{% for bgImageSlide in hero3BgImageSlides %}
 
-				<div class="grid-container">
+				{% set heroImageUrl = craft.imager.transformImage(bgImageSlide.backgroundImage.one, heroImgResize).url %}
 
-					<div class="grid-x align-middle">
+				<div class="Wallop-item hero-slide" style="background-image: url( {{ heroImageUrl }} );">
 
-						<div class="cell small-12 medium-11 large-7 large-offset-1">
+					<div class="grid-container">
 
-							<div class="heading">
-								West Bay 2727 is a mixed-use development project on the East Boston Waterfront.
-							</div>
+						<div class="grid-x align-middle">
 
-							<div class="subheading">
-								West Bay 2727 is a mixed-use development project on the East Boston Waterfront.
-							</div>
+							<div class="cell small-12 medium-11 large-7 large-offset-1">
 
-						</div>
+								<div class="heading">
+									{{ bgImageSlide.headingText }}
+								</div>
 
-					</div>
+								<div class="subheading">
+									{{ bgImageSlide.subheadingText }}
+								</div>
 
-				</div>
-
-			</div>
-
-			<div class="Wallop-item hero-slide" style="background-image: url( /assets/images/placeholder-1680x750.jpg );">
-
-				<div class="grid-container">
-
-					<div class="grid-x align-middle">
-
-						<div class="cell small-12 medium-11 large-7 large-offset-1">
-
-							<div class="heading">
-								Slide Two. West Bay 2727 is a mixed-use development project on the East Boston Waterfront.
-							</div>
-
-							<div class="subheading">
-								This is the second slide. West Bay 2727 is a mixed-use development project on the East Boston Waterfront.
 							</div>
 
 						</div>
@@ -50,46 +61,25 @@
 
 				</div>
 
-			</div>
-
-			<div class="Wallop-item hero-slide" style="background-image: url( /assets/images/placeholder-1680x750.jpg );">
-
-				<div class="grid-container">
-
-					<div class="grid-x align-middle">
-
-						<div class="cell small-12 medium-11 large-7 large-offset-1">
-
-							<div class="heading">
-								Slide Three. West Bay 2727 is a mixed-use development project on the East Boston Waterfront.
-							</div>
-
-							<div class="subheading">
-								This slide is the third slide. West Bay 2727 is a mixed-use development project on the East Boston Waterfront.
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
+			{% endfor %}
 
 		</div>
 		
-		<div class="grid-container">
+		{% if hero3BgImageSlides|length > 1 %}
 
-			<div class="grid-x">
+			<div class="grid-container">
 
-				<div class="cell small-12 large-11 large-offset-1 slider-dots-nav-cell">
-		
-					<div class="slider-dots-nav">
+				<div class="grid-x">
 
-						{# as many spans as there are slides #}
-						<span data-slide-index="0"></span>
-						<span data-slide-index="1"></span>
-						<span data-slide-index="2"></span>
+					<div class="cell small-12 large-11 large-offset-1 slider-dots-nav-cell">
+			
+						<div class="slider-dots-nav">
+
+							{% for i in range(0, hero3BgImageSlides|length - 1) %}
+								<span data-slide-index="{{ i }}"></span>
+							{% endfor %}
+
+						</div>
 
 					</div>
 
@@ -97,7 +87,7 @@
 
 			</div>
 
-		</div>
+		{% endif %}
 
 	</div>
 

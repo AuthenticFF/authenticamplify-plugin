@@ -1,3 +1,57 @@
+{#
+
+	Key + Intro 3
+
+	@param {plain text} ampKeyIntro3HeadingText
+	@param {redactor} ampKeyIntro3TextContent
+	@param {lightswitch} ampKeyIntro3ShowSupportBtn
+	@param {plain text} ampKeyIntro3ShowSupportButtonText
+	@param {neo blocks} ampKeyIntro3InfoSections
+		[
+			ampKeyIntroInfoSectionHeading {plain text}
+			ampKeyIntroInfoItems {matrix}
+			[
+				textItem:
+				[
+					titleText {plain text}
+					infoText {plain text}
+				]
+				linkItem:
+				[
+					titleText {plain text}
+					linkText {plain text}
+					linkUrl {plain text}
+				]
+				assetItem:
+				[
+					titleText {plain text}
+					assetLinkText {plain text}
+					assetFile {asset - max 1}
+				]
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set ampKeyIntro3HeadingText = params.ampKeyIntro3HeadingText ?? '' %}
+{% set ampKeyIntro3TextContent = params.ampKeyIntro3TextContent ?? '' %}
+{% set ampKeyIntro3ShowSupportBtn = params.ampKeyIntro3ShowSupportBtn ?? false %}
+{% set ampKeyIntro3ShowSupportButtonText = params.ampKeyIntro3ShowSupportButtonText ?? 'Show Your Support' %}
+{% set ampKeyIntro3InfoSections = params.ampKeyIntro3InfoSections ?? null %}
+
+{# Variables #}
+{% if ampKeyIntro3ShowSupportButtonText != '' %}
+	{% set supportBtnText = ampKeyIntro3ShowSupportButtonText %}
+{% else %}
+	{% set supportBtnText = 'Show Your Support' %}
+{% endif %}
+
+{% do craft.upvote.setIcons({
+    up   : '<button class="button button-square button-black show-support-btn" type="button">' ~ supportBtnText ~ '</button>',
+}) %}
+
+{# Output #}
 <section data-component data-key-intro-3>
 
 	<div class="grid-container">
@@ -6,7 +60,7 @@
 
 			<div class="cell small-12 medium-12 large-5 large-offset-1">
 
-				<h2 class="heading">West Bay 2727 is a mixed-use development project on a 12-acre East Boston Waterfront site overlooking Boston Harbor.</h2>
+				<h2 class="heading">{{ ampKeyIntro3HeadingText }}</h2>
 
 			</div>
 
@@ -17,24 +71,21 @@
 
 			<div class="cell small-12 medium-12 large-5 large-offset-1">
 
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
+				{{ ampKeyIntro3TextContent }}
 
-				<p>
-					Residences will include 398 apartments and 80 condominiums, including studios, one-bedrooms and two-bedrooms. Phase 1 will construct two buildings containing 284 rental apartments and one building containing 80 condominiums.
-				</p>
+				{% if ampKeyIntro3ShowSupportBtn %}
 
-				<p>
-					Approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
+					<div class="cta-row">
 
-				<div class="cta-row">
-					<button class="button button-square button-black button-square-thin show-support-btn" type="button">Show Your Support</button>
-					<div class="current-support">
-						147 Current Supporters
+						{{ craft.upvote.upvote('1') }}
+						
+						<div class="current-support">
+							{{ craft.upvote.tally('1') }} Current Supporters
+						</div>
+						
 					</div>
-				</div>
+
+				{% endif %}
 
 			</div>
 
@@ -42,64 +93,50 @@
 
 				<div class="grid-x grid-margin-x">
 
-					<div class="cell small-12 medium-6 large-12">
+					{% for infoSection in ampKeyIntro3InfoSections %}
 
-						<h3 class="key-heading">Key Information</h3>
+						<div class="cell small-12 medium-6 large-12">
 
-						<table class="info-table">
-							<tr>
-								<td>Dollar Volume</td>
-								<td>$225,000,000</td>
-							</tr>
-							<tr>
-								<td>Square Feet</td>
-								<td>555,000</td>
-							</tr>
-							<tr>
-								<td>Type</td>
-								<td>Housing, Retail, Open Space</td>
-							</tr>
-							<tr>
-								<td>Stories</td>
-								<td>6</td>
-							</tr>
-							<tr>
-								<td>Height (feet)</td>
-								<td>70</td>
-							</tr>
-							<tr>
-								<td>Proposed Start Date</td>
-								<td>May, 2018</td>
-							</tr>
-							<tr>
-								<td>Completion Date</td>
-								<td>Fall, 2020</td>
-							</tr>
-						</table>
+							<h3 class="key-heading">{{ infoSection.ampKeyIntroInfoSectionHeading }}</h3>
 
-					</div>
+							<table class="info-table">
 
-					<div class="cell small-12 medium-6 large-12">
+								{% for infoRow in infoSection.ampKeyIntroInfoItems %}
 
-						<h3 class="key-heading">Project Plan Downloads</h3>
+									{% if infoRow.type == 'textItem' %}
 
-						<table  class="info-table">
-							<tr>
-								<td>Site Plan</td>
-								<td>
-									<a class="project-plan-link" href="#">PDF</a>
-									<a class="project-plan-link" href="#">Word</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Rendering Packet</td>
-								<td>
-									<a class="project-plan-link" href="#">PDF</a>
-								</td>
-							</tr>
-						</table>
+										<tr>
+											<td>{{ infoRow.titleText }}</td>
+											<td>{{ infoRow.infoText }}</td>
+										</tr>
 
-					</div>
+									{% elseif infoRow.type == 'linkItem' %}
+
+										<tr>
+											<td>{{ infoRow.titleText }}</td>
+											<td>
+												<a class="project-plan-link" href="{{ infoRow.linkUrl }}">{{ infoRow.linkText }}</a>
+											</td>
+										</tr>
+
+									{% elseif infoRow.type == 'assetItem' %}
+
+										<tr>
+											<td>{{ infoRow.titleText }}</td>
+											<td>
+												<a target="_blank" class="project-plan-link" href="{{ infoRow.assetFile.one.url }}">{{ infoRow.assetLinkText }}</a>
+											</td>
+										</tr>
+
+									{% endif %}
+
+								{% endfor %}
+
+							</table>
+
+						</div>
+
+					{% endfor %}
 
 				</div>
 

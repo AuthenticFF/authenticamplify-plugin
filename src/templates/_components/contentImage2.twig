@@ -1,34 +1,75 @@
+{#
+
+	Content With Image 2
+
+	@param {plain text} contentImage2SectionTitle
+	@param {plain text} contentImage2HeadingText
+	@param {redactor} contentImage2TextContent
+	@param {plain text} contentImage2CtaText
+	@param {entries - max 1} contentImage2CtaLink
+	@param {plain text} contentImage2CtaUrl
+	@param {assets} contentImage2TallImages
+
+#}
+
+{# Parameters #}
+{% set contentImage2SectionTitle = params.contentImage2SectionTitle ?? '' %}
+{% set contentImage2HeadingText = params.contentImage2HeadingText ?? '' %}
+{% set contentImage2TextContent = params.contentImage2TextContent ?? '' %}
+{% set contentImage2CtaText = params.contentImage2CtaText ?? '' %}
+{% set contentImage2CtaLink = params.contentImage2CtaLink ?? null %}
+{% set contentImage2CtaUrl = params.contentImage2CtaUrl ?? '' %}
+{% set contentImage2TallImages = params.contentImage2TallImages ?? null %}
+
+{# Variables #}
+{%
+	set imgResize = {
+		mode: 'crop',
+		width: 445,
+		height: 500
+	}
+%}
+
+{% if contentImage2CtaLink|length %}
+	{% set ctaHref = contentImage2CtaLink.one.url %}
+{% else %}
+	{% set ctaHref = contentImage2CtaUrl %}
+{% endif %}
+
+{# Output #}
 <section data-component data-content-image-2>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if contentImage2SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
+
+					<h2 class="section-title">{{ contentImage2SectionTitle }}</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="grid-x grid-margin-x">
 
 			<div class="cell small-12 large-4 content-cell">
 
-				<h2 class="heading">West Bay 2727 is a mixed-use development project.</h2>
+				<h2 class="heading">{{ contentImage2HeadingText }}</h2>
 
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe.
-				</p>
+				{{ contentImage2TextContent }}
 
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe. 478 residences with approximately 30,200 square feet of retail and community space, including a cafe. 
-				</p>
+				{% if contentImage2CtaText != '' %}
 
-				<div class="cta">
-					<a href="#" class="button button-square button-black">Optional Button</a>
-				</div>
+					<div class="cta">
+						<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentImage2CtaText }}</a>
+					</div>
+
+				{% endif %}
 
 			</div>
 
@@ -36,21 +77,15 @@
 
 				<div class="grid-x grid-margin-x small-up-1 medium-up-2">
 
-					<div class="cell image-cell">
-						<img src="https://via.placeholder.com/445x500">
-					</div>
+					{% for tallImage in contentImage2TallImages %}
 
-					<div class="cell image-cell">
-						<img src="https://via.placeholder.com/445x500">
-					</div>
+						{% set imageUrl = craft.imager.transformImage(tallImage, imgResize).url %}
 
-					<div class="cell image-cell">
-						<img src="https://via.placeholder.com/445x500">
-					</div>
+						<div class="cell image-cell">
+							<img src="{{ imageUrl }}">
+						</div>
 
-					<div class="cell image-cell">
-						<img src="https://via.placeholder.com/445x500">
-					</div>
+					{% endfor %}
 
 				</div>
 

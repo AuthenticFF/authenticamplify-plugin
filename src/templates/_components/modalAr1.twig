@@ -1,45 +1,69 @@
+{#
+
+	Modal AR 1
+
+	@param {plain text} modalAr1HeadingText
+	@param {matrix} modalAr1Steps
+		[
+			step:
+			[
+				image {asset - images - max 1}
+				stepText {plain text}
+			]
+		]
+	@param {plain text} modalAr1FinePrint
+
+#}
+
+{# Parameters #}
+{% set modalAr1HeadingText = params.modalAr1HeadingText ?? '' %}
+{% set modalAr1Steps = params.modalAr1Steps ?? null %}
+{% set modalAr1FinePrint = params.modalAr1FinePrint ?? '' %}
+
+{# Variables #}
+{%
+	set stepImgResize = {
+		mode: 'fit',
+		width: 120,
+		height: 120
+	}
+%}
+
+{# Output #}
 <section data-modal-ar-1>
 
 	<div class="background-overlay"></div>
 
 	<div class="modal">
 
-		<h2 class="heading">Experience this project from your phone or tablet in Augmented Reality (AR)</h2>
+		<h2 class="heading">{{ modalAr1HeadingText }}</h2>
 
 		<div class="steps">
 
-			<div class="step">
+			{% for step in modalAr1Steps %}
 
-				<div class="image">
-					<img src="/assets/images/placeholder-ar-icon.png">
+				{% set stepImageUrl = craft.imager.transformImage(step.image.one, stepImgResize).url %}
+
+				<div class="step">
+
+					<div class="image">
+						<img src="{{ stepImageUrl }}">
+					</div>
+
+					<div class="instructions">
+						<p>
+							<strong>Step {{ loop.index }}</strong> - {{ step.stepText }}
+						</p>
+					</div>
+
 				</div>
 
-				<div class="instructions">
-					<p>
-						<strong>Step 1</strong> - Download the Authentic AR app from the Apple App Store.
-					</p>
-				</div>
-
-			</div>
-
-			<div class="step">
-
-				<div class="image">
-					<img src="/assets/images/placeholder-ar-qr.png">
-				</div>
-
-				<div class="instructions">
-					<p>
-						<strong>Step 2</strong> - Scan the QR code to access the project experiences.
-					</p>
-				</div>
-
-			</div>
+			{% endfor %}
 
 		</div>
 
 		<div class="fine-print">
-			Requirements: an Apple smart device to download and run the Authentic AR app.
+			{{ modalAr1FinePrint }}
 		</div>
 
 	</div>

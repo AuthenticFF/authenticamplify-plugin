@@ -1,34 +1,66 @@
+{#
+
+	Image Cards 2
+
+	@param {matrix} imageCards2Cards
+		[
+			wideImageCard:
+			[
+				wideImage {asset - image - max 1}
+				titleText {plain text}
+				textContent {plain text}
+				cardLinkEntry {entries - max 1}
+				cardLinkUrl {plain text}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set imageCards2Cards = params.imageCards2Cards ?? null %}
+
+{# Variables #}
+{%
+	set wideImgResize = {
+		mode: 'crop',
+		width: 690,
+		height: 360
+	}
+%}
+
+{# Output #}
 <section data-component data-image-cards-2>
 
 	<div class="grid-container">
 
 		<div class="grid-x grid-margin-x small-up-1 large-up-2">
 
+			{% for imageCard in imageCards2Cards %}
 
-			<div class="cell">
+				{% if imageCard.cardLinkEntry|length %}
+					{% set cardLink = imageCard.cardLinkEntry.one.url %}
+				{% else %}
+					{% set cardLink = imageCard.cardLinkUrl %}
+				{% endif %}
 
-				{%
+				{% set imageUrl = craft.imager.transformImage(imageCard.wideImage.one, wideImgResize).url %}
 
-					include '_elements/imageCard' with {
-						imageUrl: 'http://via.placeholder.com/1035x540'
-					}
+				<div class="cell">
 
-				%}
+					{%
 
-			</div>
+						include 'authenticamplify/_elements/imageCard' with {
+							imageCardImageUrl: imageUrl,
+							imageCardTitleText: imageCard.titleText,
+							imageCardTextContent: imageCard.textContent,
+							imageCardUrl: cardLink
+						}
 
-			<div class="cell">
+					%}
 
-				{%
+				</div>
 
-					include '_elements/imageCard' with {
-						imageUrl: 'http://via.placeholder.com/1035x540'
-					}
-
-				%}
-
-			</div>
-
+			{% endfor %}
 
 		</div>
 

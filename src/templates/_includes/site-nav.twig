@@ -1,5 +1,31 @@
-<li><a href="#">The Story</a></li>
-<li><a href="#">Amenities</a></li>
-<li><a href="#">Give Feedback</a></li>
-<li><a href="#">Updates</a></li>
-<li><a href="#">Contact</a></li>
+{#
+
+	Site Nav
+
+	uses global navLinks
+		[
+			navigationLink:
+			[
+				linkText {plain text}
+				linkEntry {entry - max 1}
+				linkUrl {plain text}
+			]
+		]
+
+#}
+
+{# parameters #}
+{% set navLinks = params.navLinks ?? siteHeader.ampGlobSiteNavLinks %}
+
+{# output #}
+{% for link in navLinks %}
+
+	{% if link.linkEntry|length %}
+		{% set linkUrl = link.linkEntry.one.url %}
+	{% else %}
+		{% set linkUrl = link.linkUrl %}
+	{% endif %}
+
+	<li><a href="{{ linkUrl }}">{{ link.linkText }}</a></li>
+
+{% endfor %}

@@ -1,19 +1,51 @@
+{#
+
+	Hero 1
+
+	@param {matrix} hero1ImageSlides
+		[
+			imageSlide:
+			[
+				image {asset - image - max 1}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set hero1ImageSlides = params.hero1ImageSlides ?? null %}
+
+{# Variables #}
+{%
+	set heroImgResize = {
+		mode: 'crop',
+		width: 1680,
+		height: 750
+	}
+%}
+
+{# Output #}
 <section data-hero-1 data-component="hero">
 
 	<div class="slider Wallop Wallop--slide">
+		
 		<div class="Wallop-list">
-			<div class="Wallop-item hero-slide" style="background-image: url( /assets/images/placeholder-1680x750.jpg );">
-				
-			</div>
-			<div class="Wallop-item hero-slide" style="background-image: url( /assets/images/placeholder-1680x750.jpg );">
-				
-			</div>
-			<div class="Wallop-item hero-slide" style="background-image: url( /assets/images/placeholder-1680x750.jpg );">
-				
-			</div>
+
+			{% for imageSlide in hero1ImageSlides %}
+
+				{% set heroImageUrl = craft.imager.transformImage(imageSlide.image.one, heroImgResize).url %}
+
+				<div class="Wallop-item hero-slide" style="background-image: url( {{ heroImageUrl }} );"></div>
+
+			{% endfor %}
+
 		</div>
-		<button class="Wallop-buttonPrevious previous-slide-btn"></button>
-		<button class="Wallop-buttonNext next-slide-btn"></button>
+
+		{% if hero1ImageSlides|length > 1 %}
+			<button class="Wallop-buttonPrevious previous-slide-btn"></button>
+			<button class="Wallop-buttonNext next-slide-btn"></button>
+		{% endif %}
+
 	</div>
 
 </section>

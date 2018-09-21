@@ -1,22 +1,61 @@
+{#
+
+	Content 3
+
+	@param {plain text} content3SectionTitle
+	@param {plain text} content3HeadingText
+	@param {dropdown} content3TextColumnsOneTwo
+		[
+			1
+			2
+		]
+	@param {redactor} content3TextContent
+	@param {plain text} content3CtaText
+	@param {entries - max 1} content3CtaLink
+	@param {plain text} content3CtaUrl
+
+#}
+
+{# Parameters #}
+{% set content3SectionTitle = params.content3SectionTitle ?? '' %}
+{% set content3HeadingText = params.content3HeadingText ?? '' %}
+{% set content3TextColumnsOneTwo = params.content3TextColumnsOneTwo ?? '2' %}
+{% set content3TextContent = params.content3TextContent ?? '' %}
+{% set content3CtaText = params.content3CtaText ?? '' %}
+{% set content3CtaLink = params.content3CtaLink ?? null %}
+{% set content3CtaUrl = params.content3CtaUrl ?? '' %}
+
+{# Variables #}
+{% if content3CtaLink|length %}
+	{% set ctaHref = content3CtaLink.one.url %}
+{% else %}
+	{% set ctaHref = content3CtaUrl %}
+{% endif %}
+
+{# Output #}
 <section data-content-3 data-component>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if content3SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
+
+					<h2 class="section-title">{{ content3SectionTitle }}</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="grid-x">
 
 			<div class="cell small-12 large-10">
 
-				<h3 class="component-title">West Bay 2727 is a mixed-use development project on a 12-acre East Boston Waterfront site overlooking Boston Harbor.</h3>
+				<h3 class="component-title">{{ content3HeadingText }}</h3>
 
 			</div>
 
@@ -25,49 +64,27 @@
 		<div class="grid-x">
 
 			{# one column #}
-			<div class="cell small-12 large-8 text-content">
+			<div class="cell small-12 text-content{% if content3TextColumnsOneTwo == '1' %} large-8{% else %} large-10 two-col{% endif %}">
 
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
-
-				<p>
-					The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space.
-				</p>
-
-			</div>
-
-			{# two columns #}
-			{#
-			<div class="cell small-12 large-10 text-content two-col">
-
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
-
-				<p>
-					The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space.
-				</p>
-
-				<p>
-					The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant. The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet.
-				</p>
-
-			</div>
-			#}
-
-		</div>
-
-		{# optional CTA row #}
-		<div class="grid-x">
-
-			<div class="cell small-12 large-8 cta">
-
-				<a class="button button-square button-black">Optional Button</a>
+				{{ content3TextContent }}
 
 			</div>
 
 		</div>
+
+		{% if content3CtaText != '' %}
+
+			<div class="grid-x">
+
+				<div class="cell small-12 large-8 cta">
+
+					<a href="{{ ctaHref }}" class="button button-square button-black">{{ content3CtaText }}</a>
+
+				</div>
+
+			</div>
+
+		{% endif %}
 
 	</div>
 

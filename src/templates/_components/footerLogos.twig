@@ -1,53 +1,51 @@
+{#
+
+	Footer Logos
+
+	@param {matrix} footerLogos
+		[
+			footerLogo:
+			[
+				logoImage {asset - image - max 1}
+				text {plain text}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set footerLogos = params.footerLogos ?? null %}
+
+{# Variables #}
+{%
+	set logoImgResize = {
+		mode: 'fit',
+		width: 100,
+		height: 60
+	}
+%}
+
+{# Output #}
 <footer data-footer-logos data-component>
 
 	<div class="grid-container">
 
 		<div class="grid-x logos" data-equalizer data-equalize-on="medium">
 
-			<div class="cell medium-auto logo-item">
-				<div class="logo" data-equalizer-watch>
-					<img src="/assets/images/placeholder-logo1.png">
-				</div>
-				<div class="text">
-					The primary architect is a worldwide leader in forward thinking spaces.
-				</div>
-			</div>
+			{% for logoItem in footerLogos %}
 
-			<div class="cell medium-auto logo-item">
-				<div class="logo" data-equalizer-watch>
-					<img src="/assets/images/placeholder-logo2.png">
-				</div>
-				<div class="text">
-					With input from the Boston Fine Arts group.
-				</div>
-			</div>
+				{% set logoImageUrl = craft.imager.transformImage(logoItem.logoImage.one, logoImgResize).url %}
 
-			<div class="cell medium-auto logo-item">
-				<div class="logo" data-equalizer-watch>
-					<img src="/assets/images/placeholder-logo3.png">
+				<div class="cell medium-auto logo-item">
+					<div class="logo" data-equalizer-watch>
+						<img src="{{ logoImageUrl }}">
+					</div>
+					<div class="text">
+						{{ logoItem.text }}
+					</div>
 				</div>
-				<div class="text">
-					The civil engineer on the project has over 40 years of experience in the area.
-				</div>
-			</div>
 
-			<div class="cell medium-auto logo-item">
-				<div class="logo" data-equalizer-watch>
-					<img src="/assets/images/placeholder-logo4.png">
-				</div>
-				<div class="text">
-					Consideration and support from the City of Boston planning department.
-				</div>
-			</div>
-
-			<div class="cell medium-auto logo-item">
-				<div class="logo" data-equalizer-watch>
-					<img src="/assets/images/placeholder-logo5.png">
-				</div>
-				<div class="text">
-					Our consultant partner helps make the best decisions for the area.
-				</div>
-			</div>
+			{% endfor %}
 
 		</div>
 

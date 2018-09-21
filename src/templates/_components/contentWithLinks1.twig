@@ -1,22 +1,65 @@
+{#
+
+	Content With Links 1
+
+	@param {plain text} contentLinks1SectionTitle
+	@param {plain text} contentLinks1HeadingText
+	@param {redactor} contentLinks1TextContent
+	@param {matrix} contentLinks1Links
+		[
+			link:
+			[
+				linkText {plain text}
+				linkEntry {entries - max 1}
+				linkUrl {plain text}
+			]
+		]
+	@param {plain text} contentLinks1CtaText
+	@param {entries - max 1} contentLinks1CtaLink
+	@param {plain text} contentLinks1CtaUrl
+
+#}
+
+{# Parameters #}
+{% set contentLinks1SectionTitle = params.contentLinks1SectionTitle ?? '' %}
+{% set contentLinks1HeadingText = params.contentLinks1HeadingText ?? '' %}
+{% set contentLinks1TextContent = params.contentLinks1TextContent ?? '' %}
+{% set contentLinks1Links = params.contentLinks1Links ?? null %}
+{% set contentLinks1CtaText = params.contentLinks1CtaText ?? '' %}
+{% set contentLinks1CtaLink = params.contentLinks1CtaLink ?? null %}
+{% set contentLinks1CtaUrl = params.contentLinks1CtaUrl ?? '' %}
+
+{# Variables #}
+{% if contentLinks1CtaLink|length %}
+	{% set ctaHref = contentLinks1CtaLink.one.url %}
+{% else %}
+	{% set ctaHref = contentLinks1CtaUrl %}
+{% endif %}
+
+{# Output #}
 <section data-component data-content-with-links-1>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if contentLinks1SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
+
+					<h2 class="section-title">Section Title</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="grid-x">
 
 			<div class="cell small-12 large-9">
 
-				<h3 class="component-title">West Bay 2727 is a mixed-use development project on a 12-acre East Boston Waterfront site overlooking Boston Harbor.</h3>
+				<h3 class="component-title">{{ contentLinks1HeadingText }}</h3>
 
 			</div>
 
@@ -26,39 +69,45 @@
 
 			<div class="cell small-12 large-8 text-content two-col">
 
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant. Opening Fall 2020, the under-construction project would have four.
-				</p>
-
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
+				{{ contentLinks1TextContent }}
 
 			</div>
 			
 			<div class="cell small-12 large-4 sidebar-links">
 
 				<ul>
-					<li><a href="#">Links</a></li>
-					<li><a href="#">Links in this space</a></li>
-					<li><a href="#">Sidebar link</a></li>
-					<li><a href="#">Another link</a></li>
+
+					{% for link in contentLinks1Links %}
+
+						{% if link.linkEntry|length %}
+							{% set linkHref = link.linkEntry.one.url %}
+						{% else %}
+							{% set linkHref = link.linkUrl %}
+						{% endif %}
+
+						<li><a href="{{ linkHref }}">{{ link.linkText }}</a></li>
+
+					{% endfor %}
+
 				</ul>
 
 			</div>
 
 		</div>
 
-		{# optional CTA row #}
-		<div class="grid-x">
+		{% if contentLinks1CtaText != '' %}
 
-			<div class="cell small-12 large-8 cta">
+			<div class="grid-x">
 
-				<a class="button button-square button-black">Optional Button</a>
+				<div class="cell small-12 large-8 cta">
+
+					<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentLinks1CtaText }}</a>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 	</div>
 

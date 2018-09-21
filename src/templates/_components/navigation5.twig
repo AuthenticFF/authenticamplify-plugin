@@ -1,4 +1,41 @@
-<section class="navigation {#hero-overlay#}" data-navigation-5>
+{#
+
+	Navigation 5
+
+	@param {asset - image - max 1} nav5LogoImage
+	@param {plain text} nav5SiteName
+	@param {string} nav5NextBlockType
+
+#}
+
+{# Parameters #}
+{% set nav5LogoImage = params.nav5LogoImage ?? null %}
+{% set nav5SiteName = params.nav5SiteName ?? '' %}
+{% set nav5NextBlockType = params.nav5NextBlockType ?? '' %}
+
+{# Variables #}
+{% set logoImgAsset = nav5LogoImage.one %}
+{%
+	set logoResize = {
+		mode: 'fit',
+		width: 84,
+		height: 84
+	}
+%}
+{% set logoImageUrl = craft.imager.transformImage(logoImgAsset, logoResize).url %}
+
+{% 
+	if nav5NextBlockType|lower == 'hero1'
+	or nav5NextBlockType|lower == 'hero2'
+	or nav5NextBlockType|lower == 'hero3'
+%}
+	{% set heroOverlay = true %}
+{% else %}
+	{% set heroOverlay = false %}
+{% endif %}
+
+{# Output #}
+<section class="navigation{% if heroOverlay %} hero-overlay{% endif %}" data-navigation-5>
 
 	<div class="grid-container">
 
@@ -6,12 +43,9 @@
 
 			<div class="logo-bar cell small-8 medium-6 large-5">
 
-				{# no hero overlay #}
-				<a href="/" class="logo"><img src="/assets/images/west-bay-logo-black.svg" ></a>
-				{# hero overlay #}
-				{#<a href="/" class="logo"><img src="/assets/images/west-bay-logo-white.svg" ></a>#}
+				<a href="/" class="logo"><img src="{{ logoImageUrl }}" alt="logo"></a>
 
-				<a href="/" class="company-title show-for-medium">West Bays 27272</a>
+				<a href="/" class="company-title show-for-medium">{{ nav5SiteName }}</a>
 
 			</div>
 

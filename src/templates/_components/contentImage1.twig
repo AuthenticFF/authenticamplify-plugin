@@ -1,37 +1,91 @@
+{#
+
+	Content With Image 1
+
+	@param {assets - max 1} contentImage1SquareImage
+	@param {plain text} contentImage1SectionTitle
+	@param {plain text} contentImage1HeadingText
+	@param {redactor} contentImage1TextContent
+	@param {plain text} contentImage1CtaText
+	@param {entries - max 1} contentImage1CtaLink
+	@param {plain text} contentImage1CtaUrl
+
+#}
+
+{# Parameters #}
+{% set contentImage1SquareImage = params.contentImage1SquareImage ?? null %}
+{% set contentImage1SectionTitle = params.contentImage1SectionTitle ?? '' %}
+{% set contentImage1HeadingText = params.contentImage1HeadingText ?? '' %}
+{% set contentImage1TextContent = params.contentImage1TextContent ?? '' %}
+{% set contentImage1CtaText = params.contentImage1CtaText ?? '' %}
+{% set contentImage1CtaLink = params.contentImage1CtaLink ?? null %}
+{% set contentImage1CtaUrl = params.contentImage1CtaUrl ?? '' %}
+
+{# Variables #}
+{%
+	set imgResize = {
+		mode: 'crop',
+		width: 570,
+		height: 500
+	}
+%}
+{% set imageUrl = craft.imager.transformImage(contentImage1SquareImage.one, imgResize).url %}
+
+{% if contentImage1CtaLink|length %}
+	{% set ctaHref = contentImage1CtaLink.one.url %}
+{% else %}
+	{% set ctaHref = contentImage1CtaUrl %}
+{% endif %}
+
+{# Output #}
 <section data-component data-content-image-1>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if contentImage1SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
+
+					<h2 class="section-title">{{ contentImage1SectionTitle }}</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="grid-x grid-margin-x">
 
 			<div class="cell small-12 large-6 large-offset-6 image-cell">
-				<img class="image" src="https://via.placeholder.com/570x500">
+				<img class="image" src="{{ imageUrl }}">
 			</div>
 
-			<div class="cell small-12 large-10">
-				<h2 class="heading">West Bay 2727 is a mixed-use development project on a 12-acre East Boston Waterfront site overlooking Boston Harbor.</h2>
-			</div>
+		</div>
 
-			<div class="cell small-12 large-6">
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
-				<p>
-					The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space.
-				</p>
-				<div class="cta">
-					<a href="#" class="button button-square button-black">Optional Button</a>
+		<div class="text-grid-wrap">
+
+			<div class="grid-x grid-margin-x">
+
+				<div class="cell small-12 large-10">
+					<h2 class="heading">{{ contentImage1HeadingText }}</h2>
 				</div>
+
+				<div class="cell small-12 large-6">
+
+					{{ contentImage1TextContent }}
+
+					{% if contentImage1CtaText != '' %}
+
+						<div class="cta">
+							<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentImage1CtaText }}</a>
+						</div>
+
+					{% endif %}
+
+				</div>
+
 			</div>
 
 		</div>

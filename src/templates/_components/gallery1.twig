@@ -1,81 +1,55 @@
-<section data-component data-gallery-1>
+{#
 
+	Gallery 1
+
+	@param {matrix} gallery1ImageSlides
+		[
+			imageSlide:
+			[
+				image {asset - image - max 1}
+				headingText {plain text}
+				textContent {redactor}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set gallery1ImageSlides = params.gallery1ImageSlides ?? null %}
+
+{# Variables #}
+{%
+	set imgResize = {
+		mode: 'crop',
+		width: 445,
+		height: 360
+	}
+%}
+
+{# Output #}
+<section data-component data-gallery-1>
 
 		<div class="slick-slider">
 
+			{% for imageSlide in gallery1ImageSlides %}
 
+				{% set imageUrl = craft.imager.transformImage(imageSlide.image.one, imgResize).url %}
 
+				<div class="gallery-item">
 
-			<div class="gallery-item">
+					<div class="image">
+						<img src="{{ imageUrl }}">
+					</div>
 
-				<div class="image">
-					<img src="https://via.placeholder.com/445x360">
+					<div class="content">
+						<h3>{{ imageSlide.headingText }}</h3>
+						{{ imageSlide.textContent }}
+					</div>
+
 				</div>
 
-				<div class="content">
-					<h3>Mixed-use development project in Boston</h3>
-					<p>
-						The project would have four buildings total and will feature 478 residences.
-					</p>
-				</div>
-
-			</div>
-
-
-
-			<div class="gallery-item">
-
-				<div class="image">
-					<img src="https://via.placeholder.com/445x360">
-				</div>
-
-				<div class="content">
-					<h3>Mixed-use development project in Boston</h3>
-					<p>
-						The project would have four buildings total and will feature 478 residences.
-					</p>
-				</div>
-
-			</div>
-
-
-
-			<div class="gallery-item">
-
-				<div class="image">
-					<img src="https://via.placeholder.com/445x360">
-				</div>
-
-				<div class="content">
-					<h3>Mixed-use development project in Boston</h3>
-					<p>
-						The project would have four buildings total and will feature 478 residences.
-					</p>
-				</div>
-
-			</div>
-
-
-
-			<div class="gallery-item">
-
-				<div class="image">
-					<img src="https://via.placeholder.com/445x360">
-				</div>
-
-				<div class="content">
-					<h3>Mixed-use development project in Boston</h3>
-					<p>
-						The project would have four buildings total and will feature 478 residences.
-					</p>
-				</div>
-
-			</div>
-
-
-
+			{% endfor %}
 
 		</div>
-
 
 </section>

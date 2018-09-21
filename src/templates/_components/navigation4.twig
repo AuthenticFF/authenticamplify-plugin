@@ -1,4 +1,39 @@
-<section class="navigation {#hero-overlay#}" data-navigation-4>
+{#
+
+	Navigation 4
+
+	@param {asset - image - max 1} nav4LogoImage
+	@param {string} nav4NextBlockType
+
+#}
+
+{# Parameters #}
+{% set nav3LogoImage = params.nav3LogoImage ?? null %}
+{% set nav3NextBlockType = params.nav3NextBlockType ?? '' %}
+
+{# Variables #}
+{% set logoImgAsset = nav4LogoImage.one %}
+{%
+	set logoResize = {
+		mode: 'fit',
+		width: 84,
+		height: 84
+	}
+%}
+{% set logoImageUrl = craft.imager.transformImage(logoImgAsset, logoResize).url %}
+
+{% 
+	if nav4NextBlockType|lower == 'hero1'
+	or nav4NextBlockType|lower == 'hero2'
+	or nav4NextBlockType|lower == 'hero3'
+%}
+	{% set heroOverlay = true %}
+{% else %}
+	{% set heroOverlay = false %}
+{% endif %}
+
+{# Output #}
+<section class="navigation{% if heroOverlay %} hero-overlay{% endif %}" data-navigation-4>
 
 	<div class="grid-container">
 
@@ -6,10 +41,7 @@
 
 			<div class="logo-bar cell small-6 large-3">
 
-				{# hero overlay #}
-				{#<a href="/" class="logo"><img src="/assets/images/west-bay-logo-white.svg" ></a>#}
-				{# not hero overlay #}
-				<a href="/" class="logo"><img src="/assets/images/west-bay-logo-black.svg" ></a>
+				<a href="/" class="logo"><img src="{{ logoImageUrl }}" alt="logo"></a>
 
 			</div>
 
@@ -17,15 +49,15 @@
 
 				<ul>
 
-					{% include "_includes/site-nav" %}
+					{% include "authenticamplify/_includes/site-nav" %}
 
 				</ul>
 
 				<div class="social-links">
-					{# not hero overlay #}
-					<a href="#"><img src="/assets/images/social-icon-instagram-black.svg"></a>
-					{# hero overlay #}
-					{#<a href="#"><img src="/assets/images/social-icon-instagram.svg"></a>#}
+					
+					{%
+						include 'authenticamplify/_includes/social-links'
+					%}
 
 				</div>
 

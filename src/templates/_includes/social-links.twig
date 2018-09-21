@@ -1,0 +1,32 @@
+{#
+
+	Social Links
+
+	uses global ampGlobSocialNetworks
+		[
+			socialLink:
+			[
+				socialNetwork {dropdown}
+					[
+						twitter
+						facebook
+						wikipedia
+						linkedin
+						google
+						youtube
+						instagram
+						pinterest
+						github
+						vimeo
+					]
+				socialLinkUrl {plain text}
+			]
+		]
+#}
+
+{# Output #}
+{% for socialLink in siteHeader.ampGlobSocialNetworks %}
+
+	<a href="{{ socialLink.socialLinkUrl }}"><span class="icon social {{ socialLink.socialNetwork }}">{{ socialLink.socialNetwork }}</span></a>
+
+{% endfor %}

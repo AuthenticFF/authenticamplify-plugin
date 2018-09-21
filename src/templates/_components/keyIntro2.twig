@@ -1,3 +1,57 @@
+{#
+
+	Key + Intro 2
+
+	@param {plain text} ampKeyIntro2HeadingText
+	@param {redactor} ampKeyIntro2TextContent
+	@param {lightswitch} ampKeyIntro2ShowSupportBtn
+	@param {plain text} ampKeyIntro2ShowSupportButtonText
+	@param {neo blocks} ampKeyIntro2InfoSections
+		[
+			ampKeyIntroInfoSectionHeading {plain text}
+			ampKeyIntroInfoItems {matrix}
+			[
+				textItem:
+				[
+					titleText {plain text}
+					infoText {plain text}
+				]
+				linkItem:
+				[
+					titleText {plain text}
+					linkText {plain text}
+					linkUrl {plain text}
+				]
+				assetItem:
+				[
+					titleText {plain text}
+					assetLinkText {plain text}
+					assetFile {asset - max 1}
+				]
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set ampKeyIntro2HeadingText = params.ampKeyIntro2HeadingText ?? '' %}
+{% set ampKeyIntro2TextContent = params.ampKeyIntro2TextContent ?? '' %}
+{% set ampKeyIntro2ShowSupportBtn = params.ampKeyIntro2ShowSupportBtn ?? false %}
+{% set ampKeyIntro2ShowSupportButtonText = params.ampKeyIntro2ShowSupportButtonText ?? 'Show Your Support' %}
+{% set ampKeyIntro2InfoSections = params.ampKeyIntro2InfoSections ?? null %}
+
+{# Variables #}
+{% if ampKeyIntro2ShowSupportButtonText != '' %}
+	{% set supportBtnText = ampKeyIntro2ShowSupportButtonText %}
+{% else %}
+	{% set supportBtnText = 'Show Your Support' %}
+{% endif %}
+
+{% do craft.upvote.setIcons({
+    up   : '<button class="button button-square button-black show-support-btn" type="button">' ~ supportBtnText ~ '</button>',
+}) %}
+
+{# Output #}
 <section data-component data-key-intro-2>
 
 	<div class="grid-container">
@@ -6,37 +60,37 @@
 
 			<div class="cell small-12 medium-9 large-7 large-offset-1">
 
-				<h2 class="heading">West Bay 2727 is a mixed-use development project on a 12-acre East Boston Waterfront site overlooking Boston Harbor.</h2>
+				<h2 class="heading">{{ ampKeyIntro2HeadingText }}</h2>
 
 			</div>
 
 		</div>
 
-
 		<div class="grid-x">
 
 			<div class="cell small-12 medium-7 large-5 large-offset-1">
 
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
-
-				<p>
-					Residences will include 398 apartments and 80 condominiums, including studios, one-bedrooms and two-bedrooms. Phase 1 will construct two buildings containing 284 rental apartments and one building containing 80 condominiums.
-				</p>
+				{{ ampKeyIntro2TextContent }}
 
 			</div>
 
-			<div class="cell small-12 medium-5 large-3 large-offset-1">
+			{% if ampKeyIntro2ShowSupportBtn %}
 
-				<div class="cta-row">
-					<button class="button button-square button-black show-support-btn" type="button">Show Your Support</button>
-					<div class="current-support">
-						147 Current Supporters
+				<div class="cell small-12 medium-5 large-3 large-offset-1">
+
+					<div class="cta-row">
+						
+						{{ craft.upvote.upvote('1') }}
+
+						<div class="current-support">
+							{{ craft.upvote.tally('1') }} Current Supporters
+						</div>
+						
 					</div>
+
 				</div>
 
-			</div>
+			{% endif %}
 
 			<div class="cell small-12 medium-9 large-8 large-offset-1">
 				<hr>
@@ -44,88 +98,56 @@
 
 		</div>
 
-
-
-
-
 		<div class="grid-x">
 
 			<div class="cell small-12 large-11 large-offset-1">
 
 				<div class="grid-x">
 
-					<div class="cell small-12 medium-auto table-cell">
+					{% for infoSection in ampKeyIntro2InfoSections %}
 
-						<h3 class="key-heading">Key Information</h3>
+						<div class="cell small-12 medium-auto table-cell">
 
-						<table class="info-table">
-							<tr>
-								<td>Dollar Volume</td>
-								<td>$225,000,000</td>
-							</tr>
-							<tr>
-								<td>Square Feet</td>
-								<td>555,000</td>
-							</tr>
-							<tr>
-								<td>Type</td>
-								<td>Housing, Retail, Open Space</td>
-							</tr>
-							<tr>
-								<td>Stories</td>
-								<td>6</td>
-							</tr>
-							<tr>
-								<td>Height (feet)</td>
-								<td>70</td>
-							</tr>
-							<tr>
-								<td>Proposed Start Date</td>
-								<td>May, 2018</td>
-							</tr>
-							<tr>
-								<td>Completion Date</td>
-								<td>Fall, 2020</td>
-							</tr>
-						</table>
+							<h3 class="key-heading">{{ infoSection.ampKeyIntroInfoSectionHeading }}</h3>
 
-					</div>
+							<table class="info-table">
 
-					<div class="cell small-12 medium-auto table-cell">
+								{% for infoRow in infoSection.ampKeyIntroInfoItems %}
 
+									{% if infoRow.type == 'textItem' %}
 
-						<h3 class="key-heading">Project Plan Downloads</h3>
+										<tr>
+											<td>{{ infoRow.titleText }}</td>
+											<td>{{ infoRow.infoText }}</td>
+										</tr>
 
-						<table  class="info-table">
-							<tr>
-								<td>Site Plan</td>
-								<td>
-									<a class="project-plan-link" href="#">PDF</a>
-									<a class="project-plan-link" href="#">Word</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Rendering Packet</td>
-								<td>
-									<a class="project-plan-link" href="#">PDF</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Brochure</td>
-								<td>
-									<a class="project-plan-link" href="#">PDF</a>
-									<a class="project-plan-link" href="#">EPS</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Amenities Overview</td>
-								<td>
-									<a class="project-plan-link" href="#">PDF</a>
-								</td>
-							</tr>
-						</table>
+									{% elseif infoRow.type == 'linkItem' %}
 
-					</div>
+										<tr>
+											<td>{{ infoRow.titleText }}</td>
+											<td>
+												<a class="project-plan-link" href="{{ infoRow.linkUrl }}">{{ infoRow.linkText }}</a>
+											</td>
+										</tr>
+
+									{% elseif infoRow.type == 'assetItem' %}
+
+										<tr>
+											<td>{{ infoRow.titleText }}</td>
+											<td>
+												<a target="_blank" class="project-plan-link" href="{{ infoRow.assetFile.one.url }}">{{ infoRow.assetLinkText }}</a>
+											</td>
+										</tr>
+
+									{% endif %}
+
+								{% endfor %}
+
+							</table>
+
+						</div>
+
+					{% endfor %}
 
 				</div>
 
