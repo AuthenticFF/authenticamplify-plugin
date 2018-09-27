@@ -4,17 +4,19 @@
 
 {% block content %}
 
-	{%
-		include 'authenticamplify/_includes/_neoFields'
-	%}
+	{% for block in entry.pageContent.level(1) %}
 
-	{#
-	{{
-		renderComponent.hero5({
+		{%
+			include 'authenticamplify/_includes/_neoFields'
+		%}
 
-		})
-	}}
-	#}
+		{%
+			include '_includes/_neoFields'
+		%}
+
+	{% endfor %}
+
+
 
 	<script>
 	  var template = 'page';
