@@ -1,3 +1,28 @@
+{#
+
+	CTA Email 2
+
+	@param {plain text} ctaEmail2HeadingText
+	@param {redactor} ctaEmail2TextContent
+	@param {plain text} ctaEmail2PlaceholderText
+	@param {plain text} ctaEmail2SubmitButtonText
+
+#}
+
+{# Parameters #}
+{% set ctaEmail2HeadingText = params.ctaEmail2HeadingText ?? '' %}
+{% set ctaEmail2TextContent = params.ctaEmail2TextContent ?? '' %}
+{% set ctaEmail2PlaceholderText = params.ctaEmail2PlaceholderText ?? '' %}
+{% set ctaEmail2SubmitButtonText = params.ctaEmail2SubmitButtonText ?? '' %}
+
+{# Variables #}
+{% if ctaEmail2SubmitButtonText == '' %}
+		{% set submitBtnText = 'Submit' %}
+{% else %}
+	{% set submitBtnText = ctaEmail2SubmitButtonText %}
+{% endif %}
+
+{# Output #}
 <section data-component data-cta-email-2>
 
 	<div class="grid-container">
@@ -6,17 +31,15 @@
 
 			<div class="cell small-12 medium-10 medium-offset-1 large-8 large-offset-0">
 
-				<h2 class="heading">Stay Tuned Eastern Waterfront Property in Boston Harbor</h2>
+				<h2 class="heading">{{ ctaEmail2HeadingText }}</h2>
 
-				<p>
-					The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space.
-				</p>
+				{{ ctaEmail2TextContent }}
 
 				<form>
 					<div class="input-wrap">
-						<input type="email" name="email">
+						<input type="email" name="email" placeholder="{{ ctaEmail2PlaceholderText }}">
 					</div>
-					<input class="button button-square button-black" type="submit" value="Submit">
+					<input class="button button-square button-black" type="submit" value="{{ submitBtnText }}">
 				</form>
 
 			</div>

@@ -1,3 +1,28 @@
+{#
+
+	CTA Email 1
+
+	@param {plain text} ctaEmail1HeadingText
+	@param {redactor} ctaEmail1TextContent
+	@param {plain text} ctaEmail1PlaceholderText
+	@param {plain text} ctaEmail1SubmitButtonText
+
+#}
+
+{# Parameters #}
+{% set ctaEmail1HeadingText = params.ctaEmail1HeadingText ?? '' %}
+{% set ctaEmail1TextContent = params.ctaEmail1TextContent ?? '' %}
+{% set ctaEmail1PlaceholderText = params.ctaEmail1PlaceholderText ?? '' %}
+{% set ctaEmail1SubmitButtonText = params.ctaEmail1SubmitButtonText ?? '' %}
+
+{# Variables #}
+{% if ctaEmail1SubmitButtonText == '' %}
+		{% set submitBtnText = 'Submit' %}
+{% else %}
+	{% set submitBtnText = ctaEmail1SubmitButtonText %}
+{% endif %}
+
+{# Output #}
 <section data-component data-cta-email-1>
 
 	<div class="grid-container">
@@ -6,21 +31,27 @@
 
 			<div class="cell small-12 medium-10 medium-offset-1 large-4 large-offset-0 left">
 
-				<h2 class="heading">Eastern Waterfront in Boston Harbor Coming 2020</h2>
+				<h2 class="heading">{{ ctaEmail1HeadingText }}</h2>
 
 			</div>
 
 			<div class="cell small-12 medium-10 medium-offset-1 large-7 large-offset-0 right">
+				
+				{% if ctaEmail1TextContent != '' %}
 
-				<p>
-					The under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space. The under-construction project would have four buildings.
-				</p>
+					<div class="text-content">
+
+						{{ ctaEmail1TextContent }}
+
+					</div>
+
+				{% endif %}
 
 				<form>
 					<div class="input-wrap">
-						<input type="email" name="email">
+						<input type="email" name="email" placeholder="{{ ctaEmail1PlaceholderText }}">
 					</div>
-					<input class="button button-square button-black" type="submit" value="Submit">
+					<input class="button button-square button-black" type="submit" value="{{ submitBtnText }}">
 				</form>
 
 			</div>
