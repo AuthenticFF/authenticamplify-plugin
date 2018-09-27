@@ -1,38 +1,58 @@
+{#
+
+	Stats 3
+
+	@param {plain text} stats3SectionTitle
+	@param {plain text} stats3HeadingText
+	@param {redactor} stats3TextContent
+	@param {matrix} stats3stats
+		[
+			stat:
+			[
+				number {plain text}
+				statTitle {plain text}
+				text {plain text}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set stats3SectionTitle = params.stats3SectionTitle ?? '' %}
+{% set stats3HeadingText = params.stats3HeadingText ?? '' %}
+{% set stats3TextContent = params.stats3TextContent ?? '' %}
+{% set stats3stats = params.stats3stats ?? null %}
+
+{# Output #}
 <section data-stats-3 data-component>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if stats3SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
+
+					<h2 class="section-title">{{ stats3SectionTitle }}</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="grid-x top-row">
 
 			<div class="cell small-12 large-4">
 
-				<h3 class="component-title">Integrating 10% of our community feedback at a minimum.</h3>
+				<h3 class="component-title">{{ stats3HeadingText }}</h3>
 
 			</div>
 
 			<div class="cell small-12 large-8 text-content">
 
-				<p>
-					Taking all factors into account, we’ve imagined West Bay 2727 with the community in mind first and foremost. Knowing the unique culture, weather, and proximity to water that Boston has, we need to hear from you.
-				</p>
-
-				<p>
-					But we want to know more. Explore the location on the map below, provide your thoughts, and add to the conversation.
-				</p>
-
-				<p>
-					We can’t wait to hear what you have to say, and we hope to integrate community feedback into our final plans.
-				</p>
+				{{ stats3TextContent }}
 
 			</div>
 
@@ -44,45 +64,19 @@
 
 				<div class="grid-x small-up-1 medium-up-2">
 
-					<div class="cell stat-item">
+					{% for stat in stats3stats %}
 
-						<div class="number">$225,000</div>
+						<div class="cell stat-item">
 
-						<div class="title">Anticipated through local taxes</div>
+							<div class="number">{{ stat.number }}</div>
 
-						<div class="subtext">Taking all factors into account, we’ve imagined West Bay 2727 with the community in mind first and foremost. Knowing the unique culture, weather, and proximity to water that Boston has, we need to hear from you.</div>
+							<div class="title">{{ stat.statTitle }}</div>
 
-					</div>
+							<div class="subtext">{{ stat.text }}</div>
 
-					<div class="cell stat-item">
+						</div>
 
-						<div class="number">8,500 sq. ft.</div>
-
-						<div class="title">New parks and open spaces</div>
-
-						<div class="subtext">Taking all factors into account, we’ve imagined West Bay 2727 with the community in mind first and foremost. Knowing the unique culture, weather, and proximity to water that Boston has, we need to hear from you.</div>
-
-					</div>
-
-					<div class="cell stat-item">
-
-						<div class="number">75 affordable units</div>
-
-						<div class="title">Built with the whole community in mind</div>
-
-						<div class="subtext">Taking all factors into account, we’ve imagined West Bay 2727 with the community in mind first and foremost. Knowing the unique culture, weather, and proximity to water that Boston has, we need to hear from you.</div>
-
-					</div>
-
-					<div class="cell stat-item">
-
-						<div class="number">500k in energy credits</div>
-
-						<div class="title">Sending back to the energy grid</div>
-
-						<div class="subtext">Taking all factors into account, we’ve imagined West Bay 2727 with the community in mind first and foremost. Knowing the unique culture, weather, and proximity to water that Boston has, we need to hear from you.</div>
-
-					</div>
+					{% endfor %}
 
 				</div>
 

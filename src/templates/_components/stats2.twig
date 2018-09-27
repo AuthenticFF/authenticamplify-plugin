@@ -1,38 +1,58 @@
+{#
+
+	Stats 2
+
+	@param {plain text} stats2SectionTitle
+	@param {plain text} stats2HeadingText
+	@param {redactor} stats2TextContent
+	@param {matrix} stats2stats
+		[
+			stat:
+			[
+				number {plain text}
+				statTitle {plain text}
+				text {plain text}
+			]
+		]
+
+#}
+
+{# Parameters #}
+{% set stats2SectionTitle = params.stats2SectionTitle ?? '' %}
+{% set stats2HeadingText = params.stats2HeadingText ?? '' %}
+{% set stats2TextContent = params.stats2TextContent ?? '' %}
+{% set stats2stats = params.stats2stats ?? null %}
+
+{# Output #}
 <section data-stats-2 data-component>
 
 	<div class="grid-container">
 
-		<div class="grid-x">
+		{% if stats2SectionTitle != '' %}
 
-			<div class="cell small-12">
+			<div class="grid-x">
 
-				<h2 class="section-title">Section Title</h2>
+				<div class="cell small-12">
+
+					<h2 class="section-title">{{ stats2SectionTitle }}</h2>
+
+				</div>
 
 			</div>
 
-		</div>
+		{% endif %}
 
 		<div class="grid-x top-row">
 
 			<div class="cell small-12 large-5">
 
-				<h3 class="component-title">Committed to integrating 10% minimum of collective community feedback.</h3>
+				<h3 class="component-title">{{ stats2HeadingText }}</h3>
 
 			</div>
 
 			<div class="cell small-12 large-7 text-content">
 
-				<p>
-					Taking all factors into account, we’ve imagined West Bay 2727 with the community in mind first and foremost. Knowing the unique culture, weather, and proximity to water that Boston has, we need to hear from you.
-				</p>
-
-				<p>
-					But we want to know more. Explore the location on the map below, provide your thoughts, and add to the conversation.
-				</p>
-
-				<p>
-					We can’t wait to hear what you have to say, and we hope to integrate community feedback into our final plans.
-				</p>
+				{{ stats2TextContent }}
 
 			</div>
 
@@ -44,45 +64,19 @@
 
 				<div class="grid-x small-up-1 medium-up-2 large-up-4">
 
-					<div class="cell stat-item">
+					{% for stat in stats2stats %}
 
-						<div class="number">225k</div>
+						<div class="cell stat-item">
 
-						<div class="title">Anticipated through local taxes</div>
+							<div class="number">{{ stat.number }}</div>
 
-						<div class="subtext">We estimate $225k of annual revenue being generated through tax revenue.</div>
+							<div class="title">{{ stat.statTitle }}</div>
 
-					</div>
+							<div class="subtext">{{ stat.text }}</div>
 
-					<div class="cell stat-item">
+						</div>
 
-						<div class="number">500k</div>
-
-						<div class="title">Sending back to the energy grid</div>
-
-						<div class="subtext">All buildings will be certified LEED Gold returning an estimated $500k yearly to the grid.</div>
-
-					</div>
-
-					<div class="cell stat-item">
-
-						<div class="number">75</div>
-
-						<div class="title">Built with the whole community in mind</div>
-
-						<div class="subtext">We will integrate 75 affordable units within the greater 2727 campus to ensure economic flexibility.</div>
-
-					</div>
-
-					<div class="cell stat-item">
-
-						<div class="number">8,500</div>
-
-						<div class="title">New parks and open spaces</div>
-
-						<div class="subtext">The development will create new parks and open spaces covering 8,500 sq ft of land area.</div>
-
-					</div>
+					{% endfor %}
 
 				</div>
 
