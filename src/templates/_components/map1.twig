@@ -1,3 +1,17 @@
+{#
+
+	Map 1
+
+	@param {plain text} map1HeadingText
+	@param {redactor} map1TextContent
+
+#}
+
+{# Parameters #}
+{% set map1HeadingText = params.map1HeadingText ?? '' %}
+{% set map1TextContent = params.map1TextContent ?? '' %}
+
+{# Output #}
 <section data-component data-map-1>
 
 	<div class="grid-container">
@@ -17,11 +31,9 @@
 
 			<div class="cell small-12 medium-9 large-8">
 
-				<h2 class="heading">Mixed-use development project in Boston along the classic waterfront</h2>
+				<h2 class="heading">{{ map1HeadingText }}</h2>
 
-				<p>
-					Opening Fall 2020, the under-construction project would have four buildings total and will feature 478 residences with approximately 30,200 square feet of retail and community space, including a cafe and a restaurant.
-				</p>
+				{{ map1TextContent }}
 
 			</div>
 
