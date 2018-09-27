@@ -10,6 +10,8 @@
 
 namespace authenticff\authenticamplify;
 
+use authenticff\authenticamplify\integrations\sproutforms\formtemplates\AmplifySproutformTemplates;
+use barrelstrength\sproutforms\services\Forms;
 use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
@@ -97,6 +99,10 @@ class AuthenticAmplify extends Plugin
             $event->roots['authenticamplify'] = __DIR__ . '/templates';
           }
         );
+
+        Event::on(Forms::class, Forms::EVENT_REGISTER_FORM_TEMPLATES, function(RegisterComponentTypesEvent $event) {
+          $event->types[] = AmplifySproutformTemplates::class;
+        });
 
 /**
  * Logging in Craft involves using one of the following methods:
