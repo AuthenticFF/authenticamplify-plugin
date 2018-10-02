@@ -590,13 +590,13 @@
         timeline2TimelineItems: block.ampTimelineItems
       })
     }}
-
+{#
   {% default %}
 
     <p>
       MISSING COMPONENT {{ block.type.handle }}
     </p>
-
+#}
   {# end cases #}
 
 {% endswitch %}
