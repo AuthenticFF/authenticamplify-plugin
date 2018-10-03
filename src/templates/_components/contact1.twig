@@ -19,6 +19,13 @@
 {% set contact1FormSide = params.contact1FormSide ?? 'right' %}
 {% set contact1FormHandle = params.contact1FormHandle ?? '' %}
 
+{# Variables #}
+{% if contact1HeadingText == '' and contact1TextContent == '' %}
+	{% set noText = true %}
+{% else %}
+	{% set noText = false %}
+{% endif %}
+
 {# Output #}
 <section data-component data-contact-1 class="form-left">
 
@@ -26,7 +33,7 @@
 
 		<div class="grid-x grid-margin-x">
 
-			{% if contact1FormSide == 'right' %}
+			{% if contact1FormSide == 'right' and not noText %}
 
 				<div class="cell small-12 large-7 text-content">
 
@@ -38,13 +45,13 @@
 
 			{% endif %}
 
-			<div class="cell small-12 large-5 form-cell">
+			<div class="cell small-12 large-5 form-cell{% if noText %} large-offset-3{% endif %}">
 
 				{{ craft.sproutForms.displayForm( contact1FormHandle ) }}
 
 			</div>
 
-			{% if contact1FormSide == 'left' %}
+			{% if contact1FormSide == 'left' and not noText %}
 
 				<div class="cell small-12 large-7 text-content">
 
