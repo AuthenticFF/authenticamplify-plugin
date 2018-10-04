@@ -29,72 +29,92 @@
 {# Output #}
 <section data-component data-gallery-3>
 
-	<div class="slider Wallop Wallop--slide gallery-left">
-						
-		<div class="Wallop-list">
+	<div class="sliders-wrapper">
 
-			{% for imageSlide in gallery3WideImageSlides %}
+		<div class="slider Wallop Wallop--slide gallery-left">
+							
+			<div class="Wallop-list">
 
-				{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
+				{% for imageSlide in gallery3WideImageSlides %}
 
-				<div class="Wallop-item gallery-slide{% if loop.last %} Wallop-item--current{% endif %}">
+					{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
 
-					<img src="{{ imageUrl }}">
+					<div class="Wallop-item gallery-slide{% if loop.last %} Wallop-item--current{% endif %}">
 
-				</div>
-
-			{% endfor %}
-
-		</div>
-
-	</div>
-
-	<div class="grid-container">
-
-		<div class="grid-x grid-margin-x" data-equalizer data-equalize-on="large">
-
-			<div class="cell small-12 large-6 large-offset-1">
-
-				<div class="slider Wallop Wallop--slide gallery-main" data-slide-count="{{ gallery3WideImageSlides|length }}">
-						
-					<div class="Wallop-list">
-
-						{% for imageSlide in gallery3WideImageSlides %}
-
-							{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
-
-							<div class="Wallop-item gallery-slide{% if loop.first %} Wallop-item--current{% endif %}" data-equalizer-watch>
-
-								<img src="{{ imageUrl }}">
-
-							</div>
-
-						{% endfor %}
+						<img src="{{ imageUrl }}">
 
 					</div>
 
-				</div>
+				{% endfor %}
 
 			</div>
 
-			<div class="cell small-12 large-4 gallery-content-cell">
+		</div>
 
-				<div class="slider Wallop Wallop--fade gallery-content">
+		<div class="grid-container">
 
-					<div class="Wallop-list">
+			<div class="grid-x grid-margin-x" data-equalizer data-equalize-on="large">
 
-						{% for imageSlide in gallery3WideImageSlides %}
+				<div class="cell small-12 large-6 large-offset-1">
 
-							<div class="Wallop-item content{% if loop.first %} Wallop-item--current{% endif %}" data-equalizer-watch>
+					<div class="slider Wallop Wallop--slide gallery-main" data-slide-count="{{ gallery3WideImageSlides|length }}">
+							
+						<div class="Wallop-list">
 
-								<h2 class="heading">{{ imageSlide.headingText }}</h2>
+							{% for imageSlide in gallery3WideImageSlides %}
 
-								<div class="text">
-									{{ imageSlide.textContent }}
+								{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
+
+								<div class="Wallop-item gallery-slide{% if loop.first %} Wallop-item--current{% endif %}" data-equalizer-watch>
+
+									<img src="{{ imageUrl }}">
+
 								</div>
 
-							</div>
+							{% endfor %}
 
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="cell small-12 large-4 gallery-content-cell">
+
+					<div class="slider Wallop Wallop--fade gallery-content">
+
+						<div class="Wallop-list">
+
+							{% for imageSlide in gallery3WideImageSlides %}
+
+								<div class="Wallop-item content{% if loop.first %} Wallop-item--current{% endif %}" data-equalizer-watch>
+
+									<h2 class="heading">{{ imageSlide.headingText }}</h2>
+
+									<div class="text">
+										{{ imageSlide.textContent }}
+									</div>
+
+								</div>
+
+							{% endfor %}
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="grid-x">
+
+				<div class="cell small-12 large-10 large-offset-1">
+
+					<div class="slider-dots-nav">
+
+						{% for i in range(0, gallery3WideImageSlides|length - 1) %}
+							<span data-slide-index="{{ i }}"></span>
 						{% endfor %}
 
 					</div>
@@ -105,39 +125,23 @@
 
 		</div>
 
-		<div class="grid-x">
+		<div class="slider Wallop Wallop--slide gallery-right">
+							
+			<div class="Wallop-list">
 
-			<div class="cell small-12 large-10 large-offset-1">
+				{% for imageSlide in gallery3WideImageSlides %}
 
-				<div class="slider-dots-nav">
+					{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
 
-					{% for i in range(0, gallery3WideImageSlides|length - 1) %}
-						<span data-slide-index="{{ i }}"></span>
-					{% endfor %}
+					<div class="Wallop-item gallery-slide{% if loop.index == 2 %} Wallop-item--current{% endif %}">
 
-				</div>
+						<img src="{{ imageUrl }}">
+
+					</div>
+
+				{% endfor %}
 
 			</div>
-
-		</div>
-
-	</div>
-
-	<div class="slider Wallop Wallop--slide gallery-right">
-						
-		<div class="Wallop-list">
-
-			{% for imageSlide in gallery3WideImageSlides %}
-
-				{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
-
-				<div class="Wallop-item gallery-slide{% if loop.index == 2 %} Wallop-item--current{% endif %}">
-
-					<img src="{{ imageUrl }}">
-
-				</div>
-
-			{% endfor %}
 
 		</div>
 
