@@ -3,21 +3,20 @@
 	Modal AR 1
 
 	@param {plain text} modalAr1HeadingText
-	@param {matrix} modalAr1Steps
-		[
-			step:
-			[
-				image {asset - images - max 1}
-				stepText {plain text}
-			]
-		]
+	@param {asset - image - max 1} modalArStep1Image
+	@param {plain text} modalArStep1Text
+	@param {plain text} modalArStep2Token
+	@param {plain text} modalArStep2Text
 	@param {plain text} modalAr1FinePrint
 
 #}
 
 {# Parameters #}
 {% set modalAr1HeadingText = params.modalAr1HeadingText ?? '' %}
-{% set modalAr1Steps = params.modalAr1Steps ?? null %}
+{% set modalArStep1Image = params.modalArStep1Image ?? null %}
+{% set modalArStep1Text = params.modalArStep1Text ?? '' %}
+{% set modalArStep2Token = params.modalArStep2Token ?? '' %}
+{% set modalArStep2Text = params.modalArStep2Text ?? '' %}
 {% set modalAr1FinePrint = params.modalAr1FinePrint ?? '' %}
 
 {# Variables #}
@@ -40,25 +39,39 @@
 
 		<div class="steps">
 
-			{% for step in modalAr1Steps %}
+			{# step 1 #}
 
-				{% set stepImageUrl = craft.imager.transformImage(step.image.one, stepImgResize).url %}
+			{% set stepImageUrl = craft.imager.transformImage(modalArStep1Image.one, stepImgResize).url %}
 
-				<div class="step">
+			<div class="step">
 
-					<div class="image">
-						<img src="{{ stepImageUrl }}">
-					</div>
-
-					<div class="instructions">
-						<p>
-							<strong>Step {{ loop.index }}</strong> - {{ step.stepText }}
-						</p>
-					</div>
-
+				<div class="image">
+					<img src="{{ stepImageUrl }}">
 				</div>
 
-			{% endfor %}
+				<div class="instructions">
+					<p>
+						<strong>Step 1</strong> - {{ modalArStep1Text }}
+					</p>
+				</div>
+
+			</div>
+
+			{# step 2 #}
+
+			<div class="step">
+
+				<div class="qrcode js_qrcode" data-token="{{ modalArStep2Token }}">
+					<canvas></canvas>
+				</div>
+
+				<div class="instructions">
+					<p>
+						<strong>Step 2</strong> - {{ modalArStep2Text }}
+					</p>
+				</div>
+
+			</div>
 
 		</div>
 
