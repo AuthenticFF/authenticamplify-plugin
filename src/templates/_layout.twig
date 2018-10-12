@@ -54,6 +54,14 @@
   {% block content %}
   {% endblock %}
 
+  {% for token in craft.entries.section('expTokens') %}
+    {%
+      include 'authenticamplify/_components/modalAr1' with {
+        'modalArToken': token.expTokenToken
+      }
+    %}
+  {% endfor %}
+
   {% include "authenticamplify/_components/mobileNavOverlay" %}
 
   <script>

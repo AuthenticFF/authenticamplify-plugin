@@ -2,56 +2,35 @@
 
 	Modal AR 1
 
-	@param {plain text} modalAr1HeadingText
-	@param {asset - image - max 1} modalArStep1Image
-	@param {plain text} modalArStep1Text
-	@param {plain text} modalArStep2Token
-	@param {plain text} modalArStep2Text
-	@param {plain text} modalAr1FinePrint
+	@param {plain text} modalArToken
 
 #}
 
 {# Parameters #}
-{% set modalAr1HeadingText = params.modalAr1HeadingText ?? '' %}
-{% set modalArStep1Image = params.modalArStep1Image ?? null %}
-{% set modalArStep1Text = params.modalArStep1Text ?? '' %}
-{% set modalArStep2Token = params.modalArStep2Token ?? '' %}
-{% set modalArStep2Text = params.modalArStep2Text ?? '' %}
-{% set modalAr1FinePrint = params.modalAr1FinePrint ?? '' %}
-
-{# Variables #}
-{%
-	set stepImgResize = {
-		mode: 'fit',
-		width: 120,
-		height: 120
-	}
-%}
+{% set modalArToken = modalArToken ?? '' %}
 
 {# Output #}
-<section data-modal-ar-1>
+<section data-modal-ar-1 data-token="{{ modalArToken }}">
 
 	<div class="background-overlay"></div>
 
 	<div class="modal">
 
-		<h2 class="heading">{{ modalAr1HeadingText }}</h2>
+		<h2 class="heading">Experience this project from your phone or tablet in Augmented Reality (AR)</h2>
 
 		<div class="steps">
 
 			{# step 1 #}
 
-			{% set stepImageUrl = craft.imager.transformImage(modalArStep1Image.one, stepImgResize).url %}
-
 			<div class="step">
 
 				<div class="image">
-					<img src="{{ stepImageUrl }}">
+					<img src="/assets/images/icon-ar.png">
 				</div>
 
 				<div class="instructions">
 					<p>
-						<strong>Step 1</strong> - {{ modalArStep1Text }}
+						<strong>Step 1</strong> - Download the Authentic AR app from the Apple App Store.
 					</p>
 				</div>
 
@@ -61,13 +40,13 @@
 
 			<div class="step">
 
-				<div class="qrcode js_qrcode" data-token="{{ modalArStep2Token }}">
+				<div class="qrcode js_qrcode">
 					<canvas></canvas>
 				</div>
 
 				<div class="instructions">
 					<p>
-						<strong>Step 2</strong> - {{ modalArStep2Text }}
+						<strong>Step 2</strong> - Scan the QR code to access the project experiences.
 					</p>
 				</div>
 
@@ -76,7 +55,7 @@
 		</div>
 
 		<div class="fine-print">
-			{{ modalAr1FinePrint }}
+			Requirements: an Apple smart device to download and run the Authentic AR app.
 		</div>
 
 	</div>
