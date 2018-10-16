@@ -20,11 +20,7 @@
 {# output #}
 {% for link in navLinks %}
 
-	{% if link.linkEntry|length %}
-		{% set linkUrl = link.linkEntry.one.url %}
-	{% else %}
-		{% set linkUrl = link.linkUrl %}
-	{% endif %}
+	{% set linkUrl = link.navLink.url %}
 
 	<li><a href="{{ linkUrl }}">{{ link.linkText }}</a></li>
 

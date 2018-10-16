@@ -6,8 +6,7 @@
 	@param {plain text} contentImage2HeadingText
 	@param {redactor} contentImage2TextContent
 	@param {plain text} contentImage2CtaText
-	@param {entries - max 1} contentImage2CtaLink
-	@param {plain text} contentImage2CtaUrl
+	@param {linkit} contentImage2CtaLink
 	@param {assets} contentImage2TallImages
 
 #}
@@ -18,7 +17,6 @@
 {% set contentImage2TextContent = params.contentImage2TextContent ?? '' %}
 {% set contentImage2CtaText = params.contentImage2CtaText ?? '' %}
 {% set contentImage2CtaLink = params.contentImage2CtaLink ?? null %}
-{% set contentImage2CtaUrl = params.contentImage2CtaUrl ?? '' %}
 {% set contentImage2TallImages = params.contentImage2TallImages ?? null %}
 
 {# Variables #}
@@ -31,9 +29,9 @@
 %}
 
 {% if contentImage2CtaLink|length %}
-	{% set ctaHref = contentImage2CtaLink.one.url %}
+	{% set ctaHref = contentImage2CtaLink.url %}
 {% else %}
-	{% set ctaHref = contentImage2CtaUrl %}
+	{% set ctaHref = '#' %}
 {% endif %}
 
 {# Output #}
