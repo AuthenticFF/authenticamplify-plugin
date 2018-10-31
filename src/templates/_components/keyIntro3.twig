@@ -20,7 +20,13 @@
 				[
 					titleText {plain text}
 					linkText {plain text}
-					linkUrl {linkit}
+					linkUrl {plain text}
+				]
+				assetItem:
+				[
+					titleText {plain text}
+					assetLinkText {plain text}
+					assetFile {asset - max 1}
 				]
 			]
 		]
@@ -109,7 +115,16 @@
 										<tr>
 											<td>{{ infoRow.titleText }}</td>
 											<td>
-												<a class="project-plan-link" href="{{ infoRow.linkUrl.url }}">{{ infoRow.linkText }}</a>
+												<a class="project-plan-link" href="{{ infoRow.linkUrl }}">{{ infoRow.linkText }}</a>
+											</td>
+										</tr>
+
+									{% elseif infoRow.type == 'assetItem' %}
+
+										<tr>
+											<td>{{ infoRow.titleText }}</td>
+											<td>
+												<a target="_blank" class="project-plan-link" href="{{ infoRow.assetFile.one.url }}">{{ infoRow.assetLinkText }}</a>
 											</td>
 										</tr>
 

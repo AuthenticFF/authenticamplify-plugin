@@ -10,11 +10,13 @@
 			link:
 			[
 				linkText {plain text}
-				linkUrl {linkit}
+				linkEntry {entries - max 1}
+				linkUrl {plain text}
 			]
 		]
 	@param {plain text} contentLinks1CtaText
-	@param {linkit} contentLinks1CtaLink
+	@param {entries - max 1} contentLinks1CtaLink
+	@param {plain text} contentLinks1CtaUrl
 
 #}
 
@@ -25,12 +27,13 @@
 {% set contentLinks1Links = params.contentLinks1Links ?? null %}
 {% set contentLinks1CtaText = params.contentLinks1CtaText ?? '' %}
 {% set contentLinks1CtaLink = params.contentLinks1CtaLink ?? null %}
+{% set contentLinks1CtaUrl = params.contentLinks1CtaUrl ?? '' %}
 
 {# Variables #}
 {% if contentLinks1CtaLink|length %}
-	{% set ctaHref = contentLinks1CtaLink.url %}
+	{% set ctaHref = contentLinks1CtaLink.one.url %}
 {% else %}
-	{% set ctaHref = '#' %}
+	{% set ctaHref = contentLinks1CtaUrl %}
 {% endif %}
 
 {# Output #}
@@ -76,7 +79,11 @@
 
 					{% for link in contentLinks1Links %}
 
-						{% set linkHref = link.linkUrl.url %}
+						{% if link.linkEntry|length %}
+							{% set linkHref = link.linkEntry.one.url %}
+						{% else %}
+							{% set linkHref = link.linkUrl %}
+						{% endif %}
 
 						<li><a href="{{ linkHref }}">{{ link.linkText }}</a></li>
 

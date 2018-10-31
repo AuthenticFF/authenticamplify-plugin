@@ -6,7 +6,8 @@
 	@param {plain text} contentImage3HeadingText
 	@param {redactor} contentImage3TextContent
 	@param {plain text} contentImage3CtaText
-	@param {linkit} contentImage3CtaLink
+	@param {entries - max 1} contentImage3CtaLink
+	@param {plain text} contentImage3CtaUrl
 	@param {assets} contentImage3TallImages
 
 #}
@@ -17,6 +18,7 @@
 {% set contentImage3TextContent = params.contentImage3TextContent ?? '' %}
 {% set contentImage3CtaText = params.contentImage3CtaText ?? '' %}
 {% set contentImage3CtaLink = params.contentImage3CtaLink ?? null %}
+{% set contentImage3CtaUrl = params.contentImage3CtaUrl ?? '' %}
 {% set contentImage3TallImages = params.contentImage3TallImages ?? null %}
 
 {# Variables #}
@@ -29,9 +31,9 @@
 %}
 
 {% if contentImage3CtaLink|length %}
-	{% set ctaHref = contentImage3CtaLink.url %}
+	{% set ctaHref = contentImage3CtaLink.one.url %}
 {% else %}
-	{% set ctaHref = '#' %}
+	{% set ctaHref = contentImage3CtaUrl %}
 {% endif %}
 
 {# Output #}

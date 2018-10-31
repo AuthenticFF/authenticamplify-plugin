@@ -12,6 +12,7 @@
 	@param {redactor} content3TextContent
 	@param {plain text} content3CtaText
 	@param {entries - max 1} content3CtaLink
+	@param {plain text} content3CtaUrl
 
 #}
 
@@ -22,12 +23,13 @@
 {% set content3TextContent = params.content3TextContent ?? '' %}
 {% set content3CtaText = params.content3CtaText ?? '' %}
 {% set content3CtaLink = params.content3CtaLink ?? null %}
+{% set content3CtaUrl = params.content3CtaUrl ?? '' %}
 
 {# Variables #}
 {% if content3CtaLink|length %}
-	{% set ctaHref = content3CtaLink.url %}
+	{% set ctaHref = content3CtaLink.one.url %}
 {% else %}
-	{% set ctaHref = '#' %}
+	{% set ctaHref = content3CtaUrl %}
 {% endif %}
 
 {# Output #}

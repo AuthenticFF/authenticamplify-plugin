@@ -9,7 +9,8 @@
 				wideImage {asset - image - max 1}
 				titleText {plain text}
 				textContent {plain text}
-				cardLink {linkit}
+				cardLinkEntry {entries - max 1}
+				cardLinkUrl {plain text}
 			]
 		]
 
@@ -36,6 +37,12 @@
 
 			{% for imageCard in imageCards2Cards %}
 
+				{% if imageCard.cardLinkEntry|length %}
+					{% set cardLink = imageCard.cardLinkEntry.one.url %}
+				{% else %}
+					{% set cardLink = imageCard.cardLinkUrl %}
+				{% endif %}
+
 				{% set imageUrl = craft.imager.transformImage(imageCard.wideImage.one, wideImgResize).url %}
 
 				<div class="cell">
@@ -46,7 +53,7 @@
 							imageCardImageUrl: imageUrl,
 							imageCardTitleText: imageCard.titleText,
 							imageCardTextContent: imageCard.textContent,
-							imageCardUrl: imageCard.cardLink
+							imageCardUrl: cardLink
 						}
 
 					%}

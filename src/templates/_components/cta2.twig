@@ -6,7 +6,8 @@
 	@param {plain text} cta2HeadingText
 	@param {redactor} cta2TextContent
 	@param {plain text} cta2CtaText
-	@param {linkit} cta2CtaLink
+	@param {entries - max 1} cta2CtaLink
+	@param {plain text} cta2CtaUrl
 
 #}
 
@@ -16,6 +17,7 @@
 {% set cta2TextContent = params.cta2TextContent ?? null %}
 {% set cta2CtaText = params.cta2CtaText ?? null %}
 {% set cta2CtaLink = params.cta2CtaLink ?? null %}
+{% set cta2CtaUrl = params.cta2CtaUrl ?? null %}
 
 {# Variables #}
 {%
@@ -28,9 +30,9 @@
 {% set imageUrl = craft.imager.transformImage(cta2Image.one, imgResize).url %}
 
 {% if cta2CtaLink|length %}
-	{% set ctaHref = cta2CtaLink.url %}
+	{% set ctaHref = cta2CtaLink.one.url %}
 {% else %}
-	{% set ctaHref = '#' %}
+	{% set ctaHref = cta2CtaUrl %}
 {% endif %}
 
 {# Output #}
