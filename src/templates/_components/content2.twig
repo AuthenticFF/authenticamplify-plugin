@@ -7,7 +7,6 @@
 	@param {redactor} content2TextContent
 	@param {plain text} content2CtaText
 	@param {entries - max 1} content2CtaLink
-	@param {plain text} content2CtaUrl
 
 #}
 
@@ -17,13 +16,12 @@
 {% set content2TextContent = params.content2TextContent ?? '' %}
 {% set content2CtaText = params.content2CtaText ?? '' %}
 {% set content2CtaLink = params.content2CtaLink ?? null %}
-{% set content2CtaUrl = params.content2CtaUrl ?? '' %}
 
 {# Variables #}
 {% if content2CtaLink|length %}
-	{% set ctaHref = content2CtaLink.one.url %}
+	{% set ctaHref = content2CtaLink.url %}
 {% else %}
-	{% set ctaHref = content2CtaUrl %}
+	{% set ctaHref = '#' %}
 {% endif %}
 
 {# Output #}

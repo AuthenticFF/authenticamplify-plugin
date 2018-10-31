@@ -9,8 +9,7 @@
 				largeImage {asset - image - max 1}
 				titleText {plain text}
 				textContent {plain text}
-				cardLinkEntry {entries - max 1}
-				cardLinkUrl {plain text}
+				cardLink {linkit}
 			]
 		]
 	@param {matrix} imageCards3TallImageCards
@@ -20,8 +19,7 @@
 				tallImage {asset - image - max 1}
 				titleText {plain text}
 				textContent {plain text}
-				cardLinkEntry {entries - max 1}
-				cardLinkUrl {plain text}
+				cardLink {linkit}
 			]
 		]
 
@@ -59,12 +57,6 @@
 
 				{% for imageCard in imageCards3LargeImageCards %}
 
-					{% if imageCard.cardLinkEntry|length %}
-						{% set cardLink = imageCard.cardLinkEntry.one.url %}
-					{% else %}
-						{% set cardLink = imageCard.cardLinkUrl %}
-					{% endif %}
-
 					{% set imageUrl = craft.imager.transformImage(imageCard.largeImage.one, largeImgResize).url %}
 
 					<div class="large-image">
@@ -75,7 +67,7 @@
 								imageCardImageUrl: imageUrl,
 								imageCardTitleText: imageCard.titleText,
 								imageCardTextContent: imageCard.textContent,
-								imageCardUrl: cardLink
+								imageCardUrl: imageCard.cardLink
 							}
 
 						%}
@@ -92,12 +84,6 @@
 
 					{% for imageCard in imageCards3TallImageCards %}
 
-						{% if imageCard.cardLinkEntry|length %}
-							{% set cardLink = imageCard.cardLinkEntry.one.url %}
-						{% else %}
-							{% set cardLink = imageCard.cardLinkUrl %}
-						{% endif %}
-
 						{% set imageUrl = craft.imager.transformImage(imageCard.tallImage.one, tallImgResize).url %}
 
 						<div class="cell">
@@ -108,7 +94,7 @@
 									imageCardImageUrl: imageUrl,
 									imageCardTitleText: imageCard.titleText,
 									imageCardTextContent: imageCard.textContent,
-									imageCardUrl: cardLink
+									imageCardUrl: imageCard.cardLink
 								}
 
 							%}
