@@ -16,8 +16,10 @@
 {% set imageCardUrl = imageCardUrl ?? null %}
 
 {# Variables #}
-{% if imageCardUrl|length %}
+{% if imageCardUrl|length and imageCardUrl.url is defined %}
 	{% set cardHref = imageCardUrl.url %}
+{% elseif imageCardUrl|length %}
+	{% set cardHref = imageCardUrl %}
 {% else %}
 	{% set cardHref = '' %}
 {% endif %}
@@ -31,7 +33,11 @@
 		<img src="{{ imageUrl }}">
 	{% endif %}
 
-	<div class="intro-title">{{ imageCardTitleText }}</div>
+	{% if cardHref != '' %}
+		<div class="intro-title"><a href="{{ cardHref }}">{{ imageCardTitleText }}</a></div>
+	{% else %}
+		<div class="intro-title">{{ imageCardTitleText }}</div>
+	{% endif %}
 
 	{% if cardHref != '' %}
 		<a href="{{ cardHref }}" class="title">{{ imageCardTextContent }}</a>
