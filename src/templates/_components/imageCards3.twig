@@ -51,15 +51,15 @@
 
 	<div class="grid-container">
 
-		<div class="grid-x grid-margin-x">
+		{% if imageCards3LargeImageCards|length % 2 == 0 %}
 
-			<div class="cell small-12 medium-6 large-images">
+			<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-images">
 
 				{% for imageCard in imageCards3LargeImageCards %}
 
 					{% set imageUrl = craft.imager.transformImage(imageCard.largeImage.one, largeImgResize).url %}
 
-					<div class="large-image">
+					<div class="large-image cell">
 
 						{%
 
@@ -78,11 +78,127 @@
 
 			</div>
 
-			<div class="cell small-12 medium-6">
+			<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-4 four-image-grid">
 
-				<div class="grid-x grid-margin-x small-up-1 medium-up-2 four-image-grid">
+				{% for imageCard in imageCards3TallImageCards %}
 
-					{% for imageCard in imageCards3TallImageCards %}
+					{% set imageUrl = craft.imager.transformImage(imageCard.tallImage.one, tallImgResize).url %}
+
+					<div class="cell">
+
+						{%
+
+							include 'authenticamplify/_elements/imageCard' with {
+								imageCardImageUrl: imageUrl,
+								imageCardTitleText: imageCard.titleText,
+								imageCardTextContent: imageCard.textContent,
+								imageCardUrl: imageCard.cardLink
+							}
+
+						%}
+
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+		{% else %}
+
+			{% if imageCards3LargeImageCards|length > 1 %}
+
+				<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-images">
+
+					{% for imageCard in imageCards3LargeImageCards %}
+
+						{% if not loop.last %}
+						
+							{% set imageUrl = craft.imager.transformImage(imageCard.largeImage.one, largeImgResize).url %}
+
+							<div class="large-image cell">
+
+								{%
+
+									include 'authenticamplify/_elements/imageCard' with {
+										imageCardImageUrl: imageUrl,
+										imageCardTitleText: imageCard.titleText,
+										imageCardTextContent: imageCard.textContent,
+										imageCardUrl: imageCard.cardLink
+									}
+
+								%}
+
+							</div>
+
+						{% endif %}
+
+					{% endfor %}
+
+				</div>
+			
+			{% endif %}
+
+			<div class="grid-x grid-margin-x large-left-small-right-grid">
+
+				<div class="cell small-12 medium-6 large-images">
+
+					{% set imageCard = imageCards3LargeImageCards|last %}
+
+					{% set imageUrl = craft.imager.transformImage(imageCard.largeImage.one, largeImgResize).url %}
+
+					<div class="large-image">
+
+						{%
+
+							include 'authenticamplify/_elements/imageCard' with {
+								imageCardImageUrl: imageUrl,
+								imageCardTitleText: imageCard.titleText,
+								imageCardTextContent: imageCard.textContent,
+								imageCardUrl: imageCard.cardLink
+							}
+
+						%}
+
+					</div>
+
+				</div>
+
+				<div class="cell small-12 medium-6">
+
+					<div class="grid-x grid-margin-x small-up-1 medium-up-2 four-image-grid">
+
+						{% for imageCard in imageCards3TallImageCards.limit(4) %}
+
+							{% set imageUrl = craft.imager.transformImage(imageCard.tallImage.one, tallImgResize).url %}
+
+							<div class="cell">
+
+								{%
+
+									include 'authenticamplify/_elements/imageCard' with {
+										imageCardImageUrl: imageUrl,
+										imageCardTitleText: imageCard.titleText,
+										imageCardTextContent: imageCard.textContent,
+										imageCardUrl: imageCard.cardLink
+									}
+
+								%}
+
+							</div>
+
+						{% endfor %}
+
+					</div>
+
+				</div>
+				
+			</div>
+
+			{% if imageCards3TallImageCards|length > 4 %}
+
+				<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-4 four-image-grid">
+
+					{% for imageCard in imageCards3TallImageCards.offset(4) %}
 
 						{% set imageUrl = craft.imager.transformImage(imageCard.tallImage.one, tallImgResize).url %}
 
@@ -105,9 +221,9 @@
 
 				</div>
 
-			</div>
-			
-		</div>
+			{% endif %}
+
+		{% endif %}
 
 	</div>
 
