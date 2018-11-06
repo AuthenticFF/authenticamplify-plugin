@@ -404,6 +404,22 @@
       })
     }}
 
+  {% case 'listings1' %}
+
+    {{
+      renderComponent.listings1({
+        ampListings1Entries: block.ampListingsEntries
+      })
+    }}
+
+  {% case 'listings2' %}
+
+    {{
+      renderComponent.listings2({
+        ampListings2Entries: block.ampListingsEntries
+      })
+    }}
+
   {% case 'map1' %}
 
     {{

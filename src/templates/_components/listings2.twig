@@ -1,0 +1,91 @@
+{#
+
+	Listings 2
+
+	@param {entries} ampListings2Entries
+
+#}
+
+{# Parameters #}
+{% set ampListings2Entries = params.ampListings2Entries ?? null %}
+
+{# Variables #}
+{%
+	set wideImgResize = {
+		mode: 'crop',
+		width: 690,
+		height: 360
+	}
+%}
+
+{%
+	set tallImgResize = {
+		mode: 'crop',
+		width: 640,
+		height: 720
+	}
+%}
+
+{# Output #}
+<section data-component data-listings-2>
+
+	<div class="grid-container">
+
+		<div class="grid-x grid-margin-x small-up-1 large-up-2 wide-image-grid">
+
+			{% for listingEntry in ampListings2Entries.limit(2) %}
+
+				{% set imageUrl = craft.imager.transformImage(listingEntry.ampListingImage.one, wideImgResize).url %}
+
+				<div class="cell">
+
+					{%
+
+						include 'authenticamplify/_elements/imageCard' with {
+							imageCardImageUrl: imageUrl,
+							imageCardTitleText: listingEntry.ampListingTitle,
+							imageCardTextContent: listingEntry.ampListingSubtitle,
+							imageCardUrl: listingEntry.url
+						}
+
+					%}
+
+				</div>
+
+			{% endfor %}
+
+		</div>
+
+	</div>
+
+	<div class="grid-container">
+
+		<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-4 tall-image-grid">
+
+			{% for listingEntry in ampListings2Entries.offset(2).limit(null) %}
+
+				{% set imageUrl = craft.imager.transformImage(listingEntry.ampListingImage.one, tallImgResize).url %}
+
+				<div class="cell">
+
+					{%
+
+						include 'authenticamplify/_elements/imageCard' with {
+							imageCardImageUrl: imageUrl,
+							imageCardTitleText: listingEntry.ampListingTitle,
+							imageCardTextContent: listingEntry.ampListingSubtitle,
+							imageCardUrl: listingEntry.url
+						}
+
+					%}
+
+				</div>
+
+			{% endfor %}
+
+		</div>
+
+	</div>
+
+</section>
+

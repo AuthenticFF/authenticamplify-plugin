@@ -1,0 +1,121 @@
+{#
+
+	Listings 1
+
+	@param {entries} ampListings1Entries
+
+#}
+
+{# Parameters #}
+{% set ampListings1Entries = params.ampListings1Entries ?? null %}
+
+{# Variables #}
+{%
+	set largeImgResize = {
+		mode: 'crop',
+		width: 690,
+		height: 895
+	}
+%}
+
+{%
+	set tallImgResize = {
+		mode: 'crop',
+		width: 640,
+		height: 720
+	}
+%}
+
+{# Output #}
+<section data-component data-listings-1>
+
+	<div class="grid-container">
+
+		<div class="grid-x grid-margin-x large-left-small-right-grid">
+
+			<div class="cell small-12 medium-6 large-images">
+
+				{% set listingEntry = ampListings1Entries|first %}
+
+				{% set imageUrl = craft.imager.transformImage(listingEntry.ampListingImage.one, largeImgResize).url %}
+
+				<div class="large-image">
+
+					{%
+
+						include 'authenticamplify/_elements/imageCard' with {
+							imageCardImageUrl: imageUrl,
+							imageCardTitleText: listingEntry.ampListingTitle,
+							imageCardTextContent: listingEntry.ampListingSubtitle,
+							imageCardUrl: listingEntry.url
+						}
+
+					%}
+
+				</div>
+
+			</div>
+
+			<div class="cell small-12 medium-6">
+
+				<div class="grid-x grid-margin-x small-up-1 medium-up-2 four-image-grid">
+
+					{% for listingEntry in ampListings1Entries.offset(1).limit(4) %}
+
+						{% set imageUrl = craft.imager.transformImage(listingEntry.ampListingImage.one, tallImgResize).url %}
+
+						<div class="cell">
+
+							{%
+
+								include 'authenticamplify/_elements/imageCard' with {
+									imageCardImageUrl: imageUrl,
+									imageCardTitleText: listingEntry.ampListingTitle,
+									imageCardTextContent: listingEntry.ampListingSubtitle,
+									imageCardUrl: listingEntry.url
+								}
+
+							%}
+
+						</div>
+
+					{% endfor %}
+
+				</div>
+
+			</div>
+			
+		</div>
+
+		{% if ampListings1Entries|length > 5 %}
+
+			<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-4 four-image-grid">
+
+				{% for listingEntry in ampListings1Entries.offset(5) %}
+
+					{% set imageUrl = craft.imager.transformImage(listingEntry.ampListingImage.one, tallImgResize).url %}
+
+					<div class="cell">
+
+						{%
+
+							include 'authenticamplify/_elements/imageCard' with {
+								imageCardImageUrl: imageUrl,
+								imageCardTitleText: listingEntry.ampListingTitle,
+								imageCardTextContent: listingEntry.ampListingSubtitle,
+								imageCardUrl: listingEntry.url
+							}
+
+						%}
+
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+		{% endif %}
+
+	</div>
+
+</section>
