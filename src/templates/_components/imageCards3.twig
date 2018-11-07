@@ -29,23 +29,6 @@
 {% set imageCards3LargeImageCards = params.imageCards3LargeImageCards ?? null %}
 {% set imageCards3TallImageCards = params.imageCards3TallImageCards ?? null %}
 
-{# Variables #}
-{%
-	set largeImgResize = {
-		mode: 'crop',
-		width: 690,
-		height: 895
-	}
-%}
-
-{%
-	set tallImgResize = {
-		mode: 'crop',
-		width: 640,
-		height: 678
-	}
-%}
-
 {# Output #}
 <section data-component data-image-cards-3>
 
@@ -57,7 +40,18 @@
 
 				{% for imageCard in imageCards3LargeImageCards %}
 
-					{% set imageUrl = craft.imager.transformImage(imageCard.largeImage.one, largeImgResize).url %}
+					{% set imgAsset = imageCard.largeImage.one %}
+
+					{%
+						set largeImgResize = {
+							mode: 'crop',
+							width: 690,
+							height: 895,
+							position: imgAsset.getFocalPoint()
+						}
+					%}
+
+					{% set imageUrl = craft.imager.transformImage(imgAsset, largeImgResize).url %}
 
 					<div class="large-image cell">
 
@@ -82,7 +76,18 @@
 
 				{% for imageCard in imageCards3TallImageCards %}
 
-					{% set imageUrl = craft.imager.transformImage(imageCard.tallImage.one, tallImgResize).url %}
+					{% set imgAsset = imageCard.tallImage.one %}
+
+					{%
+						set tallImgResize = {
+							mode: 'crop',
+							width: 640,
+							height: 720,
+							position: imgAsset.getFocalPoint()
+						}
+					%}
+
+					{% set imageUrl = craft.imager.transformImage(imgAsset, tallImgResize).url %}
 
 					<div class="cell">
 
@@ -112,8 +117,19 @@
 					{% for imageCard in imageCards3LargeImageCards %}
 
 						{% if not loop.last %}
+
+							{% set imgAsset = imageCard.largeImage.one %}
+
+							{%
+								set largeImgResize = {
+									mode: 'crop',
+									width: 690,
+									height: 895,
+									position: imgAsset.getFocalPoint()
+								}
+							%}
 						
-							{% set imageUrl = craft.imager.transformImage(imageCard.largeImage.one, largeImgResize).url %}
+							{% set imageUrl = craft.imager.transformImage(imgAsset, largeImgResize).url %}
 
 							<div class="large-image cell">
 
@@ -144,7 +160,18 @@
 
 					{% set imageCard = imageCards3LargeImageCards|last %}
 
-					{% set imageUrl = craft.imager.transformImage(imageCard.largeImage.one, largeImgResize).url %}
+					{% set imgAsset = imageCard.largeImage.one %}
+
+					{%
+						set largeImgResize = {
+							mode: 'crop',
+							width: 690,
+							height: 895,
+							position: imgAsset.getFocalPoint()
+						}
+					%}
+
+					{% set imageUrl = craft.imager.transformImage(imgAsset, largeImgResize).url %}
 
 					<div class="large-image">
 
@@ -169,7 +196,18 @@
 
 						{% for imageCard in imageCards3TallImageCards.limit(4) %}
 
-							{% set imageUrl = craft.imager.transformImage(imageCard.tallImage.one, tallImgResize).url %}
+							{% set imgAsset = imageCard.tallImage.one %}
+
+							{%
+								set tallImgResize = {
+									mode: 'crop',
+									width: 640,
+									height: 720,
+									position: imgAsset.getFocalPoint()
+								}
+							%}
+
+							{% set imageUrl = craft.imager.transformImage(imgAsset, tallImgResize).url %}
 
 							<div class="cell">
 
@@ -200,7 +238,18 @@
 
 					{% for imageCard in imageCards3TallImageCards.offset(4) %}
 
-						{% set imageUrl = craft.imager.transformImage(imageCard.tallImage.one, tallImgResize).url %}
+						{% set imgAsset = imageCard.tallImage.one %}
+
+						{%
+							set tallImgResize = {
+								mode: 'crop',
+								width: 640,
+								height: 720,
+								position: imgAsset.getFocalPoint()
+							}
+						%}
+
+						{% set imageUrl = craft.imager.transformImage(imgAsset, tallImgResize).url %}
 
 						<div class="cell">
 

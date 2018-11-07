@@ -9,23 +9,6 @@
 {# Parameters #}
 {% set ampListings1Entries = params.ampListings1Entries ?? null %}
 
-{# Variables #}
-{%
-	set largeImgResize = {
-		mode: 'crop',
-		width: 690,
-		height: 895
-	}
-%}
-
-{%
-	set tallImgResize = {
-		mode: 'crop',
-		width: 640,
-		height: 720
-	}
-%}
-
 {# Output #}
 <section data-component data-listings-1>
 
@@ -37,7 +20,18 @@
 
 				{% set listingEntry = ampListings1Entries|first %}
 
-				{% set imageUrl = craft.imager.transformImage(listingEntry.ampListingImage.one, largeImgResize).url %}
+				{% set imgAsset = listingEntry.ampListingImage.one %}
+
+				{%
+					set largeImgResize = {
+						mode: 'crop',
+						width: 690,
+						height: 895,
+						position: imgAsset.getFocalPoint()
+					}
+				%}
+
+				{% set imageUrl = craft.imager.transformImage(imgAsset, largeImgResize).url %}
 
 				<div class="large-image">
 
@@ -62,7 +56,18 @@
 
 					{% for listingEntry in ampListings1Entries.offset(1).limit(4) %}
 
-						{% set imageUrl = craft.imager.transformImage(listingEntry.ampListingImage.one, tallImgResize).url %}
+						{% set imgAsset = listingEntry.ampListingImage.one %}
+
+						{%
+							set tallImgResize = {
+								mode: 'crop',
+								width: 640,
+								height: 720,
+								position: imgAsset.getFocalPoint()
+							}
+						%}
+
+						{% set imageUrl = craft.imager.transformImage(imgAsset, tallImgResize).url %}
 
 						<div class="cell">
 
@@ -93,7 +98,18 @@
 
 				{% for listingEntry in ampListings1Entries.offset(5) %}
 
-					{% set imageUrl = craft.imager.transformImage(listingEntry.ampListingImage.one, tallImgResize).url %}
+					{% set imgAsset = listingEntry.ampListingImage.one %}
+
+					{%
+						set tallImgResize = {
+							mode: 'crop',
+							width: 640,
+							height: 720,
+							position: imgAsset.getFocalPoint()
+						}
+					%}
+
+					{% set imageUrl = craft.imager.transformImage(imgAsset, tallImgResize).url %}
 
 					<div class="cell">
 

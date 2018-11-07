@@ -35,7 +35,18 @@
 
 			{% for listingEntry in ampListings2Entries.limit(2) %}
 
-				{% set imageUrl = craft.imager.transformImage(listingEntry.ampListingImage.one, wideImgResize).url %}
+				{% set imgAsset = listingEntry.ampListingImage.one %}
+
+				{%
+					set wideImgResize = {
+						mode: 'crop',
+						width: 690,
+						height: 360,
+						position: imgAsset.getFocalPoint()
+					}
+				%}
+
+				{% set imageUrl = craft.imager.transformImage(imgAsset, wideImgResize).url %}
 
 				<div class="cell">
 
@@ -64,7 +75,18 @@
 
 			{% for listingEntry in ampListings2Entries.offset(2).limit(null) %}
 
-				{% set imageUrl = craft.imager.transformImage(listingEntry.ampListingImage.one, tallImgResize).url %}
+				{% set imgAsset = listingEntry.ampListingImage.one %}
+
+				{%
+					set tallImgResize = {
+						mode: 'crop',
+						width: 640,
+						height: 720,
+						position: imgAsset.getFocalPoint()
+					}
+				%}
+
+				{% set imageUrl = craft.imager.transformImage(imgAsset, tallImgResize).url %}
 
 				<div class="cell">
 
