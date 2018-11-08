@@ -6,6 +6,7 @@
 	@param {plain text} imageCardTitleText
 	@param {plain text} imageCardTextContent
 	@param {linkit} imageCardUrl
+	@param {boolean} imageCardUseBgImg
 
 #}
 
@@ -14,6 +15,7 @@
 {% set imageCardTitleText = imageCardTitleText ?? '' %}
 {% set imageCardTextContent = imageCardTextContent ?? '' %}
 {% set imageCardUrl = imageCardUrl ?? null %}
+{% set imageCardUseBgImg = imageCardUseBgImg ?? false %}
 
 {# Variables #}
 {% if imageCardUrl|length and imageCardUrl.url is defined %}
@@ -27,10 +29,22 @@
 {# Output #}
 <div class="image-card">
 
-	{% if cardHref != '' %}
-		<a href="{{ cardHref }}"><img src="{{ imageUrl }}"></a>
+	{% if imageCardUseBgImg %}
+
+		{% if cardHref != '' %}
+			<a href="{{ cardHref }}"><div class="image" style="background-image: url( {{ imageUrl }} );"></div></a>
+		{% else %}
+			<div class="image" style="background-image: url( {{ imageUrl }} );"></div>
+		{% endif %}
+
 	{% else %}
-		<img src="{{ imageUrl }}">
+
+		{% if cardHref != '' %}
+			<a href="{{ cardHref }}"><img src="{{ imageUrl }}"></a>
+		{% else %}
+			<img src="{{ imageUrl }}">
+		{% endif %}
+
 	{% endif %}
 
 	{% if cardHref != '' %}
