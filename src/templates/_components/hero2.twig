@@ -31,13 +31,13 @@
 
 	<div class="slider Wallop Wallop--fade">
 
-		<div class="Wallop-list">
+		<div class="Wallop-list" data-equalizer data-equalize-on='' data-equalize-on-stack='true'>
 
 			{% for bgImageSlide in hero2BgImageSlides %}
 
 				{% set heroImageUrl = craft.imager.transformImage(bgImageSlide.backgroundImage.one, heroImgResize).url %}
 
-				<div class="Wallop-item hero-slide" style="background-image: url( {{ heroImageUrl }} );">
+				<div class="Wallop-item hero-slide" style="background-image: url( {{ heroImageUrl }} );" data-equalizer-watch>
 					<div class="heading">
 						{{ bgImageSlide.headingText }}
 					</div>
