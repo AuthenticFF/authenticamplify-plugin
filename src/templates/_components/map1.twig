@@ -4,15 +4,17 @@
 
 	@param {plain text} map1HeadingText
 	@param {redactor} map1TextContent
+	@param {simplemap} map1Settings
 
 #}
 
 {# Parameters #}
 {% set map1HeadingText = params.map1HeadingText ?? '' %}
 {% set map1TextContent = params.map1TextContent ?? '' %}
+{% set map1Settings = params.map1Settings ?? null %}
 
 {# Output #}
-<section data-component data-map-1>
+<section data-component data-map-1 data-map-lat="{{ map1Settings.lat }}" data-map-long="{{ map1Settings.lng }}" data-map-zoom="{{ map1Settings.zoom }}">
 
 	<div class="grid-container">
 
