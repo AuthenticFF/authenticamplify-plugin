@@ -47,12 +47,7 @@
 
 				{% endif %}
 
-				<form>
-					<div class="input-wrap">
-						<input type="email" name="email" placeholder="{{ ctaEmail1PlaceholderText }}">
-					</div>
-					<input class="button button-square button-black" type="submit" value="{{ submitBtnText }}">
-				</form>
+				{{ craft.sproutForms.displayForm( 'emailSignup' ) }}
 
 			</div>
 
