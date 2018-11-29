@@ -13,6 +13,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set footerLogos = params.footerLogos ?? null %}
 
@@ -34,7 +37,7 @@
 
 			{% for logoItem in footerLogos %}
 
-				{% set logoImageUrl = craft.imager.transformImage(logoItem.logoImage.one, logoImgResize).url %}
+				{% set logoImageUrl = imageTransform.imageTransform(logoItem.logoImage.one, logoImgResize) %}
 
 				<div class="cell medium-auto logo-item">
 					<div class="logo" data-equalizer-watch>

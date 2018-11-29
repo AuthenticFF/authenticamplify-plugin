@@ -11,6 +11,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set contentImage2SectionTitle = params.contentImage2SectionTitle ?? '' %}
 {% set contentImage2HeadingText = params.contentImage2HeadingText ?? '' %}
@@ -76,9 +79,9 @@
 				<div class="grid-x grid-margin-x small-up-1 medium-up-2">
 
 					{% for tallImage in contentImage2TallImages %}
-
+					
 						{% set has360Image = tallImage.expAssetThreeSixtyImage | length %}
-						{% set imageUrl = craft.imager.transformImage(tallImage, imgResize).url %}
+						{% set imageUrl = imageTransform.imageTransform(tallImage, imgResize) %}
 
 						<div class="cell image-cell">
 							<div class="image-wrapper {{ has360Image ? 'has-360-image' : '' }}" data-360-image="{{ has360Image ? tallImage.expAssetThreeSixtyImage.first.url }}" style="background-image: url({{ imageUrl }})">

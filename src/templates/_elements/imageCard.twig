@@ -32,17 +32,17 @@
 	{% if imageCardUseBgImg %}
 
 		{% if cardHref != '' %}
-			<a href="{{ cardHref }}"><div class="image" style="background-image: url( {{ imageUrl }} );"></div></a>
+			<a href="{{ cardHref }}"><div class="image" style="background-image: url( {{ imageCardImageUrl }} );"></div></a>
 		{% else %}
-			<div class="image" style="background-image: url( {{ imageUrl }} );"></div>
+			<div class="image" style="background-image: url( {{ imageCardImageUrl }} );"></div>
 		{% endif %}
 
 	{% else %}
 
 		{% if cardHref != '' %}
-			<a href="{{ cardHref }}"><img src="{{ imageUrl }}"></a>
+			<a href="{{ cardHref }}"><img src="{{ imageCardImageUrl }}"></a>
 		{% else %}
-			<img src="{{ imageUrl }}">
+			<img src="{{ imageCardImageUrl }}">
 		{% endif %}
 
 	{% endif %}

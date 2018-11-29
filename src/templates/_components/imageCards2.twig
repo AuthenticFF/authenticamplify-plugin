@@ -15,6 +15,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set imageCards2Cards = params.imageCards2Cards ?? null %}
 
@@ -38,7 +41,7 @@
 					}
 				%}
 
-				{% set imageUrl = craft.imager.transformImage(imgAsset, wideImgResize).url %}
+				{% set imageUrl = imageTransform.imageTransform(imgAsset, wideImgResize) %}
 
 				<div class="cell">
 

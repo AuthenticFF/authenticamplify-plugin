@@ -14,6 +14,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set hero4SquareImageSlides = params.hero4SquareImageSlides ?? null %}
 
@@ -35,7 +38,7 @@
 
 			{% for squareImageSlide in hero4SquareImageSlides %}
 
-				{% set heroImageUrl = craft.imager.transformImage(squareImageSlide.squareImage.one, heroImgResize).url %}
+				{% set heroImageUrl = imageTransform.imageTransform(squareImageSlide.squareImage.one, heroImgResize) %}
 
 				<div class="Wallop-item hero-slide">
 

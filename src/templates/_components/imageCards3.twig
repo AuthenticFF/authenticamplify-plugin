@@ -25,6 +25,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set imageCards3LargeImageCards = params.imageCards3LargeImageCards ?? null %}
 {% set imageCards3TallImageCards = params.imageCards3TallImageCards ?? null %}
@@ -51,7 +54,7 @@
 						}
 					%}
 
-					{% set imageUrl = craft.imager.transformImage(imgAsset, largeImgResize).url %}
+					{% set imageUrl = imageTransform.imageTransform(imgAsset, largeImgResize) %}
 
 					<div class="large-image cell">
 
@@ -87,7 +90,7 @@
 						}
 					%}
 
-					{% set imageUrl = craft.imager.transformImage(imgAsset, tallImgResize).url %}
+					{% set imageUrl = imageTransform.imageTransform(imgAsset, tallImgResize) %}
 
 					<div class="cell">
 
@@ -129,7 +132,7 @@
 								}
 							%}
 						
-							{% set imageUrl = craft.imager.transformImage(imgAsset, largeImgResize).url %}
+							{% set imageUrl = imageTransform.imageTransform(imgAsset, largeImgResize) %}
 
 							<div class="large-image cell">
 
@@ -171,7 +174,7 @@
 						}
 					%}
 
-					{% set imageUrl = craft.imager.transformImage(imgAsset, largeImgResize).url %}
+					{% set imageUrl = imageTransform.imageTransform(imgAsset, largeImgResize) %}
 
 					<div class="large-image">
 
@@ -207,7 +210,7 @@
 								}
 							%}
 
-							{% set imageUrl = craft.imager.transformImage(imgAsset, tallImgResize).url %}
+							{% set imageUrl = imageTransform.imageTransform(imgAsset, tallImgResize) %}
 
 							<div class="cell">
 
@@ -250,7 +253,7 @@
 							}
 						%}
 
-						{% set imageUrl = craft.imager.transformImage(imgAsset, tallImgResize).url %}
+						{% set imageUrl = imageTransform.imageTransform(imgAsset, tallImgResize) %}
 
 						<div class="cell">
 

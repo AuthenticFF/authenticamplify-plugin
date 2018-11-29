@@ -15,6 +15,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set contentImage5SectionTitle = params.contentImage5SectionTitle ?? '' %}
 {% set contentImage5SquareImageItems = params.contentImage5SquareImageItems ?? null %}
@@ -52,7 +55,7 @@
 			{% for contentImage in contentImage5SquareImageItems %}
 
 				{% set has360Image = contentImage.squareImage.one.expAssetThreeSixtyImage | length %}
-				{% set imageUrl = craft.imager.transformImage(contentImage.squareImage.one, imgResize).url %}
+				{% set imageUrl = imageTransform.imageTransform(contentImage.squareImage.one, imgResize) %}
 
 				<div class="cell" data-equalizer-watch>
 
