@@ -1,0 +1,18 @@
+{#
+	Image Transform
+
+	This macro takes an image asset and imager options and transforms the image via imager.
+#}
+
+{% macro imageTransform(imageAsset, imagerOptions) %}
+
+	{# if image is an SVG, don't run through imager #}
+	{% if 'svg' in imageAsset.mimeType %}
+		{% set imageUrl = imageAsset.url %}
+	{% else %}
+		{% set imageUrl = craft.imager.transformImage(imageAsset, imagerOptions).url %}
+	{% endif %}
+
+	{{ imageUrl }}
+
+{% endmacro imageTransform %}

@@ -14,6 +14,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set hero5RectImageSlides = params.hero5RectImageSlides ?? null %}
 
@@ -37,7 +40,7 @@
 
 				{% for rectangleImageSlide in hero5RectImageSlides %}
 
-					{% set heroImageUrl = craft.imager.transformImage(rectangleImageSlide.rectangleImage.one, heroImgResize).url %}
+					{% set heroImageUrl = imageTransform.imageTransform(rectangleImageSlide.rectangleImage.one, heroImgResize) %}
 
 					<div class="Wallop-item">
 

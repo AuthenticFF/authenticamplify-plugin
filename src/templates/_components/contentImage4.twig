@@ -20,6 +20,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set contentImage4SectionTitle = params.contentImage4SectionTitle ?? '' %}
 {% set contentImage4FirstImageSide = params.contentImage4FirstImageSide ?? 'left' %}
@@ -59,7 +62,7 @@
 
 			{% for contentImage in contentImage4TallImgItems %}
 
-				{% set imageUrl = craft.imager.transformImage(contentImage.tallImage.one, imgResize).url %}
+				{% set imageUrl = imageTransform.imageTransform(contentImage.tallImage.one, imgResize) %}
 
 				{% if imageSide == 'right' %}
 

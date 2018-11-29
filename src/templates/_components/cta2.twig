@@ -10,6 +10,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set cta2Image = params.cta2Image ?? null %}
 {% set cta2HeadingText = params.cta2HeadingText ?? null %}
@@ -25,7 +28,7 @@
 		height: 1125
 	}
 %}
-{% set imageUrl = craft.imager.transformImage(cta2Image.one, imgResize).url %}
+{% set imageUrl = imageTransform.imageTransform(cta2Image.one, imgResize) %}
 
 {% if cta2CtaLink|length %}
 	{% set ctaHref = cta2CtaLink.url %}

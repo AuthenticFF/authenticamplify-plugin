@@ -13,6 +13,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set icons4IconItems = params.icons4IconItems ?? null %}
 
@@ -34,7 +37,7 @@
 
 			{% for iconItem in icons4IconItems %}
 
-				{% set iconImageUrl = craft.imager.transformImage(iconItem.icon.one, iconImgResize).url %}
+				{% set iconImageUrl = imageTransform.imageTransform(iconItem.icon.one, iconImgResize) %}
 
 				<div class="cell icon-item">
 

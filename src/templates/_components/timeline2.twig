@@ -17,6 +17,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set timeline2SectionTitle = params.timeline2SectionTitle ?? '' %}
 {% set timeline2HeadingText = params.timeline2HeadingText ?? '' %}
@@ -63,7 +66,7 @@
 
 			{% for timelineItem in timeline2TimelineItems %}
 
-				{% set imageUrl = craft.imager.transformImage(timelineItem.image.one, imgResize).url %}
+				{% set imageUrl = imageTransform.imageTransform(timelineItem.image.one, imgResize) %}
 
 				<div class="timeline-item">
 

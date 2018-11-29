@@ -14,6 +14,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set gallery1ImageSlides = params.gallery1ImageSlides ?? null %}
 
@@ -33,7 +36,7 @@
 
 			{% for imageSlide in gallery1ImageSlides %}
 
-				{% set imageUrl = craft.imager.transformImage(imageSlide.image.one, imgResize).url %}
+				{% set imageUrl = imageTransform.imageTransform(imageSlide.image.one, imgResize) %}
 
 				<div class="gallery-item">
 

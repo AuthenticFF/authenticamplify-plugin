@@ -11,6 +11,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set contentImage2SectionTitle = params.contentImage2SectionTitle ?? '' %}
 {% set contentImage2HeadingText = params.contentImage2HeadingText ?? '' %}
@@ -77,7 +80,7 @@
 
 					{% for tallImage in contentImage2TallImages %}
 
-						{% set imageUrl = craft.imager.transformImage(tallImage, imgResize).url %}
+						{% set imageUrl = imageTransform.imageTransform(tallImage, imgResize) %}
 
 						<div class="cell image-cell">
 							<img src="{{ imageUrl }}">

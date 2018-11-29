@@ -12,6 +12,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set hero1ImageSlides = params.hero1ImageSlides ?? null %}
 
@@ -33,7 +36,7 @@
 
 			{% for imageSlide in hero1ImageSlides %}
 
-				{% set heroImageUrl = craft.imager.transformImage(imageSlide.image.one, heroImgResize).url %}
+				{% set heroImageUrl = imageTransform.imageTransform(imageSlide.image.one, heroImgResize) %}
 
 				<div class="Wallop-item hero-slide" style="background-image: url( {{ heroImageUrl }} );"></div>
 

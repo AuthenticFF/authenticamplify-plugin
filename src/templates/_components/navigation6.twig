@@ -7,6 +7,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set nav6LogoImage = params.nav6LogoImage ?? null %}
 {% set nav6NextBlockType = params.nav6NextBlockType ?? '' %}
@@ -20,7 +23,7 @@
 		height: 84
 	}
 %}
-{% set logoImageUrl = craft.imager.transformImage(logoImgAsset, logoResize).url %}
+{% set logoImageUrl = imageTransform.imageTransform(logoImgAsset, logoResize) %}
 
 {% 
 	if nav6NextBlockType|lower == 'hero1'

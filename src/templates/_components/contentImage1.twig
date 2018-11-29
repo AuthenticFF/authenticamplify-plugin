@@ -11,6 +11,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set contentImage1SquareImage = params.contentImage1SquareImage ?? null %}
 {% set contentImage1SectionTitle = params.contentImage1SectionTitle ?? '' %}
@@ -27,7 +30,7 @@
 		height: 500
 	}
 %}
-{% set imageUrl = craft.imager.transformImage(contentImage1SquareImage.one, imgResize).url %}
+{% set imageUrl = imageTransform.imageTransform(contentImage1SquareImage.one, imgResize) %}
 
 {% if contentImage1CtaLink|length %}
 	{% set ctaHref = contentImage1CtaLink.url %}

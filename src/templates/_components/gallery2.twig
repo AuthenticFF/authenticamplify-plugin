@@ -14,6 +14,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set gallery2WideImageSlides = params.gallery2WideImageSlides ?? null %}
 
@@ -41,7 +44,7 @@
 
 						{% for imageSlide in gallery2WideImageSlides %}
 
-							{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
+							{% set imageUrl = imageTransform.imageTransform(imageSlide.wideImage.one, imgResize) %}
 
 							<div class="Wallop-item gallery-image">
 

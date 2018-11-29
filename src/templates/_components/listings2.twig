@@ -6,6 +6,9 @@
 
 #}
 
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
 {# Parameters #}
 {% set ampListings2Entries = params.ampListings2Entries ?? null %}
 
@@ -46,7 +49,7 @@
 					}
 				%}
 
-				{% set imageUrl = craft.imager.transformImage(imgAsset, wideImgResize).url %}
+				{% set imageUrl = imageTransform.imageTransform(imgAsset, wideImgResize) %}
 
 				<div class="cell">
 
@@ -86,7 +89,7 @@
 					}
 				%}
 
-				{% set imageUrl = craft.imager.transformImage(imgAsset, tallImgResize).url %}
+				{% set imageUrl = imageTransform.imageTransform(imgAsset, tallImgResize) %}
 
 				<div class="cell">
 
