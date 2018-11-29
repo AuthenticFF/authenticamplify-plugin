@@ -51,12 +51,26 @@
 
 			{% for contentImage in contentImage5SquareImageItems %}
 
+				{% set has360Image = contentImage.squareImage.one.expAssetThreeSixtyImage | length %}
 				{% set imageUrl = craft.imager.transformImage(contentImage.squareImage.one, imgResize).url %}
 
 				<div class="cell" data-equalizer-watch>
 
 					<div class="image">
-						<img src="{{ imageUrl }}">
+
+						<div
+							class="image-wrapper {{ has360Image ? 'has-360-image' : '' }}"
+							data-360-image="{{ has360Image ? contentImage.squareImage.one.expAssetThreeSixtyImage.first.url }}"
+							style="background-image: url({{ imageUrl }})">
+
+							{% if has360Image %}
+								<img class="three-sixty-icon" src="/assets/images/ar-360.svg" alt="AR 360 View" />
+							{% endif %}
+
+							<img class="dummy" src="{{ imageUrl }}">
+
+						</div>
+
 					</div>
 
 					<h2 class="heading">{{ contentImage.headingText }}</h2>

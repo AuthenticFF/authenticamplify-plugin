@@ -32,16 +32,28 @@
 	<div class="sliders-wrapper">
 
 		<div class="slider Wallop Wallop--slide gallery-left">
-							
+
 			<div class="Wallop-list">
 
 				{% for imageSlide in gallery3WideImageSlides %}
 
+					{% set has360Image = imageSlide.wideImage.one.expAssetThreeSixtyImage | length %}
 					{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
 
 					<div class="Wallop-item gallery-slide{% if loop.last %} Wallop-item--current{% endif %}">
 
-						<img src="{{ imageUrl }}">
+						<div
+							class="image-wrapper {{ has360Image ? 'has-360-image' : '' }}"
+							data-360-image="{{ has360Image ? imageSlide.wideImage.one.expAssetThreeSixtyImage.first.url }}"
+							style="background-image: url({{ imageUrl }})">
+
+							{% if has360Image %}
+								<img class="three-sixty-icon" src="/assets/images/ar-360.svg" alt="AR 360 View" />
+							{% endif %}
+
+							<img class="dummy" src="{{ imageUrl }}">
+
+						</div>
 
 					</div>
 
@@ -58,16 +70,28 @@
 				<div class="cell small-12 medium-6 large-6 large-offset-1">
 
 					<div class="slider Wallop Wallop--slide gallery-main" data-slide-count="{{ gallery3WideImageSlides|length }}">
-							
+
 						<div class="Wallop-list">
 
 							{% for imageSlide in gallery3WideImageSlides %}
 
+								{% set has360Image = imageSlide.wideImage.one.expAssetThreeSixtyImage | length %}
 								{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
 
 								<div class="Wallop-item gallery-slide{% if loop.first %} Wallop-item--current{% endif %}" data-equalizer-watch>
 
-									<img src="{{ imageUrl }}">
+									<div
+										class="image-wrapper {{ has360Image ? 'has-360-image' : '' }}"
+										data-360-image="{{ has360Image ? imageSlide.wideImage.one.expAssetThreeSixtyImage.first.url }}"
+										style="background-image: url({{ imageUrl }})">
+
+										{% if has360Image %}
+											<img class="three-sixty-icon" src="/assets/images/ar-360.svg" alt="AR 360 View" />
+										{% endif %}
+
+										<img class="dummy" src="{{ imageUrl }}">
+
+									</div>
 
 								</div>
 
@@ -126,16 +150,28 @@
 		</div>
 
 		<div class="slider Wallop Wallop--slide gallery-right">
-							
+
 			<div class="Wallop-list">
 
 				{% for imageSlide in gallery3WideImageSlides %}
 
+					{% set has360Image = imageSlide.wideImage.one.expAssetThreeSixtyImage | length %}
 					{% set imageUrl = craft.imager.transformImage(imageSlide.wideImage.one, imgResize).url %}
 
 					<div class="Wallop-item gallery-slide{% if loop.index == 2 %} Wallop-item--current{% endif %}">
 
-						<img src="{{ imageUrl }}">
+						<div
+							class="image-wrapper {{ has360Image ? 'has-360-image' : '' }}"
+							data-360-image="{{ has360Image ? imageSlide.wideImage.one.expAssetThreeSixtyImage.first.url }}"
+							style="background-image: url({{ imageUrl }})">
+
+							{% if has360Image %}
+								<img class="three-sixty-icon" src="/assets/images/ar-360.svg" alt="AR 360 View" />
+							{% endif %}
+
+							<img class="dummy" src="{{ imageUrl }}">
+
+						</div>
 
 					</div>
 
