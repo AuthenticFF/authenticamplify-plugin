@@ -1,0 +1,50 @@
+{#
+
+	CTA 3
+
+	@param {plain text} cta3HeadingText
+	@param {redactor} cta3TextContent
+	@param {plain text} cta3CtaText
+	@param {linkit} cta3CtaLink
+
+#}
+
+{# Parameters #}
+{% set cta3HeadingText = params.cta3HeadingText ?? null %}
+{% set cta3TextContent = params.cta3TextContent ?? null %}
+{% set cta3CtaText = params.cta3CtaText ?? null %}
+{% set cta3CtaLink = params.cta3CtaLink ?? null %}
+
+{# Variables #}
+{% if cta3CtaLink|length %}
+	{% set ctaHref = cta3CtaLink.url %}
+{% else %}
+	{% set ctaHref = '#' %}
+{% endif %}
+
+{# Output #}
+<section data-component data-cta-3>
+
+	<div class="grid-container">
+
+		<div class="grid-x grid-margin-x">
+
+			<div class="cell small-12 large-4">
+				<h2>{{ cta3HeadingText }}</h2>
+			</div>
+
+			<div class="cell small-12 large-7">
+				<div class="text-content">
+					{{ cta3TextContent }}
+				</div>
+
+				<div class="cta">
+					<a href="{{ ctaHref }}" class="button button-square button-black">{{ cta3CtaText }}</a>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
