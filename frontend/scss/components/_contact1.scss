@@ -1,0 +1,72 @@
+
+
+@mixin contact-1{
+
+	.text-content {
+		margin-bottom: 32px;
+
+		@include breakpoint(large) {
+			margin-bottom: 0;
+		}
+
+		&:last-child {
+			order: 1;
+			@include breakpoint(large) {
+				order: 2;
+			}
+			@include breakpoint(xlarge) {
+				padding-left: 24px;
+			}
+		}
+
+	}
+
+	.heading {
+		@extend .heading-2;
+		color: $contact1_headingColor;
+	}
+
+	p {
+		@extend .body-text;
+		color: $contact1_bodyColor;
+
+		@include breakpoint(large) {
+			margin-bottom: 32px;
+			padding-right: 92px;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		a{
+			color: $contact1_bodyLinkColor;
+		}
+
+	}
+
+	.form-cell:first-child {
+		order: 2;
+		@include breakpoint(large) {
+			order: 1;
+		}
+	}
+
+	form {
+		input[type="text"], input[type="email"], textarea {
+			margin-bottom: 20px;
+		}
+
+		label.error {
+			position: relative;
+			color: red;
+			top: -8px;
+		}
+	}
+}
+
+[data-contact-1] {
+	@if $initDefaultComponents{
+		@include contact-1;
+	}
+}

@@ -1,0 +1,60 @@
+
+
+@mixin icons-1{
+	.heading {
+		@extend .heading-2;
+		color: $icons1_headingColor;
+		margin-bottom: 24px;
+	}
+
+	.subheading {
+		@extend .intro;
+		color: $icons1_subheadingColor;
+		margin-bottom: 32px;
+
+		@include breakpoint(large) {
+			margin-bottom: 64px;
+		}
+	}
+
+	.icon-item {
+		margin-bottom: 16px;
+
+		&:nth-last-child(-n + 1) {
+			margin-bottom: 0;
+		}
+
+		@include breakpoint(medium) {
+			margin-bottom: 16px;
+
+			&:nth-last-child(-n + 2) {
+				margin-bottom: 0;
+			}
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 24px;
+
+			&:nth-last-child(-n + 4) {
+				margin-bottom: 0;
+			}
+		}
+
+		.icon {
+			max-width: 50px;
+			@include breakpoint(large) {
+				margin-bottom: 20px;
+			}
+		}
+		.item-text {
+			@extend .body-text;
+			color: $icons1_itemTextColor;
+		}
+	}
+}
+
+[data-icons-1] {
+	@if $initDefaultComponents{
+		@include icons-1;
+	}
+}

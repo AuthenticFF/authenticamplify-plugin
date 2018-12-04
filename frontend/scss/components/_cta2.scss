@@ -1,0 +1,58 @@
+@mixin cta-2{
+	.image-cell {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		@include breakpoint(small down) {
+			height: 400px;
+		}
+
+		@include breakpoint(medium only) {
+			height: 480px;
+		}
+	}
+
+	.content-cell {
+		display: flex;
+		align-items: center;
+		padding: 32px 28px;
+		background-color: $cta2_background-color;
+
+		@include breakpoint(medium) {
+			padding: 54px 60px;
+		}
+
+		@include breakpoint(large) {
+			padding: 124px 92px;
+		}
+
+		.heading {
+			@extend .heading-2;
+			color: $cta2_headingColor;
+
+			@include breakpoint(large) {
+				margin-bottom: 36px;
+			}
+		}
+
+		p {
+			@extend .body-text;
+			color: $cta2_bodyColor;
+		}
+
+		.cta {
+			margin-top: 32px;
+			@include breakpoint(large) {
+				margin-top: 64px;
+			}
+		}
+
+	}
+}
+
+[data-cta-2] {
+	@if $initDefaultComponents{
+		@include cta-2;
+	}
+}

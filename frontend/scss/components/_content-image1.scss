@@ -1,0 +1,68 @@
+
+
+@mixin content-image-1{
+	.image-cell {
+		position: relative;
+		text-align: center;
+		margin-bottom: 24px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 32px;
+		}
+
+		@include breakpoint(large) {
+			text-align: left;
+			margin-bottom: 0;
+		}
+	}
+
+	.text-grid-wrap {
+		@include breakpoint(xlarge) {
+			min-height: 480px;
+		}
+	}
+
+	.heading {
+		@extend .heading-2;
+		color: $contentImage1_headingColor;
+		margin-bottom: 0px;
+
+		@include breakpoint(large) {
+			margin-bottom: 24px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+		color: $contentImage1_bodyColor;
+		@include breakpoint(large) {
+			margin-bottom: 32px;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.cta {
+		margin-top: 32px;
+		@include breakpoint(medium) {
+			margin-top: 42px;
+		}
+	}
+
+	.image {
+		@include breakpoint(large) {
+			position: absolute;
+			top: -20px;
+			right: 0;
+			z-index: -1;
+		}
+	}
+}
+
+[data-content-image-1] {
+	@if $initDefaultComponents{
+		@include content-image-1
+	}
+}

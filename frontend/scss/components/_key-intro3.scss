@@ -1,0 +1,148 @@
+
+
+@mixin key-intro-3{
+	table {
+		margin-bottom: 54px;
+	}
+
+	.table-cell {
+		margin-top: 32px;
+		@include breakpoint(medium) {
+			margin-top: 18px;
+		}
+		@include breakpoint(large) {
+			margin-top: 18px;
+		}
+	}
+
+	.key-heading {
+		@extend .heading-3;
+		color: $keyIntro3_tableHeadingColor;
+		margin-bottom: 12px;
+	}
+
+	.info-table {
+		@include font($font-family2, 16px, 400, 22px);
+		color: $keyIntro3_tableColor;
+		width: 100%;
+
+		tr>td {
+			//padding-bottom: 16px;
+			vertical-align: top;
+			line-height: 2.35em;
+
+			br {
+				//margin-bottom: 18px;
+			}
+		}
+
+		tr:last-child>td {
+			padding-bottom: 0;
+		}
+
+		td:nth-child(2n + 1) {
+			width: 48%;
+			padding-right: 8px;
+		}
+
+		td:nth-child(2n + 2) {
+			width: 52%;
+		}
+
+		a {
+			color: $keyIntro3_tableLinkColor;
+			display: inline-block;
+			margin-right: 6px;
+			border-bottom: 1px solid $keyIntro3_tableLinkColor;
+			line-height: 1.4em;
+		}
+
+	}
+
+	hr {
+		margin: 32px 0;
+		background-color: $keyIntro3_hrBackgroundColor;
+		border:0;
+		height: 1px;
+		margin: 32px 0;
+
+		@include breakpoint(medium) {
+			margin: 54px 0;
+		}
+	}
+
+
+	.heading {
+		@extend .heading-2;
+		color: $keyIntro3_headingColor;
+
+		@include breakpoint(large) {
+			margin-bottom: 24px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+		color: $keyIntro3_bodyColor;
+
+		@include breakpoint(large) {
+			margin-bottom: 32px;
+		}
+	}
+
+	.cta-row {
+		margin-top: 32px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		flex-direction: column;
+
+		@include breakpoint(medium) {
+			flex-direction: row;
+		}
+
+		.current-support {
+			@include font($font-family2, 18px, 700, 28px);
+			color: $keyIntro3_ctaColor;
+			position: relative;
+			padding-left: 50px;
+			margin-top: 24px;
+			white-space: nowrap;
+
+			@include breakpoint(medium) {
+				margin-top: 0;
+				margin-left: 42px;
+			}
+
+			&:before {
+				content: '';
+				width: 30px;
+				height: 28px;
+				background-image: url( /assets/images/icon-thumb-up.svg );
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				position: absolute;
+				left: 0;
+				top: calc(50% - 18px);
+			}
+		}
+
+		.upvote-vote-match {
+			.button {
+				opacity: 0.15;
+				cursor: auto;
+				&:hover {
+					top: 0px;
+				}
+			}
+		}
+
+	}
+}
+
+[data-key-intro-3] {
+	@if $initDefaultComponents{
+		@include key-intro-3;
+	}
+}

@@ -1,0 +1,52 @@
+.image-card {
+
+	img {
+		display: block;
+		width: 100%;
+		margin-bottom: 12px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 16px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 20px;
+		}
+	}
+
+	div.image {
+		width: 100%;
+		height: 0px;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		margin-bottom: 12px;
+		padding-bottom: 112.5%;
+
+		@include breakpoint(medium) {
+			margin-bottom: 16px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 20px;
+			height: 320px;
+			padding-bottom: 0;
+		}
+	}
+
+	.intro-title {
+		@extend .body-text;
+		font-style: italic;
+		margin-bottom: 4px;
+
+		@include breakpoint(large) {
+			margin-bottom: 8px;
+		}
+	}
+
+	.title {
+		@extend .body-text;
+		font-weight: 700;
+	}
+
+}

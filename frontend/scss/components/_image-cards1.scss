@@ -1,0 +1,32 @@
+@mixin image-cards-1{
+	.cell {
+
+		margin-bottom: 28px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		@include breakpoint(medium) {
+			margin-bottom: 32px;
+
+			&:nth-last-child(-n + 2) {
+				margin-bottom: 0;
+			}
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 40px;
+
+			&:nth-last-child(-n + 4) {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+[data-image-cards-1] {
+	@if $initDefaultComponents{
+		@include image-cards-1;
+	}
+}

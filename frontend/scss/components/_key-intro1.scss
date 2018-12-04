@@ -1,0 +1,173 @@
+
+
+@mixin key-intro-1{
+
+	.left {
+		order: 2;
+		margin-top: 48px;
+
+		@include breakpoint(large) {
+			order: 1;
+			margin-top: 0;
+			padding-right: 32px;
+		}
+	}
+
+	.right {
+		order: 1;
+
+		@include breakpoint(large) {
+			order: 2;
+			padding-left: 18px;
+			padding-top: 42px;
+		}
+	}
+
+	.key-info {
+		background-color: $keyIntro1_tableBackgroundColor;
+		padding: 24px 24px 20px;
+
+		@include breakpoint(medium) {
+			padding: 48px 48px 42px;
+		}
+
+		@include breakpoint(large) {
+			padding: 48px 42px 42px;
+		}
+
+		@include breakpoint(xxlarge) {
+			padding: 48px 48px 42px;
+		}
+
+		@include breakpoint(xxlarge) {
+			padding: 56px 72px 50px;
+		}
+
+		.key-heading {
+			@extend .heading-3;
+			color: $keyIntro1_tableHeadingColor;
+			margin-bottom: 12px;
+		}
+
+		.info-table {
+			@include font($font-family2, 16px, 400, 22px);
+			color: $keyIntro1_tableColor;
+			width: 100%;
+
+			tr>td {
+				//padding-bottom: 16px;
+				vertical-align: top;
+				line-height: 2.35em;
+
+				br {
+					//margin-bottom: 18px;
+				}
+			}
+
+			tr:last-child>td {
+				padding-bottom: 0;
+			}
+
+			td:nth-child(2n + 1) {
+				width: 48%;
+				padding-right: 8px;
+			}
+
+			td:nth-child(2n + 2) {
+				width: 52%;
+			}
+
+			a {
+				color: $keyIntro1_tableLinkColor;
+				display: inline-block;
+				margin-right: 6px;
+				border-bottom: 1px solid $grey;
+				line-height: 1.4em;
+			}
+
+		}
+
+		hr {
+			margin: 30px 0 36px;
+			border: none;
+			height: 1px;
+			background-color: $keyIntro1_hrBackgroundColor;
+		}
+
+	}
+
+	.heading {
+		@extend .heading-2;
+		color: $keyIntro1_headingColor;
+		margin-bottom: 32px;
+	}
+
+	p {
+		@extend .body-text;
+		color: $keyIntro1_bodyColor;
+
+		@include breakpoint(large) {
+			padding-right: 16%;
+		}
+
+		@include breakpoint(xxlarge) {
+			padding-right: 31%;
+		}
+	}
+
+	.cta-row {
+		margin-top: 40px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@include breakpoint(medium) {
+			flex-direction: row;
+		}
+
+		.current-support {
+			@include font($font-family2, 18px, 700, 28px);
+			color: $keyIntro1_ctaColor;
+			margin-top: 24px;
+			padding-left: 50px;
+			position: relative;
+			white-space: nowrap;
+
+			@include breakpoint(medium) {
+				margin-left: 24px;
+				margin-top: 0;
+			}
+
+			&:before {
+				content: '';
+				width: 30px;
+				height: 28px;
+				background-image: url( /assets/images/icon-thumb-up.svg );
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				position: absolute;
+				left: 0;
+				top: calc(50% - 18px);
+			}
+		}
+
+		.upvote-vote-match {
+			.button {
+				opacity: 0.15;
+				cursor: auto;
+				&:hover {
+					top: 0px;
+				}
+			}
+		}
+
+	}
+
+}
+
+[data-key-intro-1] {
+	@if $initDefaultComponents{
+		@include key-intro-1;
+	}
+}

@@ -1,0 +1,84 @@
+
+
+@mixin stats-3{
+
+	.top-row {
+		margin-bottom: 32px;
+
+		@include breakpoint(large) {
+			margin-bottom: 40px;
+		}
+	}
+
+	.component-title {
+		@extend .heading-2;
+		color: $stats3_headingColor;
+		margin-bottom: 32px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 32px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 56px;
+			padding-right: 42px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+		color: $stats3_bodyColor;
+	}
+
+	.text-content {
+		&>*:first-child {
+			margin-top: 0;
+		}
+
+		@include breakpoint(large) {
+			padding-left: 12px;
+		}
+	}
+
+	.stat-item {
+
+		@include breakpoint(small down) {
+			margin-bottom: 32px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		@include breakpoint(medium ) {
+			margin-bottom: 60px;
+
+			&:nth-last-child(-n + 2) {
+				margin-bottom: 0;
+			}
+
+			&:nth-child(2n + 1) {
+				padding-right: 12px;
+			}
+
+			&:nth-child(2n + 2) {
+				padding-left: 12px;
+			}
+		}
+
+		.title {
+			margin-bottom: 16px;
+		}
+
+		.subtext {
+			@include font($font-family2, 20px, 400, 31px, normal);
+		}
+	}
+
+}
+
+[data-stats-3] {
+	@if $initDefaultComponents{
+		@include stats-3;
+	}
+}

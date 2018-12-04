@@ -1,0 +1,56 @@
+
+
+
+@mixin content-2{
+
+	.component-title {
+		@extend .heading-2;
+		color: $content2_headingColor;
+
+		@include breakpoint(medium only) {
+			padding-right: 24px;
+		}
+	}
+
+	.text-content {
+		&>*:first-child {
+			@include breakpoint(medium) {
+				margin-top: 0;
+			}
+		}
+
+		@include breakpoint(large) {
+			padding-left: 12px;
+		}
+
+		@include breakpoint(xlarge) {
+			padding-left: 32px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+		color: $content2_bodyColor;
+	}
+
+	.cta {
+		margin-top: 32px;
+		margin-bottom: 16px;
+
+		@include breakpoint(medium) {
+			margin-top: 32px;
+			margin-bottom: 0;
+		}
+
+		@include breakpoint(large) {
+			margin-top: 60px;
+		}
+	}
+
+}
+
+[data-content-2] {
+	@if $initDefaultComponents{
+		@include content-2;
+	}
+}

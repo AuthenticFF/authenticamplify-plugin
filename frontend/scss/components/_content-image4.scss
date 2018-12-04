@@ -1,0 +1,77 @@
+
+
+@mixin content-image-4{
+
+	.content-wrap {
+
+		.grid-x {
+			margin-bottom: 20px;
+
+			@include breakpoint(medium) {
+				margin-bottom: 54px;
+			}
+
+			@include breakpoint(large) {
+				margin-bottom: 92px;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+
+
+	}
+
+	.heading {
+		@extend .heading-2;
+		color: $contentImage4_headingColor;
+	}
+
+	p {
+		@extend .body-text;
+		color: $contentImage4_bodyColor;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.image-cell {
+		@include breakpoint(small down) {
+			text-align: center;
+		}
+	}
+
+	.image-right {
+		.content {
+			@include breakpoint(small down) {
+				margin-bottom: 12px;
+			}
+			@include breakpoint(large) {
+				padding-right: 18px;
+			}
+		}
+	}
+
+	.image-left {
+		.content {
+			@include breakpoint(large) {
+				padding-left: 18px;
+			}
+		}
+		img {
+			@include breakpoint(small down) {
+				margin-bottom: 24px;
+			}
+		}
+	}
+
+}
+
+[data-content-image-4] {
+	@if $initDefaultComponents{
+		@include content-image-4;
+	}
+}

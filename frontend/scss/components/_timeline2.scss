@@ -1,0 +1,131 @@
+
+
+@mixin timeline-2{
+	.heading {
+		@extend .heading-2;
+		color: $timeline2_headingColor;
+		margin-bottom: 20px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 20px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 32px;
+		}
+	}
+
+	.subheading {
+		@extend .heading-3;
+		color: $timeline2_subheadingColor;
+	}
+
+	.timeline {
+		margin-top: 32px;
+
+		@include breakpoint(medium) {
+			margin-top: 42px;
+		}
+
+		@include breakpoint(large) {
+			margin-top: 72px;
+		}
+
+		.timeline-item {
+			display: flex;
+			margin-bottom: 32px;
+			flex-direction: column;
+
+			@include breakpoint(medium) {
+				flex-direction: row;
+			}
+
+			@include breakpoint(large) {
+				margin-bottom: 50px;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.image {
+				flex-shrink: 0;
+
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				height: 254px;
+
+				@include breakpoint(medium) {
+					height: auto;
+					width: 35%;
+					min-width: 224px;
+				}
+
+				@include breakpoint(large) {
+					min-width: 310px;
+					width: 31%;
+				}
+
+				@include breakpoint(xlarge) {
+					width: 27%;
+				}
+
+				@include breakpoint(xxlarge) {
+					width: 24%;
+				}
+			}
+
+			.content-wrap {
+				flex-grow: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: $timeline2_cellBackgroundColor;
+				padding: 20px 24px;
+
+				@include breakpoint(medium) {
+					padding: 28px 28px;
+				}
+
+				@include breakpoint(large) {
+					padding: 64px 54px;
+				}
+			}
+
+			.content {
+
+				h3 {
+					@extend .body-text;
+					color: $timeline2_cellHeadingColor;
+					font-weight: 700;
+				}
+
+				p {
+					@extend .body-text;
+					color: $timeline2_cellBodyColor;
+
+					&:first-of-type {
+						@include breakpoint(medium down) {
+							margin-top: 12px;
+						}
+					}
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+
+
+			}
+
+		}
+
+	}
+}
+
+[data-timeline-2] {
+	@if $initDefaultComponents{
+		@include timeline-2;
+	}
+}

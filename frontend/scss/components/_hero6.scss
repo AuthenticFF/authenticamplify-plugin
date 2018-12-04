@@ -1,0 +1,123 @@
+
+
+@mixin hero-6{
+
+	.slider {
+		position: relative;
+
+		.hero-slide {
+
+			.image {
+
+			}
+
+			.text-content {
+				position: relative;
+				padding: 24px 0 36px;
+				text-align: center;
+
+				@include breakpoint(medium) {
+					padding: 32px 0 42px;
+					//top: -64px;
+					//margin-bottom: -64px;
+					text-align: left;
+				}
+
+				@include breakpoint(large) {
+					padding: 42px 0 0;
+					//top: -100px;
+					//margin-bottom: -100px;
+				}
+
+				@include breakpoint(xlarge) {
+					padding: 0;
+					//top: -142px;
+					//margin-bottom: -142px;
+					margin-top: 64px;
+				}
+
+				.heading {
+					@extend .heading-1;
+					color: $hero6_headingColor;
+					margin-bottom: 12px;
+
+					@include breakpoint(medium) {
+						margin-bottom: 20px;
+					}
+				}
+
+				.subheading {
+					color: $hero6_subheadingColor;
+					@extend .intro;
+				}
+			}
+
+		}
+
+		.slider-dots-nav {
+			line-height: 1em;
+			text-align: center;
+			//padding-top: 12px;
+			z-index: 99;
+			position: absolute;
+			//top: 564px;
+			width: 100%;
+			bottom: 0;
+
+			@include breakpoint(medium) {
+				//padding-top: 32px;
+
+			}
+
+			@include breakpoint(large) {
+				position: absolute;
+				text-align: left;
+				bottom: 24px;
+				width: auto;
+			}
+
+			@include breakpoint(xlarge) {
+				bottom: 42px;
+			}
+
+			@include breakpoint(xxlarge) {
+				bottom: auto;
+				top: 564px;
+			}
+
+			span {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background-color: $hero6_dotColor;
+				opacity: 0.5;
+				display: inline-block;
+				cursor: pointer;
+				margin-right: 20px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&.active {
+					background-color: $hero6_activeDotColor;
+					opacity: 1;
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+[data-hero-6] {
+	@if $initDefaultComponents{
+		@include hero-6;
+	}
+}
+
+.navigation + [data-hero-6] {
+	margin-top: 0px;
+}

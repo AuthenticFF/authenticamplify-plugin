@@ -1,0 +1,49 @@
+
+
+@mixin content-3{
+	.component-title {
+		@extend .heading-2;
+		color: $content3_headingColor;
+		margin-bottom: 16px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 24px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+		color: $content3_bodyColor;
+	}
+
+	.two-col {
+		columns: 1;
+
+		@include breakpoint(medium) {
+			columns: 2;
+			column-gap: 40px;
+		}
+
+		p {
+			display: inline-block;
+		}
+	}
+
+	.cta {
+		margin-top: 16px;
+
+		@include breakpoint(medium) {
+			margin-top: 21px;
+		}
+
+		@include breakpoint(large) {
+			margin-top: 28px;
+		}
+	}
+}
+
+[data-content-3] {
+	@if $initDefaultComponents{
+		@include content-3;
+	}
+}

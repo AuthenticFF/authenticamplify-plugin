@@ -1,0 +1,41 @@
+
+
+
+@mixin map-2{
+	.heading {
+		@extend .heading-3;
+		color: $map2_headingColor;
+	}
+
+	p {
+		@extend .body-text;
+		color: $map2_bodyColor;
+	}
+
+	#map-container {
+		height: 600px;
+		margin-bottom: 24px;
+
+		@include breakpoint(large) {
+			margin-bottom: 0;
+		}
+	}
+
+	.map-marker {
+		width: 50px;
+		height: 66px;
+		background-image: url( /assets/images/map-pin.svg );
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+
+	.mapboxgl-ctrl-bottom-right {
+		display: none;
+	}
+}
+
+[data-map-2] {
+	@if $initDefaultComponents{
+		@include map-2;
+	}
+}

@@ -1,0 +1,64 @@
+.button {
+	text-transform: uppercase;
+	cursor: pointer;
+	position: relative;
+	transition: top 0.2s, opacity 0.4s;
+	top: 0px;
+	display: inline-block;
+	border: none;
+
+	&:hover {
+		top: -5px;
+	}
+
+	&.button-square {
+		@include font($font-family2, 18px, 700, 31px);
+		letter-spacing: 0.5px;
+		padding: 20px 32px;
+		@include breakpoint(medium) {
+			padding: 22px 48px;
+		}
+
+		&.button-square-thin {
+			padding: 20px 24px;
+			@include breakpoint(medium) {
+				padding: 22px 30px;
+			}
+		}
+
+		&[href*="#open-ar-modal"] {
+			padding: 20px 32px 20px 68px;
+			@include breakpoint(medium) {
+				padding: 22px 48px 22px 98px;
+			}
+
+			&:before {
+				content: '';
+				display: inline-block;
+				background-image: url( /assets/images/icon-experience-ar.svg );
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				width: 30px;
+				height: 30px;
+				position: absolute;
+				left: 22px;
+				top: calc(50% - 15px);
+
+				@include breakpoint(medium) {
+					width: 36px;
+					height: 35px;
+					top: calc(50% - 18px);
+					left: 40px;
+				}
+			}
+		}
+
+	}
+
+	&.button-black {
+		background-color: $black;
+		color: $white;
+	}
+
+}

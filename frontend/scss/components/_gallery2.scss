@@ -1,0 +1,87 @@
+
+
+@mixin gallery-2{
+
+	background-color: $gallery2_backgroundColor;
+
+	.heading {
+		@extend .heading-2;
+		color: $gallery2_headingColor;
+		margin-bottom: 8px;
+
+		@include breakpoint(large) {
+			margin-bottom: 14px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+		color: $gallery2_bodyColor;
+
+		@include breakpoint(large) {
+			margin-bottom: 32px;
+		}
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.gallery-image {
+		text-align: center;
+	}
+
+	.slider-dots-nav {
+		text-align: center;
+		margin: 12px 0 20px;
+
+		@include breakpoint(medium) {
+			margin: 24px 0 28px;
+		}
+
+		@include breakpoint(large) {
+			margin: 12px 0 24px;
+			text-align: left;
+		}
+
+		@include breakpoint(xlarge) {
+			margin: 24px 0 32px;
+		}
+
+		@include breakpoint(xxlarge) {
+			margin: 32px 0 42px;
+		}
+
+		span {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background-color: $gallery2_dotColor;
+			opacity: 0.5;
+			display: inline-block;
+			cursor: pointer;
+			margin-right: 20px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&.active {
+				background-color: $gallery2_activeDotColor;
+				opacity: 1;
+			}
+
+		}
+
+	}
+}
+
+[data-gallery-2] {
+	@if $initDefaultComponents{
+		@include gallery-2;
+	}
+}

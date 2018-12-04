@@ -1,0 +1,123 @@
+
+
+@mixin timeline-1{
+	.heading {
+		@extend .heading-2;
+		color: $timeline1_headingColor;
+		margin-bottom: 12px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 20px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 34px;
+		}
+	}
+
+	.subheading {
+		@extend .heading-3;
+		color: $timeline1_subheadingColor;
+		margin-bottom: 32px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 54px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 84px;
+		}
+	}
+
+	.timeline-grid {
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 50%;
+			width: 1px;
+			background-color: $greyLight;
+			z-index: 0
+		}
+	}
+
+	.timeline-cell {
+		z-index: 1;
+		margin-bottom: 24px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		@include breakpoint(medium) {
+			margin-bottom: 0;
+
+			&:nth-child(2n + 1) {
+				padding-right: 6px;
+			}
+
+			&:nth-child(2n + 2) {
+				padding-left: 6px;
+			}
+
+			&:nth-child(2n + 2) {
+				position: relative;
+			}
+
+		}
+
+		@include breakpoint(large) {
+			&:nth-child(2n + 1) {
+				padding-right: 15px;
+			}
+
+			&:nth-child(2n + 2) {
+				padding-left: 15px;
+			}
+		}
+
+		.image {
+			img {
+				width: 100%;
+			}
+		}
+
+		.content {
+			background-color: $timeline1_cellBackgroundColor;
+			padding: 20px 28px;
+
+			@include breakpoint(medium) {
+				padding: 24px 36px;
+			}
+
+			@include breakpoint(large) {
+				padding: 54px 68px;
+			}
+
+			h3 {
+				@extend .body-text;
+				color: $timeline1_cellHeadingColor;
+				font-weight: 700;
+			}
+
+			p {
+				@extend .body-text;
+				color: $timeline1_cellBodyColor;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+	}
+}
+
+[data-timeline-1] {
+	@if $initDefaultComponents{
+		@include timeline-1;
+	}
+}

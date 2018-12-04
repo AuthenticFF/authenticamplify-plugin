@@ -1,0 +1,73 @@
+@mixin listings-1{
+
+	.large-images {
+		margin-bottom: 28px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 0;
+		}
+	}
+
+	.large-image {
+		margin-bottom: 32px;
+
+		@include breakpoint(large) {
+			margin-bottom: 42px;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+	}
+
+	.four-image-grid {
+
+		.cell {
+			margin-bottom: 28px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			@include breakpoint(medium) {
+				margin-bottom: 32px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			@include breakpoint(large) {
+				margin-bottom: 54px;
+
+				&:nth-last-child(-n + 2) {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.large-left-small-right-grid {
+		.four-image-grid {
+
+			.cell {
+				margin-bottom: 28px;
+
+				@include breakpoint(medium) {
+					margin-bottom: 32px;
+				}
+
+				@include breakpoint(large) {
+					margin-bottom: 54px;
+				}
+			}
+		}
+	}
+}
+
+[data-listings-1] {
+	@if $initDefaultComponents{
+		@include listings-1;
+	}
+}

@@ -1,0 +1,59 @@
+
+
+@mixin icons-3{
+	.heading {
+		color: $icons3_headingColor;
+		margin-bottom: 16px;
+		@include breakpoint(large) {
+			margin-bottom: 0;
+		}
+		@extend .heading-2;
+	}
+
+	.subheading {
+		@extend .intro;
+		color: $icons3_subheadingColor;
+
+		@include breakpoint(large) {
+			margin-bottom: 32px;
+		}
+	}
+
+	.icon-items {
+		margin-top: 32px;
+		@include breakpoint(large) {
+			margin-top: 54px;
+		}
+	}
+
+	.icon-item {
+		margin-bottom: 16px;
+
+		&:nth-last-child(-n + 1) {
+			margin-bottom: 0;
+		}
+
+		@include breakpoint(large) {
+			&:nth-last-child(-n + 3) {
+				margin-bottom: 0;
+			}
+		}
+
+		.icon {
+			max-width: 50px;
+			@include breakpoint(large) {
+				margin-bottom: 24px;
+			}
+		}
+		.item-text {
+			@extend .body-text;
+			color: $icons3_itemTextColor;
+		}
+	}
+}
+
+[data-icons-3] {
+	@if $initDefaultComponents{
+		@include icons-3;
+	}
+}

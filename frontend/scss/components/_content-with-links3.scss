@@ -1,0 +1,50 @@
+
+
+@mixin content-with-links-3{
+	.component-title {
+		@extend .heading-2;
+		color: $contentWithLinks3_headingColor;
+		margin-bottom: 16px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 24px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+		color: $contentWithLinks3_bodyColor;
+		@include breakpoint(large) {
+			margin: 32px 0;
+		}
+
+		&:first-child {
+			@include breakpoint(large) {
+				margin-top: 16px;
+			}
+		}
+	}
+
+	.sidebar-links {
+		@include breakpoint(medium) {
+			padding-left: 40px
+		}
+		a{
+			color: $contentWithLinks3_sidebarLinksColor;
+		}
+	}
+
+	.cta {
+		margin-top: 16px;
+
+		@include breakpoint(large) {
+			margin-top: 20px;
+		}
+	}
+}
+
+[data-content-with-links-3] {
+	@if $initDefaultComponents{
+		@include content-with-links-3;
+	}
+}

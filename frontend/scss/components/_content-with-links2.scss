@@ -1,0 +1,78 @@
+
+
+@mixin content-with-links-2{
+	.component-title {
+		@extend .heading-2;
+		color: $contentWithLinks2_headingColor;
+		margin-bottom: 16px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 24px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+		color: $contentWithLinks2_bodyColor;
+	}
+
+	.text-content {
+		margin-bottom: 12px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 0;
+		}
+
+		@include breakpoint(large) {
+			padding: 0 12px;
+		}
+
+		&>*:first-child {
+			margin-top: 0;
+		}
+
+	}
+
+	.two-col {
+		columns: 1;
+
+		@include breakpoint(medium) {
+			columns: 2;
+			column-gap: 40px;
+		}
+
+		p {
+			display: inline-block;
+		}
+	}
+
+	.sidebar-links {
+		@include breakpoint(medium) {
+			padding-left: 40px;
+		}
+
+		a{
+			color: $contentWithLinks2_sidebarLinksColor;
+		}
+
+		ul {
+			@include breakpoint(medium) {
+				margin-top: 0;
+			}
+		}
+	}
+
+	.cta {
+		margin-top: 24px;
+
+		@include breakpoint(medium) {
+			margin-top: 32px;
+		}
+	}
+}
+
+[data-content-with-links-2] {
+	@if $initDefaultComponents{
+		@include content-with-links-2;
+	}
+}

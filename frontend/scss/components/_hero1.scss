@@ -1,0 +1,66 @@
+@mixin hero-1{
+	position: relative;
+	color: $white;
+
+	.slider {
+
+		.hero-slide {
+			height: 500px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+
+			@include breakpoint(medium) {
+				height: 640px;
+			}
+
+			@include breakpoint(large) {
+				height: 720px;
+			}
+
+			@include breakpoint(xlarge) {
+				height: 900px;
+			}
+		}
+
+		.next-slide-btn, .previous-slide-btn {
+			width: 60px;
+			height: 11px;
+			background-repeat: no-repeat;
+			position: absolute;
+			z-index: 1;
+			bottom: 24px;
+			cursor: pointer;
+			transition: opacity 0.2s;
+
+			&:hover {
+				opacity: 0.6;
+			}
+
+			@include breakpoint(medium) {
+				bottom: 42px;
+			}
+
+			@include breakpoint(large) {
+				bottom: 68px;
+			}
+		}
+
+		.previous-slide-btn {
+			background-image: url( /assets/images/slider-arrow-left.svg );
+			left: calc(50% - 75px);
+		}
+
+		.next-slide-btn {
+			background-image: url( /assets/images/slider-arrow-right.svg );
+			right: calc(50% - 75px);
+		}
+
+	}
+}
+
+[data-hero-1] {
+	@if $initDefaultComponents{
+		@include hero-1;
+	}
+}

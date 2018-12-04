@@ -1,0 +1,12 @@
+.section-title {
+	@include font($font-family2, 20px, 400, 33px, italic);
+	margin-bottom: 24px;
+
+	@include breakpoint(medium) {
+		margin-bottom: 32px;
+	}
+
+	@include breakpoint(large) {
+		margin-bottom: 60px;
+	}
+}

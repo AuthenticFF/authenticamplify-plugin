@@ -1,0 +1,52 @@
+
+
+@mixin content-image-5{
+
+	.image {
+		text-align: center;
+		margin-bottom: 24px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 32px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 48px;
+		}
+	}
+
+	.heading {
+		@extend .heading-2;
+		color: $contentImage5_headingColor;
+	}
+
+	p {
+		@extend .body-text;
+		color: $contentImage5_bodyColor;
+	}
+
+	.content {
+		.cell {
+			margin-bottom: 32px;
+
+			&:nth-last-child(-n + 2) {
+				@include breakpoint(large) {
+					margin-bottom: 0;
+				}
+			}
+
+			&:last-child {
+				@include breakpoint(medium down) {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+}
+
+[data-content-image-5] {
+	@if $initDefaultComponents{
+		@include content-image-5;
+	}
+}

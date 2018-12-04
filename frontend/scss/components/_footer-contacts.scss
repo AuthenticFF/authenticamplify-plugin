@@ -1,0 +1,67 @@
+
+
+@mixin footer-contacts{
+	background-color: $footerContacts_backgroundColor;
+	text-align: center;
+
+	@include breakpoint(medium) {
+		text-align: left;
+	}
+
+	.component-title {
+		@extend .heading-2;
+		color: $footerContacts_headingColor;
+		margin-bottom: 18px;
+
+		@include breakpoint(medium) {
+			@include font($font-family1, 28px, 700, 50px);
+		}
+		@include breakpoint(large) {
+			@include font($font-family1, 32px, 700, 57px);
+			margin-bottom: 32px;
+		}
+		@include breakpoint(xlarge) {
+			@include font($font-family1, 38px, 700, 57px);
+		}
+	}
+
+	.contact-item {
+		@include font($font-family2, 16px, 400, 24px);
+		padding-bottom: 24px;
+		word-wrap: break-word;
+
+		@include breakpoint(medium) {
+			padding-bottom: 0;
+			flex: 1 1 20%;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+
+		@include breakpoint(large) {
+			@include font($font-family2, 18px, 400, 26px);
+			flex: 0 1 20%;
+		}
+
+		p {
+			color: $footerContacts_itemColor;
+			margin: 0;
+		}
+
+		a{
+			color: $footerContacts_itemLinkColor;
+		}
+
+	}
+}
+
+[data-footer-contacts] {
+	@if $initDefaultComponents{
+		@include footer-contacts;
+	}
+}

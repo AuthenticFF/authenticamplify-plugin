@@ -1,0 +1,65 @@
+
+
+
+@mixin content-1{
+
+	.component-title {
+		@extend .heading-2;
+		color: $content1_headingColor;
+		margin-bottom: 16px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 24px;
+		}
+	}
+
+	p {
+		@extend .body-text;
+		color: $content1_bodyColor;
+	}
+
+	.two-col {
+		columns: 1;
+
+		@include breakpoint(medium) {
+			columns: 2;
+			column-gap: 40px;
+		}
+
+		p {
+			display: inline-block;
+		}
+	}
+
+	.three-col {
+		columns: 1;
+
+		@include breakpoint(medium) {
+			columns: 3;
+			column-gap: 40px;
+		}
+
+		p {
+			display: inline-block;
+		}
+	}
+
+	.cta {
+		margin-top: 16px;
+
+		@include breakpoint(medium) {
+			margin-top: 32px;
+		}
+
+		@include breakpoint(large) {
+			margin-top: 44px;
+		}
+	}
+
+}
+
+[data-content-1] {
+	@if $initDefaultComponents{
+		@include content-1;
+	}
+}

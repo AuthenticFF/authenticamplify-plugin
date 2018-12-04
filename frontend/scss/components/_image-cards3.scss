@@ -1,0 +1,75 @@
+@mixin image-cards-3{
+
+	.large-images {
+		margin-bottom: 28px;
+
+		@include breakpoint(large) {
+			margin-bottom: 0;
+		}
+	}
+
+	.large-image {
+		margin-bottom: 32px;
+
+		@include breakpoint(large) {
+			margin-bottom: 42px;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+	}
+
+	.four-image-grid {
+
+		.cell {
+			margin-bottom: 28px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			@include breakpoint(medium) {
+				margin-bottom: 32px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			@include breakpoint(large) {
+				margin-bottom: 54px;
+
+				&:nth-last-child(-n + 2) {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	/* this class is used when there is another 4 grid row of images underneath the
+	image left/four image right grid */
+	.large-left-small-right-grid {
+		.four-image-grid {
+
+			.cell {
+				margin-bottom: 28px;
+
+				@include breakpoint(medium) {
+					margin-bottom: 32px;
+				}
+
+				@include breakpoint(large) {
+					margin-bottom: 54px;
+				}
+			}
+		}
+	}
+}
+
+[data-image-cards-3] {
+	@if $initDefaultComponents{
+		@include image-cards-3;
+	}
+}

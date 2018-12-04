@@ -1,0 +1,165 @@
+@keyframes fadeModalIn {
+	0% { opacity: 0; visibility: hidden; top: calc(50% + 20px); }
+	1% { visibility: visible; }
+	60% { top: 50%; }
+	100% { opacity: 1; visibility: visible; }
+}
+
+@keyframes fadeModalOut {
+	0% { opacity: 1; visibility: visible; }
+	99% { visibility: visible; }
+	100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeOverlayIn {
+	0% { opacity: 0; visibility: hidden; }
+	1% { visibility: visible; }
+	100% { opacity: 0.6; visibility: visible; }
+}
+
+@keyframes fadeOverlayOut {
+	0% { opacity: 0.6; visibility: visible; }
+	99% { visibility: visible; }
+	100% { opacity: 0; visibility: hidden; }
+}
+
+@mixin modal-ar-1{
+	width: 100%;
+
+	.background-overlay {
+		visibility: hidden;
+		opacity: 0;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: $white;
+		opacity: 0.6;
+		z-index: 100;
+	}
+
+	.modal {
+		visibility: hidden;
+		opacity: 0;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 101;
+		background-color: $white;
+		width: 100%;
+		padding: 32px 24px;
+		border-radius: 5px;
+		max-width: 94%;
+		box-shadow: 0px 0px 24px #cccccc;
+
+		@include breakpoint(medium) {
+			padding:  60px 42px;
+			max-width: 90%;
+		}
+
+		@include breakpoint(large) {
+			padding: 80px 96px;
+			max-width: 945px;
+		}
+
+		.heading {
+			@extend .heading-2;
+			margin-bottom: 24px;
+			text-align: center;
+
+			@include breakpoint(large) {
+				margin-bottom: 40px;
+			}
+		}
+
+		.steps {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			.step {
+				display: flex;
+				align-items: center;
+				max-width: 550px;
+				margin-bottom: 20px;
+				width: 100%;
+
+				@include breakpoint(large) {
+					margin-bottom: 26px;
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+
+				.image, .qrcode {
+					flex-shrink: 0;
+					width: 84px;
+					@include breakpoint(medium) {
+						width: 120px;
+					}
+
+					canvas {
+						max-width: 100%;
+					}
+				}
+
+				.instructions {
+					@extend .body-text;
+					padding-left: 16px;
+
+					@include breakpoint(medium) {
+						padding-left: 32px;
+					}
+
+					p {
+						margin: 0;
+					}
+				}
+			}
+		}
+
+		.fine-print {
+			@extend .body-text;
+			color: $grey;
+			text-align: center;
+			margin-top: 32px;
+
+			@include breakpoint(medium) {
+				margin-top: 54px;
+			}
+		}
+	}
+
+	&.active {
+		.background-overlay {
+			animation: fadeOverlayIn 0.8s;
+			animation-fill-mode: forwards;
+		}
+
+		.modal {
+			animation: fadeModalIn 0.8s;
+			animation-fill-mode: forwards;
+		}
+	}
+
+	&.no-longer-shown {
+		.background-overlay {
+			animation: fadeOverlayOut 0.5s;
+			animation-fill-mode: forwards;
+		}
+
+		.modal {
+			animation: fadeModalOut 0.5s;
+			animation-fill-mode: forwards;
+		}
+
+	}
+}
+
+[data-modal-ar-1] {
+	@if $initDefaultComponents{
+		@include modal-ar-1;
+	}
+}

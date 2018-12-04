@@ -1,0 +1,68 @@
+@mixin cta-email-2{
+	.heading {
+		@extend .heading-2;
+		color: $ctaEmail2_headingColor;
+		text-align: center;
+
+		@include breakpoint(large) {
+			text-align: left;
+		}
+	}
+
+	text-align: center;
+
+	@include breakpoint(large) {
+		padding-left: 32px;
+		text-align: left;
+	}
+
+	p {
+		@extend .body-text;
+		color: $ctaEmail2_bodyColor;
+
+		&:first-child {
+			@include breakpoint(large) {
+				margin-top: 12px;
+			}
+		}
+	}
+
+	form {
+		margin-top: 32px;
+
+		@include breakpoint(medium) {
+			
+		}
+
+		@include breakpoint(large) {
+			padding-right: 42px;
+			margin-top: 48px;
+		}
+
+		input[type="submit"], button {
+			margin-top: 12px;
+
+			@include breakpoint(medium) {
+				margin-top: 20px;
+			}
+		}
+
+		label:not(.error) {
+			display: none;
+		}
+
+		label.error {
+			display: block;
+			margin-top: 8px;
+			color: red;
+			text-align: left;
+		}
+
+	}
+}
+
+[data-cta-email-2] {
+	@if $initDefaultComponents{
+		@include cta-email-2;
+	}
+}

@@ -1,0 +1,72 @@
+@mixin listings-2 {
+
+	.wide-image-grid {
+		margin-bottom: 28px;
+
+		@include breakpoint(medium) {
+			margin-bottom: 32px;
+		}
+
+		@include breakpoint(large) {
+			margin-bottom: 40px;
+		}
+
+		.cell {
+
+			margin-top: 28px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			@include breakpoint(medium) {
+				margin-top: 32px;
+
+				&:first-child {
+					margin-top: 0;
+				}
+			}
+
+			@include breakpoint(large) {
+				margin-top: 0px;
+			}
+		}
+
+	}
+
+	.tall-image-grid {
+
+		.cell {
+
+			margin-top: 28px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			@include breakpoint(medium) {
+				margin-top: 32px;
+
+				&:nth-child(-n + 2) {
+					margin-top: 0;
+				}
+			}
+
+			@include breakpoint(large) {
+				margin-top: 40px;
+
+				&:nth-child(-n + 4) {
+					margin-top: 0;
+				}
+			}
+		}
+
+	}
+
+}
+
+[data-listings-2] {
+	@if $initDefaultComponents{
+		@include listings-2;
+	}
+}

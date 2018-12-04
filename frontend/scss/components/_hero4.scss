@@ -1,0 +1,92 @@
+
+
+@mixin hero-4{
+
+	color: $black;
+
+	.slider {
+		position: relative;
+
+		.hero-slide {
+
+			.text-content {
+				order: 2;
+				padding: 32px 0;
+				text-align: center;
+
+				@include breakpoint(large) {
+					padding: 32px 32px 32px 0;
+					order: 1;
+					text-align: left;
+				}
+
+				.heading {
+					@extend .heading-1;
+					color: $hero4_headingColor;
+					margin-bottom: 32px;
+				}
+
+				.subheading {
+					color: $hero4_subheadingColor;
+					@extend .intro;
+				}
+
+			}
+
+			.image {
+				order: 1;
+				text-align: center;
+
+				@include breakpoint(large) {
+					text-align: right;
+					order: 2;
+				}
+
+			}
+
+		}
+
+		.slider-dots-nav {
+			line-height: 1em;
+			text-align: center;
+
+			@include breakpoint(large) {
+				text-align: left;
+			}
+
+			span {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background-color: $hero4_dotColor;
+				opacity: 0.5;
+				display: inline-block;
+				cursor: pointer;
+				margin-right: 20px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&.active {
+					background-color: $hero4_activeDotColor;
+					opacity: 1;
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+[data-hero-4] {
+	@if $initDefaultComponents{
+		@include hero-4;
+	}
+}
+
+.navigation + [data-hero-4] {
+	margin-top: 0px;
+}

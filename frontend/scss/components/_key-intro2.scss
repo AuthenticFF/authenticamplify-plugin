@@ -1,0 +1,155 @@
+
+
+@mixin key-intro-2{
+
+	.table-cell {
+		@include breakpoint(small down) {
+			margin-bottom: 32px;
+		}
+	}
+
+	.key-heading {
+		@extend .heading-3;
+		color: $keyIntro2_tableHeadingColor;
+		margin-bottom: 12px;
+	}
+
+	.info-table {
+		@include font($font-family2, 16px, 400, 22px);
+		color: $keyIntro2_tableColor;
+		width: 100%;
+
+		@include breakpoint(medium) {
+			padding-right: 16px;
+			width: auto;
+		}
+
+		tr>td {
+			vertical-align: top;
+			//padding-bottom: 16px;
+			line-height: 2.35em;
+
+			br {
+				//margin-bottom: 18px;
+			}
+		}
+
+		tr:last-child>td {
+			padding-bottom: 0;
+		}
+
+		td:nth-child(2n + 1) {
+			width: 48%;
+			padding-right: 8px;
+
+			@include breakpoint(medium) {
+				width: auto;
+			}
+
+			@include breakpoint(large) {
+				padding-right: 32px;
+			}
+			@include breakpoint(xlarge) {
+				padding-right: 54px;
+			}
+		}
+
+		td:nth-child(2n + 2) {
+			width: 52%;
+
+			@include breakpoint(medium) {
+				width: auto;
+			}
+		}
+
+		a {
+			color: $keyIntro2_tableLinkColor;
+			display: inline-block;
+			margin-right: 6px;
+			border-bottom: 1px solid $grey;
+			line-height: 1.4em;
+		}
+
+	}
+
+	hr {
+		background-color: $keyIntro2_hrBackgroundColor;
+		border:0;
+		height: 1px;
+		margin: 32px 0;
+
+		@include breakpoint(medium) {
+			margin: 54px 0;
+		}
+	}
+
+
+	.heading {
+		@extend .heading-2;
+		color: $keyIntro2_headingColor;
+		margin-bottom: 12px;
+	}
+
+	p {
+		@extend .body-text;
+		color: $keyIntro2_bodyColor;
+	}
+
+	.cta-row {
+		margin-top: 20px;
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		justify-content: flex-start;
+
+		@include breakpoint(medium only) {
+			padding-left: 32px;
+		}
+
+		.current-support {
+			@include font($font-family2, 18px, 700, 28px);
+			color: $keyIntro2_ctaColor;
+			position: relative;
+			padding-left: 50px;
+			margin-top: 24px;
+			white-space: nowrap;
+
+			@include breakpoint(medium) {
+				margin-top: 42px;
+			}
+
+			&:before {
+				content: '';
+				width: 30px;
+				height: 28px;
+				background-image: url( /assets/images/icon-thumb-up.svg );
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				position: absolute;
+				left: 0;
+				top: calc(50% - 18px);
+			}
+		}
+
+		.upvote-vote-match {
+			.button {
+				opacity: 0.15;
+				cursor: auto;
+				&:hover {
+					top: 0px;
+				}
+			}
+		}
+
+	}
+
+}
+
+[data-key-intro-2] {
+
+	@if $initDefaultComponents{
+		@include key-intro-2;
+	}
+
+}
