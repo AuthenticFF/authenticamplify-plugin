@@ -149,7 +149,6 @@
 			}
 
 			.social-links {
-				color: $navigation1_socialColor;
 				display: inline-block;
 				position: relative;
 				top: 4px;
@@ -159,6 +158,7 @@
 					font-feature-settings: "liga" 1;
 					transition: opacity 0.2s;
 					margin-left: 10px;
+					color: $navigation1_socialColor;
 
 					&:hover {
 						opacity: 0.6;
