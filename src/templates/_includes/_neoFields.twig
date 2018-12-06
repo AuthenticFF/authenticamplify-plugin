@@ -172,6 +172,17 @@
       })
     }}
 
+  {% case 'cta3' %}
+
+    {{
+      renderComponent.cta3({
+        cta3HeadingText: block.ampCtaHeadingText,
+        cta3TextContent: block.ampCtaTextContent,
+        cta3CtaText: block.ampCtaCtaText,
+        cta3CtaLink: block.ampCtaCtaLink
+      })
+    }}
+
   {% case 'ctaEmail1' %}
 
     {{
