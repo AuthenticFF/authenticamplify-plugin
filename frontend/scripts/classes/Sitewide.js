@@ -1,6 +1,6 @@
 var PubSub = require("underpub-js");
 var ComponentsLoader = require("./ComponentsLoader");
-// var QRious = require('qrious');
+var QRious = require('qrious');
 
 var Sitewide = function(){
 
