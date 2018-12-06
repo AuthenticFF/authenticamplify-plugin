@@ -1,0 +1,90 @@
+{#
+
+	Gallery 6
+
+	@param {matrix} gallery6RectImageSlides
+		[
+			rectangleImageSlide:
+			[
+				rectangleImage {asset - image - max 1}
+				headingText {plain text}
+				subheadingText {plain text}
+			]
+		]
+
+#}
+
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
+{# Parameters #}
+{% set gallery6RectImageSlides = params.gallery6RectImageSlides ?? null %}
+
+{# Variables #}
+{%
+	set galleryImgResize = {
+		mode: 'crop',
+		width: 695,
+		height: 500
+	}
+%}
+
+{# Output #}
+<section data-gallery-6 data-component>
+
+	<div class="grid-container">
+
+		<div class="slider Wallop Wallop--fade">
+			
+			<div class="Wallop-list" data-equalizer data-equalize-on='' data-equalize-on-stack='true'>
+
+				{% for rectangleImageSlide in gallery6RectImageSlides %}
+
+					{% set galleryImageUrl = imageTransform.imageTransform(rectangleImageSlide.rectangleImage.one, galleryImgResize) %}
+
+					<div class="Wallop-item">
+
+						<div class="gallery-slide" data-equalizer-watch>
+
+							<div class="image">
+
+								<img src="{{ galleryImageUrl }}">
+
+							</div>
+
+							<div class="text-content">
+
+								<div class="heading">
+									{{ rectangleImageSlide.headingText }}
+								</div>
+								<div class="subheading">
+									{{ rectangleImageSlide.subheadingText }}
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+			{% if gallery6RectImageSlides|length > 1 %}
+
+				<div class="slider-dots-nav">
+
+					{% for i in range(0, gallery6RectImageSlides|length - 1) %}
+						<span data-slide-index="{{ i }}"></span>
+					{% endfor %}
+
+				</div>
+
+			{% endif %}
+
+		</div>
+
+	</div>
+
+</section>
