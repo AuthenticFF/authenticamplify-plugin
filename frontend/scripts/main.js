@@ -25,6 +25,7 @@ var defaultComponents = [
   {handle: "[data-gallery-4]", require: require("./components/Gallery4")},
   {handle: "[data-gallery-5]", require: require("./components/Gallery5")},
   {handle: "[data-gallery-6]", require: require("./components/Gallery6")},
+  {handle: "[data-gallery-7]", require: require("./components/Gallery7")},
   {handle: "[data-key-intro-1]", require: require("./components/KeyIntro1")},
   {handle: "[data-key-intro-2]", require: require("./components/KeyIntro2")},
   {handle: "[data-key-intro-3]", require: require("./components/KeyIntro3")},

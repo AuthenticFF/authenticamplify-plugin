@@ -1,0 +1,77 @@
+{#
+
+	Gallery 7
+
+	@param {matrix} gallery7FullWidthImageOnlySlides
+		[
+			wideImageSlide:
+			[
+				wideImage {asset - image - max 1}
+			]
+		]
+
+#}
+
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
+{# Parameters #}
+{% set gallery7FullWidthImageOnlySlides = params.gallery7FullWidthImageOnlySlides ?? null %}
+
+{# Variables #}
+{%
+	set galleryImgResize = {
+		mode: 'crop',
+		width: 1440,
+		height: 500
+	}
+%}
+
+{# Output #}
+<section data-gallery-7 data-component>
+
+	<div class="slider Wallop Wallop--fade">
+		
+		<div class="Wallop-list">
+
+			{% for wideImageSlide in gallery7FullWidthImageOnlySlides %}
+
+				{% set galleryImageUrl = imageTransform.imageTransform(wideImageSlide.wideImage.one, galleryImgResize) %}
+
+				<div class="Wallop-item gallery-slide">
+
+					<div class="grid-x">
+
+						<div class="cell small-12 medium-12 large-12 image">
+
+							<img src="{{ galleryImageUrl }}">
+
+						</div>
+
+					</div>
+
+				</div>
+
+			{% endfor %}
+
+		</div>
+
+	</div>
+
+	<div class="grid-container">
+
+		{% if gallery7FullWidthImageOnlySlides|length > 1 %}
+
+			<div class="slider-dots-nav">
+
+				{% for i in range(0, gallery7FullWidthImageOnlySlides|length - 1) %}
+					<span data-slide-index="{{ i }}"></span>
+				{% endfor %}
+
+			</div>
+
+		{% endif %}
+
+	</div>
+
+</section>

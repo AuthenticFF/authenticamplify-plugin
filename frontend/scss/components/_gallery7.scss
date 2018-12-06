@@ -1,0 +1,73 @@
+
+
+@mixin gallery-7{
+
+	.slider {
+		position: relative;
+
+		.gallery-slide {
+
+			.image {
+				img {
+					width: 100%;
+				}
+			}
+
+		}
+
+	}
+
+	.slider-dots-nav {
+		line-height: 1em;
+		z-index: 99;
+		width: 100%;
+		margin-top: 32px;
+		text-align: center;
+
+		@include breakpoint(medium) {
+			margin-top: 42px;
+			text-align: left;
+		}
+
+		@include breakpoint(large) {
+			margin-top: 54px;
+		}
+
+		@include breakpoint(xlarge) {
+			margin-top: 72px;
+		}
+
+		@include breakpoint(xxlarge) {
+
+		}
+
+		span {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background-color: $gallery7_dotColor;
+			opacity: 0.5;
+			display: inline-block;
+			cursor: pointer;
+			margin-right: 20px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&.active {
+				background-color: $gallery7_activeDotColor;
+				opacity: 1;
+			}
+
+		}
+
+	}
+
+}
+
+[data-gallery-7] {
+	@if $initDefaultComponents{
+		@include gallery-7;
+	}
+}
