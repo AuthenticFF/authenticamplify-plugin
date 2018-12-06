@@ -1,0 +1,83 @@
+
+
+@mixin gallery-4{
+	overflow: hidden;
+	position: relative;
+
+	.sliders-wrapper {
+		position: relative;
+	}
+
+	.gallery-main {
+		.Wallop-item {
+			text-align: center;
+		}
+	}
+
+	.gallery-left, .gallery-right {
+		position: absolute;
+		top: 0;
+		display: none;
+
+		@include breakpoint(medium) {
+			display: block;
+		}
+	}
+
+	.gallery-left {
+
+	}
+
+	.gallery-right {
+
+	}
+
+	.slider-dots-nav {
+		text-align: center;
+		margin: 24px 0 0;
+
+		@include breakpoint(medium) {
+			text-align: left;
+		}
+
+		@include breakpoint(large) {
+			margin: 20px 0 0;
+		}
+
+		@include breakpoint(xlarge) {
+			margin: 28px 0 0;
+		}
+
+		@include breakpoint(xxlarge) {
+			margin: 32px 0 0;
+		}
+
+		span {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background-color: $gallery4_dotColor;
+			opacity: 0.5;
+			display: inline-block;
+			cursor: pointer;
+			margin-right: 20px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&.active {
+				background-color: $gallery4_activeDotColor;
+				opacity: 1;
+			}
+
+		}
+
+	}
+}
+
+[data-gallery-4] {
+	@if $initDefaultComponents{
+		@include gallery-4;
+	}
+}

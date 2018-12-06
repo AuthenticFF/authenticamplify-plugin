@@ -1,0 +1,161 @@
+{#
+
+	Gallery 4
+
+	@param {matrix} gallery4WideImageSlides
+		[
+			wideImageSlide:
+			[
+				wideImage {asset - image - max 1}
+			]
+		]
+
+#}
+
+{# Macros #}
+{% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
+
+{# Parameters #}
+{% set gallery4WideImageSlides = params.gallery4WideImageSlides ?? null %}
+
+{# Variables #}
+{%
+	set imgResize = {
+		mode: 'crop',
+		width: 942,
+		height: 600
+	}
+%}
+
+{# Output #}
+<section data-component data-gallery-4>
+
+	<div class="sliders-wrapper">
+
+		<div class="slider Wallop Wallop--slide gallery-left">
+
+			<div class="Wallop-list">
+
+				{% for imageSlide in gallery4WideImageSlides %}
+
+					{% set has360Image = imageSlide.wideImage.one.expAssetThreeSixtyImage | length %}
+					{% set imageUrl = imageTransform.imageTransform(imageSlide.wideImage.one, imgResize) %}
+
+					<div class="Wallop-item gallery-slide{% if loop.last %} Wallop-item--current{% endif %}">
+
+						<div
+							class="image-wrapper {{ has360Image ? 'has-360-image' : '' }}"
+							data-360-image="{{ has360Image ? imageSlide.wideImage.one.expAssetThreeSixtyImage.first.url }}"
+							style="background-image: url({{ imageUrl }})">
+
+							{% if has360Image %}
+								<img class="three-sixty-icon" src="/assets/images/ar-360.svg" alt="AR 360 View" />
+							{% endif %}
+
+							<img class="dummy" src="{{ imageUrl }}">
+
+						</div>
+
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+		</div>
+
+		<div class="grid-container">
+
+			<div class="grid-x grid-margin-x" data-equalizer data-equalize-on="large">
+
+				<div class="cell small-12 medium-8 medium-offset-1 large-6 large-offset-2">
+
+					<div class="slider Wallop Wallop--slide gallery-main" data-slide-count="{{ gallery4WideImageSlides|length }}">
+
+						<div class="Wallop-list">
+
+							{% for imageSlide in gallery4WideImageSlides %}
+
+								{% set has360Image = imageSlide.wideImage.one.expAssetThreeSixtyImage | length %}
+								{% set imageUrl = imageTransform.imageTransform(imageSlide.wideImage.one, imgResize) %}
+
+								<div class="Wallop-item gallery-slide{% if loop.first %} Wallop-item--current{% endif %}" data-equalizer-watch>
+
+									<div
+										class="image-wrapper {{ has360Image ? 'has-360-image' : '' }}"
+										data-360-image="{{ has360Image ? imageSlide.wideImage.one.expAssetThreeSixtyImage.first.url }}"
+										style="background-image: url({{ imageUrl }})">
+
+										{% if has360Image %}
+											<img class="three-sixty-icon" src="/assets/images/ar-360.svg" alt="AR 360 View" />
+										{% endif %}
+
+										<img class="dummy" src="{{ imageUrl }}">
+
+									</div>
+
+								</div>
+
+							{% endfor %}
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="grid-x grid-margin-x">
+
+				<div class="cell small-12 medium-10 medium-offset-1 large-10 large-offset-2">
+
+					<div class="slider-dots-nav">
+
+						{% for i in range(0, gallery4WideImageSlides|length - 1) %}
+							<span data-slide-index="{{ i }}"></span>
+						{% endfor %}
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="slider Wallop Wallop--slide gallery-right">
+
+			<div class="Wallop-list">
+
+				{% for imageSlide in gallery4WideImageSlides %}
+
+					{% set has360Image = imageSlide.wideImage.one.expAssetThreeSixtyImage | length %}
+					{% set imageUrl = imageTransform.imageTransform(imageSlide.wideImage.one, imgResize) %}
+
+					<div class="Wallop-item gallery-slide{% if loop.index == 2 %} Wallop-item--current{% endif %}">
+
+						<div
+							class="image-wrapper {{ has360Image ? 'has-360-image' : '' }}"
+							data-360-image="{{ has360Image ? imageSlide.wideImage.one.expAssetThreeSixtyImage.first.url }}"
+							style="background-image: url({{ imageUrl }})">
+
+							{% if has360Image %}
+								<img class="three-sixty-icon" src="/assets/images/ar-360.svg" alt="AR 360 View" />
+							{% endif %}
+
+							<img class="dummy" src="{{ imageUrl }}">
+
+						</div>
+
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
