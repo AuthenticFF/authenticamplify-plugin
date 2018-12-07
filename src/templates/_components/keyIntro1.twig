@@ -4,8 +4,6 @@
 
 	@param {plain text} ampKeyIntro1HeadingText
 	@param {redactor} ampKeyIntro1TextContent
-	@param {lightswitch} ampKeyIntro1ShowSupportBtn
-	@param {plain text} ampKeyIntro1ShowSupportButtonText
 	@param {neo blocks} ampKeyIntro1InfoSections
 		[
 			ampKeyIntroInfoSectionHeading {plain text}
@@ -30,20 +28,7 @@
 {# Parameters #}
 {% set ampKeyIntro1HeadingText = params.ampKeyIntro1HeadingText ?? '' %}
 {% set ampKeyIntro1TextContent = params.ampKeyIntro1TextContent ?? '' %}
-{% set ampKeyIntro1ShowSupportBtn = params.ampKeyIntro1ShowSupportBtn ?? false %}
-{% set ampKeyIntro1ShowSupportButtonText = params.ampKeyIntro1ShowSupportButtonText ?? 'Show Your Support' %}
 {% set ampKeyIntro1InfoSections = params.ampKeyIntro1InfoSections ?? null %}
-
-{# Variables #}
-{% if ampKeyIntro1ShowSupportButtonText != '' %}
-	{% set supportBtnText = ampKeyIntro1ShowSupportButtonText %}
-{% else %}
-	{% set supportBtnText = 'Show Your Support' %}
-{% endif %}
-
-{% do craft.upvote.setIcons({
-    up   : '<button class="button button-square button-black show-support-btn" type="button">' ~ supportBtnText ~ '</button>',
-}) %}
 
 {# Output #}
 <section data-component data-key-intro-1>
@@ -101,20 +86,6 @@
 				<h2 class="heading">{{ ampKeyIntro1HeadingText }}</h2>
 
 				{{ ampKeyIntro1TextContent }}
-
-				{% if ampKeyIntro1ShowSupportBtn %}
-
-					<div class="cta-row">
-
-						{{ craft.upvote.upvote('1') }}
-
-						<div class="current-support">
-							{{ craft.upvote.tally('1') }} Current Supporters
-						</div>
-
-					</div>
-
-				{% endif %}
 
 			</div>
 
