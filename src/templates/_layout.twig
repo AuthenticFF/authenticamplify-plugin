@@ -55,6 +55,15 @@
   {% block content %}
   {% endblock %}
 
+  {% for block in siteFooter.pageContent.level(1) %}
+    {%
+      include 'authenticamplify/_includes/_neoFields'
+    %}
+    {%
+      include '_includes/_neoFields'
+    %}
+  {% endfor %}
+
   {% for token in craft.entries.section('expTokens') %}
     {%
       include 'authenticamplify/_components/modalAr1' with {
