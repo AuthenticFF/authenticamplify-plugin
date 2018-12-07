@@ -41,12 +41,16 @@
 				{% set heroImageUrl = imageTransform.imageTransform(bgImageSlide.backgroundImage.one, heroImgResize) %}
 
 				<div class="Wallop-item hero-slide" style="background-image: url( {{ heroImageUrl }} );" data-equalizer-watch>
-					<div class="heading">
-						{{ bgImageSlide.headingText }}
-					</div>
-					<div class="subheading">
-						{{ bgImageSlide.subheadingText }}
-					</div>
+					{% if bgImageSlide.headingText != '' %}
+						<div class="heading">
+							{{ bgImageSlide.headingText }}
+						</div>
+					{% endif %}
+					{% if bgImageSlide.subheadingText != '' %}
+						<div class="subheading">
+							{{ bgImageSlide.subheadingText }}
+						</div>
+					{% endif %}
 				</div>
 
 			{% endfor %}
