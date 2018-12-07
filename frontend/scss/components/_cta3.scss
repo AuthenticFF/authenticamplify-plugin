@@ -1,0 +1,60 @@
+@mixin cta-3{
+	background-color: $cta3_backgroundColor;
+	padding-top: 42px;
+	padding-bottom: 42px;
+	text-align: center;
+
+	@include breakpoint(medium) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+	@include breakpoint(large) {
+		text-align: left;
+		padding-top: 72px;
+		padding-bottom: 72px;
+	}
+
+	@include breakpoint(xlarge) {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+
+	h2 {
+		color: $cta3_headingColor;
+		@extend .heading-2;
+	}
+	.text-content {
+		margin-top: 16px;
+
+		@include breakpoint(large) {
+			margin-top: 0;
+		}
+
+		p {
+			color: $cta3_bodyColor;
+			@extend .body-text;
+			&:first-child {
+				margin-top: 0;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.cta {
+		margin-top: 28px;
+		a.button.button-black, button.button.button-black {
+			background-color: $cta3_buttonColor;
+			color: $cta3_buttonTextColor;
+		}
+	}
+
+}
+
+[data-cta-3] {
+	@if $initDefaultComponents{
+		@include cta-2;
+	}
+}
