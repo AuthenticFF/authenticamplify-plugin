@@ -19,7 +19,7 @@
 
 		<div class="grid-x grid-margin-x large-left-small-right-grid">
 
-			<div class="cell small-12 medium-6 large-images">
+			<div class="cell small-12 medium-6 large-images left-large-image">
 
 				{% set listingEntry = ampListings1Entries|first %}
 
@@ -53,7 +53,7 @@
 
 			</div>
 
-			<div class="cell small-12 medium-6">
+			<div class="cell small-12 medium-6 right-four-image-grid">
 
 				<div class="grid-x grid-margin-x small-up-1 medium-up-2 four-image-grid">
 
@@ -80,7 +80,8 @@
 									imageCardImageUrl: imageUrl,
 									imageCardTitleText: listingEntry.ampListingTitle,
 									imageCardTextContent: listingEntry.ampListingSubtitle,
-									imageCardUrl: listingEntry.url
+									imageCardUrl: listingEntry.url,
+									imageCardUseBgImg: true
 								}
 
 							%}

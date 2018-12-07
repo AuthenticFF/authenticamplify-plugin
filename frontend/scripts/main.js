@@ -36,6 +36,8 @@ var defaultComponents = [
   {handle: "[data-content-image-3]", require: require("./components/ContentImage3")},
   {handle: "[data-cta-1]", require: require("./components/Cta1")},
   {handle: "[data-cta-2]", require: require("./components/Cta2")},
+  {handle: "[data-listings-1]", require: require("./components/Listings1")},
+  {handle: "[data-listings-2]", require: require("./components/Listings2")},
   {handle: "[data-contact-1]", require: require("./components/Contact1")},
   {handle: "[data-image-cards-3]", require: require("./components/ImageCards3")},
   {handle: "[data-three-sixty-viewer]", require: require("./components/ThreeSixtyViewer")},
