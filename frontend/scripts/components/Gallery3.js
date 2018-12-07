@@ -2,6 +2,8 @@
 var Wallop = require("wallop");
 var PubSub = require("underpub-js");
 var anime = require("animejs");
+var loadTouchEvents = require('jquery-touch-events');
+loadTouchEvents($);
 
 var Gallery3 = function(options){
 
@@ -70,6 +72,24 @@ Gallery3.prototype.init = function(){
   this.wallopContent.on('change', slideChange);
   //this.wallopLeft.on('change', slideChange);
   //this.wallopRight.on('change', slideChange);
+
+  // swipe events
+  this.options.$el.on('swiperight', function() {
+    self.animateHeadings();
+    self.wallopLeft.previous();
+    self.wallopRight.previous();
+    self.wallopMain.previous();
+    self.wallopContent.previous();
+
+  });
+
+  this.options.$el.on('swipeleft', function() {
+    self.animateHeadings();
+    self.wallopLeft.next();
+    self.wallopRight.next();
+    self.wallopMain.next();
+    self.wallopContent.next();
+  });
 
 };
 

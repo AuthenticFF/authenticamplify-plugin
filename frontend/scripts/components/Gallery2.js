@@ -1,5 +1,7 @@
 var Wallop = require('Wallop');
 var anime = require("animejs");
+var loadTouchEvents = require('jquery-touch-events');
+loadTouchEvents($);
 
 var Gallery2 = function(options){
 
@@ -34,6 +36,19 @@ Gallery2.prototype.init = function(){
   };
 
   imagesWallop.on('change', slideChange);
+
+  // swipe events
+  this.options.$el.on('swiperight', function() {
+    self.animateHeadings();
+    imagesWallop.previous();
+    textWallop.previous();
+  });
+
+  this.options.$el.on('swipeleft', function() {
+    self.animateHeadings();
+    imagesWallop.next();
+    textWallop.next();
+  });
 
 };
 

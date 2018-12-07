@@ -15,6 +15,7 @@
 		"authentic-amplify-frontend": "../amplify-frontend/authenticamplify-frontend",
 		"babel-preset-stage-2": "^6.24.1",
 		"browserify": "^16.2.3",
+		"jquery-touch-events": "^1.0.7",
 		"jquery-validation": "^1.19.0",
 		"mapbox-gl": "^0.45.0",
 		"pjax": "^0.2.4",
