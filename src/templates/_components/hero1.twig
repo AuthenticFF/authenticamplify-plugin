@@ -2,11 +2,13 @@
 
 	Hero 1
 
-	@param {matrix} hero1ImageSlides
+	@param {matrix} hero1BgImageSlides
 		[
-			imageSlide:
+			backgroundImageSlide:
 			[
-				image {asset - image - max 1}
+				backgroundImage {asset - image - max 1}
+				headingText {plain text}
+				subheadingText {plain text}
 			]
 		]
 
@@ -16,7 +18,7 @@
 {% import 'authenticamplify/_macros/_image-transform' as imageTransform %}
 
 {# Parameters #}
-{% set hero1ImageSlides = params.hero1ImageSlides ?? null %}
+{% set hero1BgImageSlides = params.hero1BgImageSlides ?? null %}
 
 {# Variables #}
 {%
@@ -30,25 +32,32 @@
 {# Output #}
 <section data-hero-1 data-component="hero">
 
-	<div class="slider Wallop Wallop--slide">
-		
-		<div class="Wallop-list">
+	<div class="slider Wallop Wallop--fade">
 
-			{% for imageSlide in hero1ImageSlides %}
+		<div class="Wallop-list" data-equalizer data-equalize-on='' data-equalize-on-stack='true'>
 
-				{% set heroImageUrl = imageTransform.imageTransform(imageSlide.image.one, heroImgResize) %}
+			{% for bgImageSlide in hero1BgImageSlides %}
 
-				<div class="Wallop-item hero-slide" style="background-image: url( {{ heroImageUrl }} );"></div>
+				{% set heroImageUrl = imageTransform.imageTransform(bgImageSlide.backgroundImage.one, heroImgResize) %}
+
+				<div class="Wallop-item hero-slide" style="background-image: url( {{ heroImageUrl }} );" data-equalizer-watch>
+					<div class="heading">
+						{{ bgImageSlide.headingText }}
+					</div>
+					<div class="subheading">
+						{{ bgImageSlide.subheadingText }}
+					</div>
+				</div>
 
 			{% endfor %}
 
 		</div>
 
-		{% if hero1ImageSlides|length > 1 %}
-			<button class="Wallop-buttonPrevious previous-slide-btn"></button>
-			<button class="Wallop-buttonNext next-slide-btn"></button>
+		{% if hero1BgImageSlides|length > 1 %}
+			<button class="previous-slide-btn"></button>
+			<button class="next-slide-btn"></button>
 		{% endif %}
-
+		
 	</div>
 
 </section>

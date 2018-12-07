@@ -1,25 +1,62 @@
+
+
 @mixin hero-1{
+
 	position: relative;
 	color: $white;
 
 	.slider {
+		position: relative;
 
 		.hero-slide {
-			height: 500px;
+			min-height: 400px;
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: cover;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+			padding-left: 10%;
+			padding-right: 10%;
+			padding-top: 72px;
+			padding-bottom: 92px;
+			text-align: center;
 
 			@include breakpoint(medium) {
-				height: 640px;
+				padding-top: 124px;
+				padding-bottom: 142px;
 			}
 
+
 			@include breakpoint(large) {
-				height: 720px;
+				min-height: 600px;
+				padding-left: 45%;
+				padding-right: 5%;
+				text-align: left;
+				padding-bottom: 164px;
+				padding-top: 140px;
 			}
 
 			@include breakpoint(xlarge) {
-				height: 900px;
+				min-height: 700px;
+				padding-bottom: 248px;
+				padding-top: 184px;
+			}
+
+			.heading {
+				@extend .heading-1;
+				color: $hero2_headingColor;
+				margin-bottom: 32px;
+
+				@include breakpoint(xlarge) {
+					margin-bottom: 42px;
+				}
+			}
+
+			.subheading {
+				@extend .intro;
+				color: $hero2_subheadingColor;
 			}
 		}
 
@@ -32,6 +69,7 @@
 			bottom: 24px;
 			cursor: pointer;
 			transition: opacity 0.2s;
+			z-index: 99;
 
 			&:hover {
 				opacity: 0.6;
@@ -57,10 +95,37 @@
 		}
 
 	}
+
 }
 
 [data-hero-1] {
 	@if $initDefaultComponents{
-		@include hero-1;
+		@include hero-2;
 	}
+}
+
+.hero-overlay + [data-hero-1] {
+
+	.slider {
+
+		.hero-slide {
+
+			padding-top: 154px;
+
+			@include breakpoint(medium) {
+				padding-top: 192px;
+			}
+
+			@include breakpoint(large) {
+				padding-top: 224px;
+			}
+
+			@include breakpoint(xlarge) {
+				padding-top: 300px;
+			}
+
+		}
+
+	}
+
 }

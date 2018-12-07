@@ -17,9 +17,16 @@
 				}
 			}
 
-			nav ul li a {
-				&:before {
-					background: $navigation1_overlayColor;
+			nav { 
+				ul li a {
+					color: $navigation1_overlayColor;
+					&:before {
+						background: $navigation1_overlayColor;
+					}
+				}
+
+				.social-links a {
+					color: $navigation1_overlayColor;
 				}
 			}
 

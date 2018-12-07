@@ -10,10 +10,6 @@ var sitewide = new Sitewide();
 var defaultComponents = [
   {handle: "[data-hero-1]", require: require("./components/Hero1")},
   {handle: "[data-hero-2]", require: require("./components/Hero2")},
-  {handle: "[data-hero-3]", require: require("./components/Hero3")},
-  {handle: "[data-hero-4]", require: require("./components/Hero4")},
-  {handle: "[data-hero-5]", require: require("./components/Hero5")},
-  {handle: "[data-hero-6]", require: require("./components/Hero6")},
   {handle: "[data-cta-email-1]", require: require("./components/CtaEmail1")},
   {handle: "[data-cta-email-2]", require: require("./components/CtaEmail2")},
   {handle: "[data-map-1]", require: require("./components/Map1")},
