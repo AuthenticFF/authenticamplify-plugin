@@ -159,7 +159,5 @@
 }
 
 [data-modal-ar-1] {
-	@if $initDefaultComponents{
-		@include modal-ar-1;
-	}
+	@include modal-ar-1;
 }

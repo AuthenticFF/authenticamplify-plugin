@@ -99,9 +99,7 @@
 }
 
 [data-hero-1] {
-	@if $initDefaultComponents{
-		@include hero-2;
-	}
+	@include hero-1;
 }
 
 .hero-overlay + [data-hero-1] {

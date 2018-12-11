@@ -52,7 +52,5 @@
 }
 
 [data-content-with-links-1] {
-	@if $initDefaultComponents{
-		@include content-with-links-1;
-	}
+	@include content-with-links-1;
 }

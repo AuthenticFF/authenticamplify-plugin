@@ -205,7 +205,5 @@
 }
 
 [data-navigation-1] {
-	@if $initDefaultComponents{
-		@include navigation-1;
-	}
+	@include navigation-1;
 }

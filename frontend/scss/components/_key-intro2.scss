@@ -148,8 +148,6 @@
 
 [data-key-intro-2] {
 
-	@if $initDefaultComponents{
-		@include key-intro-2;
-	}
+	@include key-intro-2;
 
 }

@@ -33,7 +33,5 @@
 }
 
 [data-footer-logos] {
-	@if $initDefaultComponents{
-		@include footer-logos;
-	}
+	@include footer-logos;
 }

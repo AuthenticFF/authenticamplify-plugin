@@ -61,7 +61,5 @@
 }
 
 [data-footer-contacts] {
-	@if $initDefaultComponents{
-		@include footer-contacts;
-	}
+	@include footer-contacts;
 }

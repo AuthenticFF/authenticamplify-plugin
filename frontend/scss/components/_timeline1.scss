@@ -117,7 +117,5 @@
 }
 
 [data-timeline-1] {
-	@if $initDefaultComponents{
-		@include timeline-1;
-	}
+	@include timeline-1;
 }

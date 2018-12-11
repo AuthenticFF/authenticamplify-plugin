@@ -35,7 +35,5 @@
 }
 
 [data-map-1] {
-	@if $initDefaultComponents{
-		@include map-1;
-	}
+	@include map-1;
 }

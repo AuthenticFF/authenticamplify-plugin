@@ -125,7 +125,5 @@
 }
 
 [data-timeline-2] {
-	@if $initDefaultComponents{
-		@include timeline-2;
-	}
+	@include timeline-2;
 }

@@ -85,7 +85,5 @@
 }
 
 [data-stats-2] {
-	@if $initDefaultComponents{
-		@include stats-2;
-	}
+	@include stats-2;
 }

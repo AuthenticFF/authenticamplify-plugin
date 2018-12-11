@@ -43,7 +43,5 @@
 }
 
 [data-content-3] {
-	@if $initDefaultComponents{
-		@include content-3;
-	}
+	@include content-3;
 }

@@ -44,7 +44,5 @@
 }
 
 [data-content-with-links-3] {
-	@if $initDefaultComponents{
-		@include content-with-links-3;
-	}
+	@include content-with-links-3;
 }

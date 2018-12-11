@@ -58,7 +58,5 @@
 }
 
 [data-content-image-3] {
-	@if $initDefaultComponents{
-		@include content-image-3;
-	}
+	@include content-image-3;
 }

@@ -45,7 +45,5 @@
 }
 
 [data-cta-1] {
-	@if $initDefaultComponents{
-		@include cta-1;
-	}
+	@include cta-1;
 }

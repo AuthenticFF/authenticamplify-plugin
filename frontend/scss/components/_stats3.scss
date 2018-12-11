@@ -78,7 +78,5 @@
 }
 
 [data-stats-3] {
-	@if $initDefaultComponents{
-		@include stats-3;
-	}
+	@include stats-3;
 }

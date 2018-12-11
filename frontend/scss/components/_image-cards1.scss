@@ -26,7 +26,5 @@
 }
 
 [data-image-cards-1] {
-	@if $initDefaultComponents{
-		@include image-cards-1;
-	}
+	@include image-cards-1;
 }

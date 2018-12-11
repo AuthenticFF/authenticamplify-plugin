@@ -38,7 +38,5 @@
 }
 
 [data-footer-columns] {
-	@if $initDefaultComponents{
-		@include footer-columns;
-	}
+	@include footer-columns;
 }

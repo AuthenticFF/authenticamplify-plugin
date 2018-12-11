@@ -59,7 +59,5 @@
 }
 
 [data-content-1] {
-	@if $initDefaultComponents{
-		@include content-1;
-	}
+	@include content-1;
 }

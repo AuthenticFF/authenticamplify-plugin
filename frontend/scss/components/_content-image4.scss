@@ -71,7 +71,5 @@
 }
 
 [data-content-image-4] {
-	@if $initDefaultComponents{
-		@include content-image-4;
-	}
+	@include content-image-4;
 }

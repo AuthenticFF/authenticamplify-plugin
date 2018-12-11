@@ -73,7 +73,5 @@
 }
 
 [data-cta-email-1] {
-	@if $initDefaultComponents{
-		@include cta-email-1;
-	}
+	@include cta-email-1;
 }

@@ -129,8 +129,6 @@
 
 [data-mobile-nav-overlay] {
 
-	@if $initDefaultComponents{
-		@include mobile-nav-overlay;
-	}
+	@include mobile-nav-overlay;
 
 }

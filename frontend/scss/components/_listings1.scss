@@ -67,7 +67,5 @@
 }
 
 [data-listings-1] {
-	@if $initDefaultComponents{
-		@include listings-1;
-	}
+	@include listings-1;
 }

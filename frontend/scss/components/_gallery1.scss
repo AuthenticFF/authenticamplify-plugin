@@ -126,7 +126,5 @@
 }
 
 [data-gallery-1] {
-	@if $initDefaultComponents{
-		@include gallery-1;
-	}
+	@include gallery-1;
 }

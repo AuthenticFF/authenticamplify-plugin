@@ -72,7 +72,5 @@
 }
 
 [data-content-with-links-2] {
-	@if $initDefaultComponents{
-		@include content-with-links-2;
-	}
+	@include content-with-links-2;
 }

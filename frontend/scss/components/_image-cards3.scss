@@ -69,7 +69,5 @@
 }
 
 [data-image-cards-3] {
-	@if $initDefaultComponents{
-		@include image-cards-3;
-	}
+	@include image-cards-3;
 }

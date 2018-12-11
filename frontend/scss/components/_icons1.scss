@@ -54,7 +54,5 @@
 }
 
 [data-icons-1] {
-	@if $initDefaultComponents{
-		@include icons-1;
-	}
+	@include icons-1;
 }

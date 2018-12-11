@@ -78,8 +78,6 @@
 }
 
 [data-gallery-5] {
-	@if $initDefaultComponents{
-		@include gallery-5;
-	}
+	@include gallery-5;
 }
 

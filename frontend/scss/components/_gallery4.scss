@@ -77,7 +77,5 @@
 }
 
 [data-gallery-4] {
-	@if $initDefaultComponents{
-		@include gallery-4;
-	}
+	@include gallery-4;
 }
