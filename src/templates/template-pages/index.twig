@@ -4,6 +4,10 @@
 
 	{% for block in entry.pageContent.level(1) %}
 
+		{#
+			Include the neoFields file from the instance. If the block is not overridden or custom,
+			then the neoFields file from the plugin will be called.
+		#}
 		{%
 			include '_includes/_neoFields'
 		%}
