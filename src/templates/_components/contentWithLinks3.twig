@@ -9,11 +9,9 @@
 		[
 			link:
 			[
-				linkText {plain text}
 				linkEntry {linkit}
 			]
 		]
-	@param {plain text} contentLinks3CtaText
 	@param {linkit} contentLinks3CtaLink
 
 #}
@@ -23,7 +21,6 @@
 {% set contentLinks3HeadingText = params.contentLinks3HeadingText ?? '' %}
 {% set contentLinks3TextContent = params.contentLinks3TextContent ?? '' %}
 {% set contentLinks3Links = params.contentLinks3Links ?? null %}
-{% set contentLinks3CtaText = params.contentLinks3CtaText ?? '' %}
 {% set contentLinks3CtaLink = params.contentLinks3CtaLink ?? null %}
 
 {# Variables #}
@@ -79,7 +76,7 @@
 
 						{% set linkHref = link.linkUrl.url %}
 
-						<li><a href="{{ linkHref }}">{{ link.linkText }}</a></li>
+						<li><a href="{{ linkHref }}">{{ link.linkUrl.text }}</a></li>
 
 					{% endfor %}
 
@@ -89,13 +86,13 @@
 
 		</div>
 
-		{% if contentLinks3CtaText != '' %}
+		{% if contentLinks3CtaLink.text != '' %}
 
 			<div class="grid-x">
 
 				<div class="cell small-12 large-8 cta">
 
-					<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentLinks3CtaText }}</a>
+					<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentLinks3CtaLink.text }}</a>
 
 				</div>
 

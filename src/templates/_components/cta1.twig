@@ -5,7 +5,6 @@
 	@param {assets - images - max 1} cta1BackgroundImage
 	@param {plain text} cta1HeadingText
 	@param {redactor} cta1TextContent
-	@param {plain text} cta1CtaText
 	@param {linkit} cta1CtaLink
 
 #}
@@ -17,7 +16,6 @@
 {% set cta1BackgroundImage = params.cta1BackgroundImage ?? null %}
 {% set cta1HeadingText = params.cta1HeadingText ?? null %}
 {% set cta1TextContent = params.cta1TextContent ?? null %}
-{% set cta1CtaText = params.cta1CtaText ?? null %}
 {% set cta1CtaLink = params.cta1CtaLink ?? null %}
 
 {# Variables #}
@@ -55,10 +53,10 @@
 
 					{{ cta1TextContent }}
 
-					{% if cta1CtaText != '' %}
+					{% if cta1CtaLink.text != '' %}
 
 						<div class="cta">
-							<a href="{{ ctaHref }}" class="button button-square button-black">{{ cta1CtaText }}</a>
+							<a href="{{ ctaHref }}" class="button button-square button-black">{{ cta1CtaLink.text }}</a>
 						</div>
 
 					{% endif %}

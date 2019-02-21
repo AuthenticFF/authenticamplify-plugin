@@ -5,7 +5,6 @@
 	@param {assets - images - max 1} cta2Image
 	@param {plain text} cta2HeadingText
 	@param {redactor} cta2TextContent
-	@param {plain text} cta2CtaText
 	@param {linkit} cta2CtaLink
 
 #}
@@ -17,7 +16,6 @@
 {% set cta2Image = params.cta2Image ?? null %}
 {% set cta2HeadingText = params.cta2HeadingText ?? null %}
 {% set cta2TextContent = params.cta2TextContent ?? null %}
-{% set cta2CtaText = params.cta2CtaText ?? null %}
 {% set cta2CtaLink = params.cta2CtaLink ?? null %}
 
 {# Variables #}
@@ -53,10 +51,10 @@
 
 					{{ cta2TextContent }}
 
-					{% if cta2CtaText != '' %}
+					{% if cta2CtaLink.text != '' %}
 
 						<div class="cta">
-							<a href="{{ ctaHref }}" class="button button-square button-black">{{ cta2CtaText }}</a>
+							<a href="{{ ctaHref }}" class="button button-square button-black">{{ cta2CtaLink.text }}</a>
 						</div>
 
 					{% endif %}

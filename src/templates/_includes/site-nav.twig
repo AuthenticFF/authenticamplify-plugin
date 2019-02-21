@@ -6,9 +6,7 @@
 		[
 			navigationLink:
 			[
-				linkText {plain text}
-				linkEntry {entry - max 1}
-				linkUrl {plain text}
+				navLink {linkit}
 			]
 		]
 
@@ -22,6 +20,6 @@
 
 	{% set linkUrl = link.navLink.url %}
 
-	<li><a href="{{ linkUrl }}">{{ link.linkText }}</a></li>
+	<li><a href="{{ linkUrl }}">{{ link.navLink.text }}</a></li>
 
 {% endfor %}

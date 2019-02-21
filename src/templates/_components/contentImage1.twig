@@ -6,7 +6,6 @@
 	@param {plain text} contentImage1SectionTitle
 	@param {plain text} contentImage1HeadingText
 	@param {redactor} contentImage1TextContent
-	@param {plain text} contentImage1CtaText
 	@param {linkit} contentImage1CtaLink
 
 #}
@@ -19,7 +18,6 @@
 {% set contentImage1SectionTitle = params.contentImage1SectionTitle ?? '' %}
 {% set contentImage1HeadingText = params.contentImage1HeadingText ?? '' %}
 {% set contentImage1TextContent = params.contentImage1TextContent ?? '' %}
-{% set contentImage1CtaText = params.contentImage1CtaText ?? '' %}
 {% set contentImage1CtaLink = params.contentImage1CtaLink ?? null %}
 
 {# Variables #}
@@ -77,10 +75,10 @@
 
 					{{ contentImage1TextContent }}
 
-					{% if contentImage1CtaText != '' %}
+					{% if contentImage1CtaLink.text != '' %}
 
 						<div class="cta">
-							<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentImage1CtaText }}</a>
+							<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentImage1CtaLink.text }}</a>
 						</div>
 
 					{% endif %}

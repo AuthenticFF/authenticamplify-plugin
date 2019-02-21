@@ -5,7 +5,6 @@
 	@param {plain text} contentImage2SectionTitle
 	@param {plain text} contentImage2HeadingText
 	@param {redactor} contentImage2TextContent
-	@param {plain text} contentImage2CtaText
 	@param {linkit} contentImage2CtaLink
 	@param {assets} contentImage2TallImages
 
@@ -18,7 +17,6 @@
 {% set contentImage2SectionTitle = params.contentImage2SectionTitle ?? '' %}
 {% set contentImage2HeadingText = params.contentImage2HeadingText ?? '' %}
 {% set contentImage2TextContent = params.contentImage2TextContent ?? '' %}
-{% set contentImage2CtaText = params.contentImage2CtaText ?? '' %}
 {% set contentImage2CtaLink = params.contentImage2CtaLink ?? null %}
 {% set contentImage2TallImages = params.contentImage2TallImages ?? null %}
 
@@ -64,10 +62,10 @@
 
 				{{ contentImage2TextContent }}
 
-				{% if contentImage2CtaText != '' %}
+				{% if contentImage2CtaLink.text != '' %}
 
 					<div class="cta">
-						<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentImage2CtaText }}</a>
+						<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentImage2CtaLink.text }}</a>
 					</div>
 
 				{% endif %}

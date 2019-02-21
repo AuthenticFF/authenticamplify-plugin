@@ -5,7 +5,6 @@
 	@param {plain text} contentImage3SectionTitle
 	@param {plain text} contentImage3HeadingText
 	@param {redactor} contentImage3TextContent
-	@param {plain text} contentImage3CtaText
 	@param {linkit} contentImage3CtaLink
 	@param {assets} contentImage3TallImages
 
@@ -18,7 +17,6 @@
 {% set contentImage3SectionTitle = params.contentImage3SectionTitle ?? '' %}
 {% set contentImage3HeadingText = params.contentImage3HeadingText ?? '' %}
 {% set contentImage3TextContent = params.contentImage3TextContent ?? '' %}
-{% set contentImage3CtaText = params.contentImage3CtaText ?? '' %}
 {% set contentImage3CtaLink = params.contentImage3CtaLink ?? null %}
 {% set contentImage3TallImages = params.contentImage3TallImages ?? null %}
 
@@ -66,10 +64,10 @@
 
 			</div>
 
-			{% if contentImage3CtaText != '' %}
+			{% if contentImage3CtaLink.text != '' %}
 
 				<div class="cell small-12 large-4 cta">
-					<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentImage3CtaText }}</a>
+					<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentImage3CtaLink.text }}</a>
 				</div>
 
 			{% endif %}

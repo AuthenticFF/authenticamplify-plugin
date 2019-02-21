@@ -10,7 +10,6 @@
 			2
 		]
 	@param {redactor} content3TextContent
-	@param {plain text} content3CtaText
 	@param {entries - max 1} content3CtaLink
 
 #}
@@ -20,7 +19,6 @@
 {% set content3HeadingText = params.content3HeadingText ?? '' %}
 {% set content3TextColumnsOneTwo = params.content3TextColumnsOneTwo ?? '2' %}
 {% set content3TextContent = params.content3TextContent ?? '' %}
-{% set content3CtaText = params.content3CtaText ?? '' %}
 {% set content3CtaLink = params.content3CtaLink ?? null %}
 
 {# Variables #}
@@ -70,13 +68,13 @@
 
 		</div>
 
-		{% if content3CtaText != '' %}
+		{% if content3CtaLink.text != '' %}
 
 			<div class="grid-x">
 
 				<div class="cell small-12 large-8 cta">
 
-					<a href="{{ ctaHref }}" class="button button-square button-black">{{ content3CtaText }}</a>
+					<a href="{{ ctaHref }}" class="button button-square button-black">{{ content3CtaLink.text }}</a>
 
 				</div>
 

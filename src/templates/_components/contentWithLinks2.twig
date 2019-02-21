@@ -9,11 +9,9 @@
 		[
 			link:
 			[
-				linkText {plain text}
 				linkEntry {linkit}
 			]
 		]
-	@param {plain text} contentLinks2CtaText
 	@param {linkit} contentLinks2CtaLink
 
 #}
@@ -23,7 +21,6 @@
 {% set contentLinks2HeadingText = params.contentLinks2HeadingText ?? '' %}
 {% set contentLinks2TextContent = params.contentLinks2TextContent ?? '' %}
 {% set contentLinks2Links = params.contentLinks2Links ?? null %}
-{% set contentLinks2CtaText = params.contentLinks2CtaText ?? '' %}
 {% set contentLinks2CtaLink = params.contentLinks2CtaLink ?? null %}
 
 {# Variables #}
@@ -64,11 +61,11 @@
 
 				{{ contentLinks2TextContent }}
 
-				{% if contentLinks2CtaText != '' %}
+				{% if contentLinks2CtaLink.text != '' %}
 
 					<div class="cta">
 
-						<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentLinks2CtaText }}</a>
+						<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentLinks2CtaLink.text }}</a>
 
 					</div>
 
@@ -84,7 +81,7 @@
 
 						{% set linkHref = link.linkUrl.url %}
 
-						<li><a href="{{ linkHref }}">{{ link.linkText }}</a></li>
+						<li><a href="{{ linkHref }}">{{ link.linkUrl.text }}</a></li>
 
 					{% endfor %}
 
