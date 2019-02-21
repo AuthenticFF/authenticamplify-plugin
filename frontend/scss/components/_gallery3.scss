@@ -9,13 +9,13 @@
 	}
 
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $gallery3_headingColor;
 		margin-bottom: 8px;
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $gallery3_bodyColor;
 
 		&:first-child {

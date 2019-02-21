@@ -5,7 +5,7 @@
 	background-color: $gallery2_backgroundColor;
 
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $gallery2_headingColor;
 		margin-bottom: 8px;
 
@@ -15,7 +15,7 @@
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $gallery2_bodyColor;
 
 		@include breakpoint(large) {

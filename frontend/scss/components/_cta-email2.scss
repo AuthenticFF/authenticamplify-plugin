@@ -1,6 +1,6 @@
 @mixin cta-email-2{
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $ctaEmail2_headingColor;
 		text-align: center;
 
@@ -17,7 +17,7 @@
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $ctaEmail2_bodyColor;
 
 		&:first-child {

@@ -11,7 +11,7 @@
 	}
 
 	.component-title {
-		@extend .heading-2;
+		@include heading-2;
 		color: $stats2_headingColor;
 		margin-bottom: 32px;
 
@@ -27,7 +27,7 @@
 
 	p {
 		color: $stats2_bodyColor;
-		@extend .body-text;
+		@include body-text;
 	}
 
 	.text-content {

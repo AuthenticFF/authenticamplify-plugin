@@ -16,7 +16,7 @@
 	}
 
 	.key-heading {
-		@extend .heading-3;
+		@include heading-3;
 		color: $keyIntro3_tableHeadingColor;
 		margin-bottom: 12px;
 	}
@@ -73,7 +73,7 @@
 
 
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $keyIntro3_headingColor;
 
 		@include breakpoint(large) {
@@ -82,7 +82,7 @@
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $keyIntro3_bodyColor;
 
 		@include breakpoint(large) {

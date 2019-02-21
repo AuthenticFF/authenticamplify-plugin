@@ -125,7 +125,7 @@
 					}
 
 					a {
-						@extend .nav-links;
+						@include nav-links;
 						color: $navigation1_color;
 						position: relative;
 

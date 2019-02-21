@@ -33,7 +33,7 @@
 	}
 
 	.intro-title {
-		@extend .body-text;
+		@include body-text;
 		font-style: italic;
 		margin-bottom: 4px;
 
@@ -43,7 +43,7 @@
 	}
 
 	.title {
-		@extend .body-text;
+		@include body-text;
 		font-weight: 700;
 	}
 

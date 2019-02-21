@@ -17,14 +17,14 @@
 				}
 
 				.heading {
-					@extend .heading-1;
+					@include heading-1;
 					color: $gallery5_headingColor;
 					margin-bottom: 32px;
 				}
 
 				.subheading {
 					color: $gallery5_subheadingColor;
-					@extend .intro;
+					@include intro;
 				}
 
 			}

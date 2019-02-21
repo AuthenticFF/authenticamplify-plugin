@@ -2,7 +2,7 @@
 
 @mixin content-image-3{
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $contentImage3_headingColor;
 		@include breakpoint(large) {
 			margin-bottom: 28px;
@@ -10,7 +10,7 @@
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $contentImage3_bodyColor;
 		@include breakpoint(large) {
 			margin-bottom: 28px;

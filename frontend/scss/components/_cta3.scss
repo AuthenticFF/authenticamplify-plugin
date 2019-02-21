@@ -22,7 +22,7 @@
 
 	h2 {
 		color: $cta3_headingColor;
-		@extend .heading-2;
+		@include heading-2;
 	}
 	.text-content {
 		margin-top: 16px;
@@ -33,7 +33,7 @@
 
 		p {
 			color: $cta3_bodyColor;
-			@extend .body-text;
+			@include body-text;
 			&:first-child {
 				margin-top: 0;
 			}

@@ -2,7 +2,7 @@
 	.left {
 
 		.heading {
-			@extend .heading-2;
+			@include heading-2;
 			color: $ctaEmail1_headingColor;
 			text-align: center;
 
@@ -29,7 +29,7 @@
 			}
 
 			p {
-				@extend .body-text;
+				@include body-text;
 				color: $ctaEmail1_bodyColor;
 
 				&:first-child {

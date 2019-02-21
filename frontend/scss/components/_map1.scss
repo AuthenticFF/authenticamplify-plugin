@@ -3,12 +3,12 @@
 
 @mixin map-1{
 	.heading {
-		@extend .heading-3;
+		@include heading-3;
 		color: $map1_headingColor;
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $map1_bodyColor;
 	}
 

@@ -9,7 +9,7 @@
 	}
 
 	.key-heading {
-		@extend .heading-3;
+		@include heading-3;
 		color: $keyIntro2_tableHeadingColor;
 		margin-bottom: 12px;
 	}
@@ -85,13 +85,13 @@
 
 
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $keyIntro2_headingColor;
 		margin-bottom: 12px;
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $keyIntro2_bodyColor;
 	}
 

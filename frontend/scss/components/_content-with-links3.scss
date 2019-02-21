@@ -2,7 +2,7 @@
 
 @mixin content-with-links-3{
 	.component-title {
-		@extend .heading-2;
+		@include heading-2;
 		color: $contentWithLinks3_headingColor;
 		margin-bottom: 16px;
 
@@ -12,7 +12,7 @@
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $contentWithLinks3_bodyColor;
 		@include breakpoint(large) {
 			margin: 32px 0;

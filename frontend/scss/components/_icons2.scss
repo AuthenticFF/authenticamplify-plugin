@@ -2,7 +2,7 @@
 
 @mixin icons-2{
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $icons2_headingColor;
 		margin-bottom: 20px;
 
@@ -12,7 +12,7 @@
 	}
 
 	.subheading {
-		@extend .intro;
+		@include intro;
 		color: $icons2_subheadingColor;
 		margin-bottom: 32px;
 
@@ -47,7 +47,7 @@
 			}
 		}
 		.item-text {
-			@extend .body-text;
+			@include body-text;
 			color: $icons2_itemTextColor;
 		}
 	}

@@ -7,7 +7,7 @@ form {
 	}
 
 	input[type="email"], input[type="text"], textarea {
-		@extend .body-text;
+		@include body-text;
 		padding: 21px 24px;
 		border: none;
 		background-color: $grey;

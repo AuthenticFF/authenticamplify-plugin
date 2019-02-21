@@ -45,7 +45,7 @@
 			}
 
 			.heading {
-				@extend .heading-2;
+				@include heading-2;
 				color: $hero2_headingColor;
 				margin-bottom: 32px;
 
@@ -55,7 +55,7 @@
 			}
 
 			.subheading {
-				@extend .intro;
+				@include intro;
 				color: $hero2_subheadingColor;
 			}
 		}

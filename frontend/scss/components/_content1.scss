@@ -4,7 +4,7 @@
 @mixin content-1{
 
 	.component-title {
-		@extend .heading-2;
+		@include heading-2;
 		color: $content1_headingColor;
 		margin-bottom: 16px;
 
@@ -14,7 +14,7 @@
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $content1_bodyColor;
 	}
 

@@ -25,12 +25,12 @@
 	}
 
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $contentImage4_headingColor;
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $contentImage4_bodyColor;
 
 		&:last-child {

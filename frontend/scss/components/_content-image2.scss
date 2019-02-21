@@ -10,7 +10,7 @@
 		}
 
 		.heading {
-			@extend .heading-2;
+			@include heading-2;
 			color: $contentImage2_headingColor;
 			margin-bottom: 4px;
 
@@ -20,7 +20,7 @@
 		}
 
 		p {
-			@extend .body-text;
+			@include body-text;
 			color: $contentImage2_bodyColor;
 		}
 

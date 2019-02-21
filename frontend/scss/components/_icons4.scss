@@ -30,7 +30,7 @@
 			}
 		}
 		.item-text {
-			@extend .body-text;
+			@include body-text;
 			color: $icons4_itemTextColor;
 		}
 	}

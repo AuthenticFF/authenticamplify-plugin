@@ -28,7 +28,7 @@
 		}
 
 		.heading {
-			@extend .heading-2;
+			@include heading-2;
 			color: $cta2_headingColor;
 
 			@include breakpoint(large) {
@@ -37,7 +37,7 @@
 		}
 
 		p {
-			@extend .body-text;
+			@include body-text;
 			color: $cta2_bodyColor;
 		}
 

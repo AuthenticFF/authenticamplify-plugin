@@ -23,7 +23,7 @@
 	}
 
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $contentImage1_headingColor;
 		margin-bottom: 0px;
 
@@ -33,7 +33,7 @@
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $contentImage1_bodyColor;
 		@include breakpoint(large) {
 			margin-bottom: 32px;

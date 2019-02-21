@@ -57,7 +57,7 @@
 				}
 
 				.heading {
-					@extend .heading-1;
+					@include heading-1;
 					color: $gallery6_headingColor;
 					margin-bottom: 18px;
 
@@ -68,7 +68,7 @@
 
 				.subheading {
 					color: $gallery6_subheadingColor;
-					@extend .intro;
+					@include intro;
 				}
 			}
 

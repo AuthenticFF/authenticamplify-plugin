@@ -3,7 +3,7 @@
 @mixin stats-1{
 
 	.component-title {
-		@extend .heading-2;
+		@include heading-2;
 		color: $stats1_headingColor;
 		margin-bottom: 32px;
 
@@ -17,7 +17,7 @@
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $stats1_bodyColor;
 	}
 

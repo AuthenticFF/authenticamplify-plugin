@@ -2,7 +2,7 @@
 
 @mixin timeline-2{
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $timeline2_headingColor;
 		margin-bottom: 20px;
 
@@ -16,7 +16,7 @@
 	}
 
 	.subheading {
-		@extend .heading-3;
+		@include heading-3;
 		color: $timeline2_subheadingColor;
 	}
 
@@ -96,13 +96,13 @@
 			.content {
 
 				h3 {
-					@extend .body-text;
+					@include body-text;
 					color: $timeline2_cellHeadingColor;
 					font-weight: 700;
 				}
 
 				p {
-					@extend .body-text;
+					@include body-text;
 					color: $timeline2_cellBodyColor;
 
 					&:first-of-type {

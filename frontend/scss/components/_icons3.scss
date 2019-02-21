@@ -7,11 +7,11 @@
 		@include breakpoint(large) {
 			margin-bottom: 0;
 		}
-		@extend .heading-2;
+		@include heading-2;
 	}
 
 	.subheading {
-		@extend .intro;
+		@include intro;
 		color: $icons3_subheadingColor;
 
 		@include breakpoint(large) {
@@ -46,7 +46,7 @@
 			}
 		}
 		.item-text {
-			@extend .body-text;
+			@include body-text;
 			color: $icons3_itemTextColor;
 		}
 	}

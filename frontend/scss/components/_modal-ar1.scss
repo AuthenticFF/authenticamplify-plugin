@@ -65,7 +65,7 @@
 		}
 
 		.heading {
-			@extend .heading-2;
+			@include heading-2;
 			margin-bottom: 24px;
 			text-align: center;
 
@@ -106,7 +106,7 @@
 				}
 
 				.instructions {
-					@extend .body-text;
+					@include body-text;
 					padding-left: 16px;
 
 					@include breakpoint(medium) {
@@ -121,7 +121,7 @@
 		}
 
 		.fine-print {
-			@extend .body-text;
+			@include body-text;
 			color: $grey;
 			text-align: center;
 			margin-top: 32px;

@@ -22,12 +22,12 @@
 	}
 
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $contact1_headingColor;
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $contact1_bodyColor;
 
 		@include breakpoint(large) {

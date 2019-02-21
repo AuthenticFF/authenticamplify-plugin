@@ -67,12 +67,12 @@
 				padding: 34px 34px;
 
 				h3 {
-					@extend .heading-2;
+					@include heading-2;
 					color: $gallery1_headingColor;
 				}
 
 				p {
-					@extend .body-text;
+					@include body-text;
 					color: $gallery1_bodyColor;
 
 					&:first-of-type {

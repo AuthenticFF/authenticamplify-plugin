@@ -2,7 +2,7 @@
 
 @mixin content-with-links-1{
 	.component-title {
-		@extend .heading-2;
+		@include heading-2;
 		color: $contentWithLinks1_headingColor;
 		margin-bottom: 16px;
 
@@ -12,7 +12,7 @@
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $contentWithLinks1_bodyColor;
 	}
 

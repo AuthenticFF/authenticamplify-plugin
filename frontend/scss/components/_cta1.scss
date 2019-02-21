@@ -15,7 +15,7 @@
 	}
 
 	.heading {
-		@extend .heading-2;
+		@include heading-2;
 		color: $cta1_headingColor;
 		@include breakpoint(large) {
 			margin-bottom: 12px;
@@ -23,7 +23,7 @@
 	}
 
 	p {
-		@extend .body-text;
+		@include body-text;
 		color: $cta1_bodyColor;
 
 		@include breakpoint(large) {
