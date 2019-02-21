@@ -3,7 +3,7 @@
 	.large-images {
 		margin-bottom: 28px;
 
-		@include breakpoint(medium) {
+		@include breakpoint(large) {
 			margin-bottom: 0;
 		}
 	}
@@ -17,6 +17,14 @@
 
 		&:last-child {
 			margin-bottom: 0;
+		}
+
+		.image-card {
+
+			div.image {
+				padding-bottom: 129.71%;
+			}
+
 		}
 
 	}
@@ -45,6 +53,14 @@
 					margin-bottom: 0;
 				}
 			}
+		}
+
+		.image-card {
+
+			div.image {
+				padding-bottom: 112.46%;
+			}
+
 		}
 	}
 

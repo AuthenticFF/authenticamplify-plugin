@@ -1,4 +1,4 @@
-@mixin image-cards-2{
+@mixin image-cards-4{
 	.cell {
 
 		margin-bottom: 28px;
@@ -10,7 +10,7 @@
 		@include breakpoint(medium) {
 			margin-bottom: 32px;
 
-			&:last-child {
+			&:nth-last-child(-n + 2) {
 				margin-bottom: 0;
 			}
 		}
@@ -18,7 +18,7 @@
 		@include breakpoint(large) {
 			margin-bottom: 40px;
 
-			&:nth-last-child(-n + 2) {
+			&:nth-last-child(-n + 4) {
 				margin-bottom: 0;
 			}
 		}
@@ -28,14 +28,13 @@
 
 		div.image {
 
-			padding-bottom: 52.17%;
+			padding-bottom: 78.125%;
 
 		}
 
 	}
-
 }
 
-[data-image-cards-2] {
-	@include image-cards-2;
+[data-image-cards-4] {
+	@include image-cards-4;
 }

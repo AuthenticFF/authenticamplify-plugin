@@ -32,15 +32,27 @@ ImageCards3.prototype.equalizeImageGrid = function(){
 
 	if (Foundation.MediaQuery.atLeast('large'))
 	{
+		if (this.options.$el.find('.left-large-image img').length)
+		{
+			var leftLargeImgHeight = this.options.$el.find('.left-large-image img').height();
+		}
+		else if (this.options.$el.find('.left-large-image div.image').length)
+		{
+			var leftLargeImgHeight = this.options.$el.find('.left-large-image div.image').outerHeight();
+		}
 
-		var leftLargeImgHeight = this.options.$el.find('.left-large-image img').height();
 		var rightSmallItemHeight = this.options.$el.find('.right-four-image-grid .four-image-grid .cell:first-child').outerHeight(true);
 		var rightSmallImgHeight = this.options.$el.find('.right-four-image-grid .four-image-grid .cell:first-child div.image').outerHeight();
 		var rightRowOneTextHeight = rightSmallItemHeight - rightSmallImgHeight;
 		var newRightImgHeight = (leftLargeImgHeight - rightRowOneTextHeight) / 2;
 
-		this.options.$el.find('.right-four-image-grid .four-image-grid .cell div.image').css('height', newRightImgHeight);
-
+		this.options.$el.find('.right-four-image-grid .four-image-grid .cell div.image').css('padding-bottom', newRightImgHeight);
+		this.options.$el.find('.right-four-image-grid .four-image-grid .cell img').css('height', newRightImgHeight);
+	}
+	else
+	{
+		this.options.$el.find('.right-four-image-grid .four-image-grid .cell div.image').css('padding-bottom', '');
+		this.options.$el.find('.right-four-image-grid .four-image-grid .cell img').css('height', '');
 	}
 
 };
