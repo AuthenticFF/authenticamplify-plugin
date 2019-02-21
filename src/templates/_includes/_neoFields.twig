@@ -193,34 +193,6 @@
       })
     }}
 
-  {% case 'footerColumns' %}
-
-    {{
-      renderComponent.footerColumns({
-        footerColsColumnOneText: block.ampFooterColumnOneText,
-        footerColsColumnTwoText: block.ampFooterColumnTwoText,
-        footerColsColumnThreeText: block.ampFooterColumnThreeText,
-        footerColsSocialLinks: block.ampFooterSocialLinks
-      })
-    }}
-
-  {% case 'footerContacts' %}
-
-    {{
-      renderComponent.footerContacts({
-        footerContactsHeadingText: block.ampFooterHeadingText,
-        footerContacts: block.ampFooterContacts
-      })
-    }}
-
-  {% case 'footerLogos' %}
-
-    {{
-      renderComponent.footerLogos({
-        footerLogos: block.footerLogos
-      })
-    }}
-
   {% case 'gallery1' %}
 
     {{
@@ -274,22 +246,6 @@
     {{
       renderComponent.gallery7({
         gallery7FullWidthImageOnlySlides: block.ampGalleryFullWidthImageOnlySlides
-      })
-    }}
-
-  {% case 'hero1' %}
-
-    {{
-      renderComponent.hero1({
-        hero1BgImageSlides: block.ampHeroBgImageSlides
-      })
-    }}
-
-  {% case 'hero2' %}
-
-    {{
-      renderComponent.hero2({
-        hero2BgImageSlides: block.ampHeroBgImageSlides
       })
     }}
 
