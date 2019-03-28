@@ -6,14 +6,17 @@
 	top: 0px;
 	display: inline-block;
 	border: none;
+	@include font($font-family2, 18px, 700, 31px);
+	letter-spacing: 0.5px;
 
 	&:hover {
 		top: -5px;
 	}
 
+	// button shapes
+
 	&.button-square {
-		@include font($font-family2, 18px, 700, 31px);
-		letter-spacing: 0.5px;
+		
 		padding: 20px 32px;
 		@include breakpoint(medium) {
 			padding: 22px 48px;
@@ -55,6 +58,8 @@
 		}
 
 	}
+
+	// button colors
 
 	&.button-black {
 		background-color: $black;

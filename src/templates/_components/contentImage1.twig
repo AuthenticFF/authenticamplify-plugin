@@ -75,7 +75,7 @@
 
 					{{ contentImage1TextContent }}
 
-					{% if contentImage1CtaLink.text != '' %}
+					{% if contentImage1CtaLink.text is defined and contentImage1CtaLink.text != '' %}
 
 						<div class="cta">
 							<a href="{{ ctaHref }}" class="button button-square button-black">{{ contentImage1CtaLink.text }}</a>
