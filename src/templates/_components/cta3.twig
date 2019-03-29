@@ -37,7 +37,7 @@
 					{{ cta3TextContent }}
 				</div>
 
-				{% if cta3CtaLink.text != '' %}
+				{% if cta3CtaLink.text is defined and cta3CtaLink.text != '' %}
 					<div class="cta">
 						<a href="{{ ctaHref }}" class="button button-square button-black">{{ cta3CtaLink.text }}</a>
 					</div>

@@ -73,9 +73,13 @@
 
 					{% for link in contentLinks1Links %}
 
-						{% set linkHref = link.linkUrl.url %}
+						{% if link.linkUrl.text is defined and link.linkUrl.text != '' %}
 
-						<li><a href="{{ linkHref }}">{{ link.linkUrl.text }}</a></li>
+							{% set linkHref = link.linkUrl.url %}
+
+							<li><a href="{{ linkHref }}">{{ link.linkUrl.text }}</a></li>
+
+						{% endif %}
 
 					{% endfor %}
 
@@ -85,7 +89,7 @@
 
 		</div>
 
-		{% if contentLinks1CtaLink.text != '' %}
+		{% if contentLinks1CtaLink.text is defined and contentLinks1CtaLink.text != '' %}
 
 			<div class="grid-x">
 

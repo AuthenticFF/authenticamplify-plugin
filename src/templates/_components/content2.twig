@@ -47,7 +47,7 @@
 
 				<h3 class="component-title">{{ content2HeadingText }}</h3>
 
-				{% if content2CtaLink.text != '' %}
+				{% if content2CtaLink.text is defined and content2CtaLink.text != '' %}
 
 					<div class="cta">
 

@@ -18,8 +18,12 @@
 {# output #}
 {% for link in navLinks %}
 
-	{% set linkUrl = link.navLink.url %}
+	{% if link.navLink.text is defined and link.navLink.text != '' %}
 
-	<li><a href="{{ linkUrl }}">{{ link.navLink.text }}</a></li>
+		{% set linkUrl = link.navLink.url %}
+
+		<li><a href="{{ linkUrl }}">{{ link.navLink.text }}</a></li>
+
+	{% endif %}
 
 {% endfor %}

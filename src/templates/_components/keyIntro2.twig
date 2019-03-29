@@ -86,7 +86,7 @@
 										<tr>
 											<td>{{ infoRow.titleText }}</td>
 											<td>
-												<a class="project-plan-link" href="{{ infoRow.linkUrl.url }}">{{ infoRow.linkUrl.text }}</a>
+												<a class="project-plan-link" href="{{ infoRow.linkUrl.url }}">{% if infoRow.linkUrl.text is defined and infoRow.linkUrl.text != '' %}{{ infoRow.linkUrl.text }}{% endif %}</a>
 											</td>
 										</tr>
 

@@ -61,7 +61,7 @@
 
 				{{ contentLinks2TextContent }}
 
-				{% if contentLinks2CtaLink.text != '' %}
+				{% if contentLinks2CtaLink.text is defined and contentLinks2CtaLink.text != '' %}
 
 					<div class="cta">
 
@@ -79,9 +79,13 @@
 
 					{% for link in contentLinks2Links %}
 
-						{% set linkHref = link.linkUrl.url %}
+						{% if link.linkUrl.text is defined and link.linkUrl.text != '' %}
 
-						<li><a href="{{ linkHref }}">{{ link.linkUrl.text }}</a></li>
+							{% set linkHref = link.linkUrl.url %}
+
+							<li><a href="{{ linkHref }}">{{ link.linkUrl.text }}</a></li>
+
+						{% endif %}
 
 					{% endfor %}
 
