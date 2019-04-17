@@ -7,12 +7,12 @@ use Craft;
 
 class AmplifySproutformTemplates extends FormTemplates
 {
-    public function getName()
+    public function getName(): string
     {
         return 'Amplify Custom Form Templates';
     }
 
-    public function getPath()
+    public function getPath(): string
     {
         return Craft::getAlias('@authenticff/authenticamplify/templates/_integrations/sproutforms/formtemplates/');
     }
